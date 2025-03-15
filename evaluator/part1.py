@@ -38,10 +38,11 @@ def execute_heuristic_search(agent, initial_state: dict, logger: Logger):
     # Build a dummy board
     board = GameBoard()
     board._initialize()
+    board.set_to_state(initial_state, is_initial=True)
 
     # Load TA agent if exists
     agents = {'agent': agent}
-    ta_agent = load_ta_agent(agent)
+    ta_agent = load_ta_agent(board)
     if ta_agent is not None:
         agents['ta'] = ta_agent
 
@@ -49,7 +50,8 @@ def execute_heuristic_search(agent, initial_state: dict, logger: Logger):
     
     # For each agent, execute the same problem.
     results = {}
-    for k, a in agents.items():
+    for k in ['ta', 'agent']:
+        a = agents[k]
         initial_memory = process.memory_info().rss / MEGABYTES
         
         # Initialize board and log initial memory size
@@ -102,10 +104,10 @@ def execute_heuristic_search(agent, initial_state: dict, logger: Logger):
 
         # Compute how much time passed 
         time_end = time()
-        time_delta = time_end - time_start  
+        time_delta = round((time_end - time_start) * 100) / 100
 
         board_memory = board.get_max_memory_usage() / MEGABYTES
-        memory_usage = max(board_memory, peak_memory - initial_memory)
+        memory_usage = round(max(board_memory, peak_memory - initial_memory) * 100) / 100
 
         if k == 'agent' and time_delta > HARD_TIME_LIMIT > 0:
             return Performance(
@@ -132,7 +134,7 @@ def execute_heuristic_search(agent, initial_state: dict, logger: Logger):
             try:
                 board.set_to_state(initial_state, is_initial=True)  # Reset to initial state
                 total_turns = calculate_total_turns(board, solution)
-                board.simulate_action(None, *solution)
+                board.simulate_action(None, *solution, problem_type=1)
                 is_end = board.is_game_end()
             except (InvalidMove, InvalidFence):
                 failure = traceback.format_exc()

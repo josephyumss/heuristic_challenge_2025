@@ -1,6 +1,8 @@
 import traceback
 from time import time
 from logging import Logger
+import psutil
+import os
 
 from pyquoridor.exceptions import InvalidMove, InvalidFence
 
@@ -16,18 +18,24 @@ def execute_local_search(agent, initial_state: dict, logger: Logger):
     # Set up the given problem
     board = GameBoard()
     board._initialize()
+    board.set_to_state(initial_state, is_initial=True)
 
     # Load TA agent if exists
     agents = {'agent': agent}
-    ta_agent = load_ta_agent(agent)
+    ta_agent = load_ta_agent(board)
     heuristic_agent = agent
     if ta_agent is not None:
         agents['ta'] = ta_agent
         heuristic_agent = ta_agent
 
+    process = psutil.Process(os.getpid())
+
     # For each agent, execute the same problem.
     results = {}
-    for k, a in agents.items():
+    for k in ['ta', 'agent']:
+        a = agents[k]
+        initial_memory = process.memory_info().rss / MEGABYTES
+
         # Initialize board and log initial memory size
         board.set_to_state(initial_state, is_initial=True)
         board.reset_memory_usage()
@@ -37,12 +45,33 @@ def execute_local_search(agent, initial_state: dict, logger: Logger):
         final_answer = None
         state = None
         failure = None
+        peak_memory = initial_memory
 
         # Start to search
         logger.info(f'Begin to search using {a.name} agent.')
         time_start = time()
         time_limit = time_start + HARD_TIME_LIMIT
         try:
+            def update_memory():
+                nonlocal peak_memory
+                try:
+                    current = process.memory_info().rss / MEGABYTES
+                    peak_memory = max(peak_memory, current)
+                except:
+                    pass
+
+            import threading
+            stop_monitoring = False
+
+            def memory_monitor():
+                while not stop_monitoring:
+                    update_memory()
+                    import time
+                    time.sleep(0.1)
+
+            monitor_thread = threading.Thread(target=memory_monitor, daemon=True)
+            monitor_thread.start()
+
             while time() < time_limit:
                 move = a.local_search(board, time_limit=time_limit)
                 search_call += 1
@@ -51,26 +80,32 @@ def execute_local_search(agent, initial_state: dict, logger: Logger):
                     'Solution should be either MOVE or a LIST of 3 BLOCKs.'
 
                 if isinstance(move, MOVE):
-                    state = board.simulate_action(state, move)
+                    state = board.simulate_action(state, move, problem_type=1)
                 else:
                     final_answer = move
                     break
+
+            stop_monitoring = True
+            monitor_thread.join(timeout=1.0)
+
             if final_answer is None:
                 failure = 'Algorithm failed to provide BLOCK() action within the time limit.'
         except:
             failure = traceback.format_exc()
+        finally:
+            stop_monitoring = True
 
         # Compute how much time passed
         time_end = time()
-        time_delta = int(max(0, int(time_end - time_start)))
+        time_delta = round((time_end - time_start) * 100) / 100
 
-        # Compute how much memory used during search.
-        memory_usage = int(max(0, board.get_max_memory_usage()) / MEGABYTES)
+        board_memory = board.get_max_memory_usage() / MEGABYTES
+        memory_usage = round(max(board_memory, peak_memory - initial_memory) * 100) / 100
 
         if k == 'agent' and time_delta > HARD_TIME_LIMIT > 0:
             return Performance(
-                failure=f'Time limit exceeded! {time_delta} seconds passed!',
-                outcome=None,
+                failure=f'Time limit exceeded! {time_delta:.3f} seconds passed!',
+                outcome=float('inf'),
                 search=None,
                 time=time_delta,
                 memory=memory_usage,
@@ -78,8 +113,8 @@ def execute_local_search(agent, initial_state: dict, logger: Logger):
             )
         if k == 'agent' and memory_usage > HARD_MEMORY_LIMIT > 0:
             return Performance(
-                failure=f'Memory limit exceeded! {memory_usage} MB used!',
-                outcome=None,
+                failure=f'Memory limit exceeded! {memory_usage:.2f} MB used!',
+                outcome=float('inf'),
                 search=None,
                 time=time_delta,
                 memory=memory_usage,
@@ -91,7 +126,7 @@ def execute_local_search(agent, initial_state: dict, logger: Logger):
         if final_answer is not None:
             try:
                 board.set_to_state(initial_state, is_initial=True)  # Reset to initial state
-                board.simulate_action(None, *final_answer)
+                board.simulate_action(None, *final_answer, problem_type=1)
 
                 # Now, use agent to find the shortest path of opponent.
                 # TODO: I'll provide TA's answer for part I, after the submission.
@@ -121,6 +156,7 @@ def execute_local_search(agent, initial_state: dict, logger: Logger):
         is_beating_ta_outcome = results['ta'].outcome <= res.outcome
         is_beating_ta_time = results['ta'].search >= res.search
 
+    is_basic_stage = (res.failure is None) and is_beating_ta_outcome
     is_intermediate_stage = is_basic_stage and (res.time <= 10)
     is_advanced_stage = is_intermediate_stage and (res.memory <= 1)
     is_challenge_stage = is_advanced_stage and is_beating_ta_time

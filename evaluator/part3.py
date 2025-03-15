@@ -43,7 +43,7 @@ def execute_belief_state_search(agent, initial_state: dict, logger: Logger):
 
     # Load TA agent if exists
     agents = {'agent': agent}
-    ta_agent = load_ta_agent(agent)
+    ta_agent = load_ta_agent(board)
     heuristic_agent = agent
     if ta_agent is not None:
         agents['ta'] = ta_agent

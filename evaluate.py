@@ -111,20 +111,18 @@ def _print_table(trial, part, results: Dict[str, List[Performance]]):
 
     print(NOTE[part])
 
-def _read_result(res_queue):
+def _read_result(res_queue, last_execution):
     """
     Read evaluation result from the queue.
     :param res_queue: Queue to read
     """
-    global last_execution
-
     while not res_queue.empty():
         agent_i, perf_i = res_queue.get()
         if agent_i not in last_execution or last_execution[agent_i] is None:
             last_execution[agent_i] = perf_i
 
 
-def _execute(part, prob, agent):
+def _execute(part, prob, agent, process_results, last_execution):
     """
     Execute an evaluation for an agent with given initial state.
     :param part: Challenge part number
@@ -132,8 +130,6 @@ def _execute(part, prob, agent):
     :param agent: Agent
     :return: A process
     """
-    global last_execution
-
     proc = Process(name=f'EvalProc', target=evaluate_algorithm, args=(agent, prob, part, process_results), daemon=True)
     proc.start()
     proc.agent = agent  # Make an agent tag for this process
@@ -192,7 +188,7 @@ if __name__ == '__main__':
             # If there is a room for new execution, execute new thing.
             if agents_to_run and len(processes) < process_count:
                 alg = agents_to_run.pop()
-                processes.append((_execute(args.part, prob_spec, alg), time()))
+                processes.append((_execute(args.part, prob_spec, alg, process_results, last_execution), time()))
 
             new_proc_list = []
             for p, begin in processes:
@@ -242,14 +238,14 @@ if __name__ == '__main__':
             # Prepare for the next round
             processes = new_proc_list
             # Read result from queue
-            _read_result(process_results)
+            _read_result(process_results, last_execution)
 
             # Wait for one seconds
             sleep(1)
 
         # Read results finally
         logging.info(f'Reading results at Trial {t}')
-        _read_result(process_results)
+        _read_result(process_results, last_execution)
 
         # Merge last execution result to results
         for agent_i in all_agents:

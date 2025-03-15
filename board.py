@@ -80,7 +80,6 @@ class GameBoard:
 
         # Pick a starting point randomly.
         self._player_side = random.choice(['black', 'white'])
-        self._current_player = 'black'
         if IS_DEBUG:  # Logging for debug
             self._logger.debug(f'You\'re player {self._player_side}')
 
@@ -245,7 +244,7 @@ class GameBoard:
             self._logger.debug('Querying applicable move directions...')
 
         # Read all applicable positions
-        player = self._current_player if player is None else player
+        player = self._board.current_player() if player is None else player
         applicable_positions = sorted([
             (square.row, square.col)
             for square in self._board.valid_pawn_moves(player, check_winner=False)
@@ -273,7 +272,7 @@ class GameBoard:
             self._logger.debug('Querying applicable move directions...')
 
         # Read all applicable positions
-        player = self._current_player if player is None else player
+        player = self._board.current_player() if player is None else player
         if self._fence_count[player] == 0:
             if IS_DEBUG:  # Logging for debug
                 self._logger.debug(f'{player} used all fences.')
@@ -331,7 +330,7 @@ class GameBoard:
         if self._max_memory >= 0:
             self._max_memory = max(self._max_memory, self.get_current_memory_usage())
 
-    def simulate_action(self, state: dict = None, *actions: Action) -> dict:
+    def simulate_action(self, state: dict = None, *actions: Action, problem_type: int = 4) -> dict:
         """
         Simulate given actions.
 
@@ -343,6 +342,7 @@ class GameBoard:
 
         :param state: State where the simulation starts from. If None, the simulation starts from the initial state.
         :param actions: Actions to simulate or execute.
+        :param problem_type: Problem Type Index (Challenge problem #)
         :return: The last state after simulating all actions
         """
         if IS_DEBUG:  # Logging for debug
@@ -354,6 +354,10 @@ class GameBoard:
         for act in actions:  # For each actions in the variable arguments,
             # Run actions through calling each action object. If error occurs, raise as it is (except for GameOver)
             try:
+                # For challenge I and II, force the current player to agents
+                if problem_type < 3:
+                    self._board.turn = 0 if self._player_side == 'white' else 1
+
                 act(self)
             except GameOver:
                 break
@@ -363,6 +367,10 @@ class GameBoard:
                 break
 
         # Copy the current state to return
+        if problem_type < 3:
+            self._board.turn = 0 if self._player_side == 'white' else 1
+            assert self._board.turn == (0 if self._player_side == 'white' else 1)
+
         self._current = self._save_state()
 
         if IS_DEBUG:  # Logging for debug
@@ -396,7 +404,7 @@ class GameBoard:
             'state_id': self._unique_game_state_identifier(),
             # Unique identifier for the game state. If this is the same, then the state will be equivalent.
             'player_id': self._player_side,  # The agent's Player ID
-            'current_player': self._current_player,  # Currently playing Player's ID
+            'turn': self._board.turn,  # Currently playing Player's ID
             'board': {  # Information about the current board
                 'fence_center': self._board.fence_center_grid.argwhere().tolist(),
                 'horizontal_fences': self._board.horizontal_fence_grid.argwhere().tolist(),
@@ -441,7 +449,7 @@ class GameBoard:
             self._board.update_neighbours(pawn.square)
 
         self._player_side = state['player_id']
-        self._current_player = state['current_player']
+        self._board.turn = state['turn']
 
 
 # Export only GameBoard and RESOURCES.
