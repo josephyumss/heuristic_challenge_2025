@@ -151,14 +151,17 @@ def execute_heuristic_search(agent, initial_state: dict, logger: Logger):
 
     is_beating_ta_outcome = True
     is_beating_ta_time = False
+    is_beating_ta_memory = False
     if 'ta' in results:
         is_beating_ta_outcome = ((results['ta'].outcome >= res.outcome > 0)
                                  or (results['ta'].outcome == res.outcome == 0))
         is_beating_ta_time = results['ta'].time >= res.time
+        is_beating_ta_memory = results['ta'].memory >= res.memory
 
     is_basic_stage = (res.failure is None) and (res.point > 1) and is_beating_ta_outcome
-    is_intermediate_stage = is_basic_stage and (res.memory <= 10)
+    is_intermediate_stage = is_basic_stage and (res.memory <= 1)
     is_advanced_stage = is_intermediate_stage and is_beating_ta_time
+    is_challenge_stage = is_advanced_stage and is_beating_ta_memory
 
     return Performance(
         failure=res.failure,
@@ -166,5 +169,5 @@ def execute_heuristic_search(agent, initial_state: dict, logger: Logger):
         search=res.search,
         time=res.time,
         memory=res.memory,
-        point=1 + int(is_basic_stage) + int(is_intermediate_stage) + int(is_advanced_stage) * 2
+        point=1 + int(is_basic_stage) + int(is_intermediate_stage) + int(is_advanced_stage) + int(is_challenge_stage)
     )
