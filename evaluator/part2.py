@@ -121,9 +121,9 @@ def execute_local_search(agent, initial_state: dict, logger: Logger):
         is_beating_ta_outcome = results['ta'].outcome <= res.outcome
         is_beating_ta_time = results['ta'].search >= res.search
 
-    is_basic_stage = (res.failure is None) and is_beating_ta_outcome
-    is_intermediate_stage = is_basic_stage and (res.time <= 30) and (res.memory <= 5)
-    is_advanced_stage = is_intermediate_stage and is_beating_ta_time
+    is_intermediate_stage = is_basic_stage and (res.time <= 10)
+    is_advanced_stage = is_intermediate_stage and (res.memory <= 1)
+    is_challenge_stage = is_advanced_stage and is_beating_ta_time
     # TA computation time will be measured on online system.
 
     return Performance(
@@ -132,5 +132,5 @@ def execute_local_search(agent, initial_state: dict, logger: Logger):
         search=res.search,
         time=res.time,
         memory=res.memory,
-        point=1 + int(is_basic_stage) + int(is_intermediate_stage) + int(is_advanced_stage) * 2
+        point=1 + int(is_basic_stage) + int(is_intermediate_stage) + int(is_advanced_stage) + int(is_challenge_stage)
     )
