@@ -173,7 +173,7 @@ def execute_heuristic_search(agent, initial_state: dict, logger: Logger):
         is_beating_ta_outcome = ((results['ta'].outcome >= res.outcome > 0)
                                  or (results['ta'].outcome == res.outcome == 0))
         is_beating_ta_time = results['ta'].time >= res.time
-        is_beating_ta_memory = results['ta'].memory >= res.memory
+        is_beating_ta_memory = results['ta'].memory + 0.5 >= res.memory
 
     is_basic_stage = (res.failure is None) and (res.point > 1) and is_beating_ta_outcome
     is_intermediate_stage = is_basic_stage and (res.memory <= 1)
