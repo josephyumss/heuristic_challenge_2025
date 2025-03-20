@@ -131,7 +131,7 @@ def execute_local_search(agent, initial_state: dict, logger: Logger):
                 # Now, use agent to find the shortest path of opponent.
                 # TODO: I'll provide TA's answer for part I, after the submission.
                 board._player_side = 'white' if board._player_side == 'black' else 'black'
-                route = heuristic_agent.heuristic_search(board)
+                route = heuristic_agent.local_search(board)
 
                 length = len(route)
             except (InvalidMove, InvalidFence):
