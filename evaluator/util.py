@@ -16,18 +16,18 @@ Performance = namedtuple('Performance',
                              'point'])  # Point earned (basic/intermediate/high)
 
 
-def load_ta_agent(board, is_opponent=False):
+def load_ta_agent():
     try:
         from importlib import import_module
         module = import_module('agents._ta')
-        return module.Agent(board.get_opponent_id() if is_opponent else board.get_player_id())
+        return module.Agent
     except:
         return None
 
-def load_random_agent(board, is_opponent=False):
+def load_random_agent():
     try:
         from importlib import import_module
         module = import_module('agents._random')
-        return module.Agent(board.get_opponent_id() if is_opponent else board.get_player_id())
+        return module.Agent
     except:
         return None

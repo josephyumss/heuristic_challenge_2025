@@ -1,3 +1,4 @@
+import gc
 import traceback
 from time import time
 from logging import Logger
@@ -34,119 +35,133 @@ def calculate_total_turns(board: GameBoard, solution: list[Action]) -> int:
             
     return total_turns
 
-def execute_heuristic_search(agent, initial_state: dict, logger: Logger):
+
+def _execute(initial_state, agents, k, results, logger, start_memory):
+    process = psutil.Process(os.getpid())
+
     # Build a dummy board
     board = GameBoard()
     board._initialize()
     board.set_to_state(initial_state, is_initial=True)
 
-    # Load TA agent if exists
-    agents = {'agent': agent}
-    ta_agent = load_ta_agent(board)
-    if ta_agent is not None:
-        agents['ta'] = ta_agent
+    a = agents[k](player=initial_state['player_id'])
 
-    process = psutil.Process(os.getpid())
-    
-    # For each agent, execute the same problem.
-    results = {}
-    for k in ['ta', 'agent']:
-        a = agents[k]
-        initial_memory = process.memory_info().rss / MEGABYTES
-        
-        # Initialize board and log initial memory size
-        board.set_to_state(initial_state, is_initial=True)
-        board.reset_memory_usage()
-        board.get_current_memory_usage()
+    # Initialize board and log initial memory size
+    board.reset_memory_usage()
+    board.get_current_memory_usage()
 
-        solution = None
-        failure = None
-        peak_memory = initial_memory 
+    solution = None
+    failure = None
+    peak_memory = 0
+    initial_memory = start_memory
 
-        # Start to search
-        logger.info(f'Begin to search using {a.name} agent.')
-        time_start = time()
-        
-        try:
-            def update_memory():
-                nonlocal peak_memory
-                try:
-                    current = process.memory_info().rss / MEGABYTES
-                    peak_memory = max(peak_memory, current)
-                except:
-                    pass
-            
-            import threading
-            stop_monitoring = False
-            
-            def memory_monitor():
-                while not stop_monitoring:
-                    update_memory()
-                    import time
-                    time.sleep(0.1)
-            
-            monitor_thread = threading.Thread(target=memory_monitor, daemon=True)
-            monitor_thread.start()
-            
-            solution = a.heuristic_search(board)
-            
-            stop_monitoring = True
-            monitor_thread.join(timeout=1.0)
-            
-            assert isinstance(solution, list), \
-                'Solution should be a LIST of actions. The current outcome is not a list.'
-            assert all(isinstance(s, Action) for s in solution), \
-                'Solution should be a list of ACTIONs. It contains an element which is not an ACTION.'
-        except:
-            failure = traceback.format_exc()
-        finally:
-            stop_monitoring = True
+    # Start to search
+    logger.info(f'Begin to search using {a.name} agent.')
+    time_start = time()
 
-        # Compute how much time passed 
-        time_end = time()
-        time_delta = round((time_end - time_start) * 100) / 100
-
-        board_memory = board.get_max_memory_usage() / MEGABYTES
-        memory_usage = round(max(board_memory, peak_memory - initial_memory) * 100) / 100
-
-        if k == 'agent' and time_delta > HARD_TIME_LIMIT > 0:
-            return Performance(
-                failure=f'Time limit exceeded! {time_delta:.3f} seconds passed!',
-                outcome=float('inf'),
-                search=None,
-                time=time_delta,
-                memory=memory_usage,
-                point=1 # Just give submission point
-            )
-        if k == 'agent' and memory_usage > HARD_MEMORY_LIMIT > 0:
-            return Performance(
-                failure=f'Memory limit exceeded! {memory_usage:.2f} MB used!',
-                outcome=float('inf'),
-                search=None,
-                time=time_delta,
-                memory=memory_usage,
-                point=1 # Just give submission point
-            )
-
-        is_end = False
-        total_turns = float('inf')
-        if solution is not None:
+    try:
+        def update_memory():
+            nonlocal peak_memory, initial_memory
             try:
-                board.set_to_state(initial_state, is_initial=True)  # Reset to initial state
-                total_turns = calculate_total_turns(board, solution)
-                board.simulate_action(None, *solution, problem_type=1)
-                is_end = board.is_game_end()
-            except (InvalidMove, InvalidFence):
-                failure = traceback.format_exc()
+                current = process.memory_full_info().uss / MEGABYTES
+                peak_memory = max(peak_memory, current)
+                if initial_memory == 0:
+                    initial_memory = peak_memory
+            except:
+                pass
 
-        results[k] = Performance(
-            failure=failure,
-            outcome=total_turns if solution is not None else float('inf'),
+        import threading
+        stop_monitoring = False
+
+        def memory_monitor():
+            import time
+            while not stop_monitoring:
+                update_memory()
+                time.sleep(0.01)
+
+        monitor_thread = threading.Thread(target=memory_monitor, daemon=True)
+        monitor_thread.start()
+
+        solution = a.heuristic_search(board)
+
+        stop_monitoring = True
+        monitor_thread.join(timeout=1.0)
+
+        assert isinstance(solution, list), \
+            'Solution should be a LIST of actions. The current outcome is not a list.'
+        assert all(isinstance(s, Action) for s in solution), \
+            'Solution should be a list of ACTIONs. It contains an element which is not an ACTION.'
+    except:
+        failure = traceback.format_exc()
+    finally:
+        stop_monitoring = True
+
+    # Compute how much time passed
+    time_end = time()
+    time_delta = round((time_end - time_start) * 100) / 100
+
+    memory_usage = round((peak_memory - initial_memory) * 10) / 10
+
+    if k == 'agent' and time_delta > HARD_TIME_LIMIT > 0:
+        return Performance(
+            failure=f'Time limit exceeded! {time_delta:.3f} seconds passed!',
+            outcome=float('inf'),
             search=None,
             time=time_delta,
             memory=memory_usage,
-            point=1 + int(is_end)
+            point=1  # Just give submission point
         )
+    if k == 'agent' and memory_usage > HARD_MEMORY_LIMIT > 0:
+        return Performance(
+            failure=f'Memory limit exceeded! {memory_usage:.2f} MB used!',
+            outcome=float('inf'),
+            search=None,
+            time=time_delta,
+            memory=memory_usage,
+            point=1  # Just give submission point
+        )
+
+    is_end = False
+    total_turns = float('inf')
+    if solution is not None:
+        try:
+            board.set_to_state(initial_state, is_initial=True)  # Reset to initial state
+            total_turns = calculate_total_turns(board, solution)
+            board.simulate_action(None, *solution, problem_type=1)
+            is_end = board.is_game_end()
+        except (InvalidMove, InvalidFence):
+            failure = traceback.format_exc()
+
+    results[k] = Performance(
+        failure=failure,
+        outcome=total_turns if solution is not None else float('inf'),
+        search=None,
+        time=time_delta,
+        memory=memory_usage,
+        point=1 + int(is_end)
+    )
+
+    del board
+    return initial_memory
+
+
+def execute_heuristic_search(agent, initial_state: dict, logger: Logger):
+    # Load TA agent if exists
+    agents = {'agent': agent}
+    ta_agent = load_ta_agent()
+    if ta_agent is not None:
+        agents['ta'] = ta_agent
+    
+    # For each agent, execute the same problem.
+    results = {}
+    start_memory = 0
+    for k in ['ta', 'ta', 'agent']:
+        if k not in agents:
+            continue
+
+        start_memory = _execute(initial_state.copy(), agents, k, results, logger, start_memory)
+        collected = gc.collect()
+        print(f'Collected {collected} objects / k = {k} (agent: {agent})')
 
     # Give points by the stage where the agent is.
     res = results['agent']
@@ -164,6 +179,8 @@ def execute_heuristic_search(agent, initial_state: dict, logger: Logger):
     is_intermediate_stage = is_basic_stage and (res.memory <= 1)
     is_advanced_stage = is_intermediate_stage and is_beating_ta_time
     is_challenge_stage = is_advanced_stage and is_beating_ta_memory
+    if 'TA' in agent.name:
+        print(results['ta'], res, agent)
 
     return Performance(
         failure=res.failure,

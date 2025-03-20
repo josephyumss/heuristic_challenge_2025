@@ -45,7 +45,7 @@ def evaluate_algorithm(agent_name, initial_state, problem_id,
     try:
         logger.info(f'Loading {agent_name} agent to memory...')
         module = import_module(f'agents.{agent_name}')
-        agent = module.Agent(player=initial_state['player_id'])
+        agent = module.Agent
     except Exception as e:
         # When agent loading fails, send the failure log to main process.
         failure = format_exc()
