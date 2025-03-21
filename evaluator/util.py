@@ -1,6 +1,8 @@
 from collections import namedtuple
 from traceback import print_exc
 
+import psutil
+
 #: Size of MB in bytes
 MEGABYTES = 1024 ** 2
 

@@ -19,13 +19,14 @@ from .part4 import execute_adversarial_search
 
 
 def evaluate_algorithm(agent_name, initial_state, problem_id,
-                       result_queue: Queue):
+                       result_queue: Queue, res_ta: Performance = None):
     """
     Run the evaluation for an agent.
     :param agent_name: Agent to be evaluated
     :param initial_state: Initial state for the test
     :param problem_id: Problem ID (1, 2, 3, or 4)
     :param result_queue: A multiprocessing Queue to return the execution result.
+    :param res_ta: TA agent's result (Performance instance)
     """
     # Initialize logger
     if not IS_RUN:
@@ -58,13 +59,13 @@ def evaluate_algorithm(agent_name, initial_state, problem_id,
 
     # Execute algorithm
     if problem_id == 1:
-        performance = execute_heuristic_search(agent, initial_state, logger)
+        performance = execute_heuristic_search(agent, initial_state, logger, res_ta=res_ta)
     elif problem_id == 2:
-        performance = execute_local_search(agent, initial_state, logger)
+        performance = execute_local_search(agent, initial_state, logger, res_ta=res_ta)
     elif problem_id == 3:
-        performance = execute_belief_state_search(agent, initial_state, logger)
+        performance = execute_belief_state_search(agent, initial_state, logger, res_ta=res_ta)
     else:
-        performance = execute_adversarial_search(agent, initial_state, logger)
+        performance = execute_adversarial_search(agent, initial_state, logger, res_ta=res_ta)
 
     if IS_DEBUG:
         logger.debug(f'Execution Result: {performance}.')

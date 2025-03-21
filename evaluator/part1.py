@@ -36,7 +36,7 @@ def calculate_total_turns(board: GameBoard, solution: list[Action]) -> int:
     return total_turns
 
 
-def _execute(initial_state, agents, k, results, logger, start_memory):
+def _execute(initial_state, cls, logger):
     process = psutil.Process(os.getpid())
 
     # Build a dummy board
@@ -44,7 +44,7 @@ def _execute(initial_state, agents, k, results, logger, start_memory):
     board._initialize()
     board.set_to_state(initial_state, is_initial=True)
 
-    a = agents[k](player=initial_state['player_id'])
+    a = cls(player=initial_state['player_id'])
 
     # Initialize board and log initial memory size
     board.reset_memory_usage()
@@ -52,8 +52,7 @@ def _execute(initial_state, agents, k, results, logger, start_memory):
 
     solution = None
     failure = None
-    peak_memory = 0
-    initial_memory = start_memory
+    peak_memory = initial_memory = 0
 
     # Start to search
     logger.info(f'Begin to search using {a.name} agent.')
@@ -100,9 +99,10 @@ def _execute(initial_state, agents, k, results, logger, start_memory):
     time_end = time()
     time_delta = round((time_end - time_start) * 100) / 100
 
-    memory_usage = round((peak_memory - initial_memory) * 10) / 10
+    board_memory = board.get_max_memory_usage() / MEGABYTES
+    memory_usage = round(max(board_memory, peak_memory - initial_memory) * 10) / 10
 
-    if k == 'agent' and time_delta > HARD_TIME_LIMIT > 0:
+    if time_delta > HARD_TIME_LIMIT > 0:
         return Performance(
             failure=f'Time limit exceeded! {time_delta:.3f} seconds passed!',
             outcome=float('inf'),
@@ -111,7 +111,7 @@ def _execute(initial_state, agents, k, results, logger, start_memory):
             memory=memory_usage,
             point=1  # Just give submission point
         )
-    if k == 'agent' and memory_usage > HARD_MEMORY_LIMIT > 0:
+    if memory_usage > HARD_MEMORY_LIMIT > 0:
         return Performance(
             failure=f'Memory limit exceeded! {memory_usage:.2f} MB used!',
             outcome=float('inf'),
@@ -132,7 +132,7 @@ def _execute(initial_state, agents, k, results, logger, start_memory):
         except (InvalidMove, InvalidFence):
             failure = traceback.format_exc()
 
-    results[k] = Performance(
+    return Performance(
         failure=failure,
         outcome=total_turns if solution is not None else float('inf'),
         search=None,
@@ -141,46 +141,23 @@ def _execute(initial_state, agents, k, results, logger, start_memory):
         point=1 + int(is_end)
     )
 
-    del board
-    return initial_memory
-
-
-def execute_heuristic_search(agent, initial_state: dict, logger: Logger):
-    # Load TA agent if exists
-    agents = {'agent': agent}
-    ta_agent = load_ta_agent()
-    if ta_agent is not None:
-        agents['ta'] = ta_agent
-    
-    # For each agent, execute the same problem.
-    results = {}
-    start_memory = 0
-    for k in ['ta', 'ta', 'agent']:
-        if k not in agents:
-            continue
-
-        start_memory = _execute(initial_state.copy(), agents, k, results, logger, start_memory)
-        collected = gc.collect()
-        print(f'Collected {collected} objects / k = {k} (agent: {agent})')
+def execute_heuristic_search(agent, initial_state: dict, logger: Logger, res_ta: Performance = None):
+    res = _execute(initial_state.copy(), agent, logger)
 
     # Give points by the stage where the agent is.
-    res = results['agent']
-
     is_beating_ta_outcome = True
     is_beating_ta_time = False
     is_beating_ta_memory = False
-    if 'ta' in results:
-        is_beating_ta_outcome = ((results['ta'].outcome >= res.outcome > 0)
-                                 or (results['ta'].outcome == res.outcome == 0))
-        is_beating_ta_time = results['ta'].time >= res.time
-        is_beating_ta_memory = results['ta'].memory + 0.5 >= res.memory
+    if res_ta is not None:
+        is_beating_ta_outcome = ((res_ta.outcome >= res.outcome > 0)
+                                 or (res_ta.outcome == res.outcome == 0))
+        is_beating_ta_time = res_ta.time >= res.time
+        is_beating_ta_memory = res_ta.memory >= res.memory
 
     is_basic_stage = (res.failure is None) and (res.point > 1) and is_beating_ta_outcome
     is_intermediate_stage = is_basic_stage and (res.memory <= 1)
     is_advanced_stage = is_intermediate_stage and is_beating_ta_time
     is_challenge_stage = is_advanced_stage and is_beating_ta_memory
-    if 'TA' in agent.name:
-        print(results['ta'], res, agent)
 
     return Performance(
         failure=res.failure,

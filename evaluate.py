@@ -122,7 +122,7 @@ def _read_result(res_queue, last_execution):
             last_execution[agent_i] = perf_i
 
 
-def _execute(part, prob, agent, process_results, last_execution):
+def _execute(part, prob, agent, process_results, last_execution, **kwargs):
     """
     Execute an evaluation for an agent with given initial state.
     :param part: Challenge part number
@@ -130,7 +130,8 @@ def _execute(part, prob, agent, process_results, last_execution):
     :param agent: Agent
     :return: A process
     """
-    proc = Process(name=f'EvalProc', target=evaluate_algorithm, args=(agent, prob, part, process_results), daemon=True)
+    proc = Process(name=f'EvalProc', target=evaluate_algorithm, args=(agent, prob, part, process_results),
+                   kwargs=kwargs, daemon=True)
     proc.start()
     proc.agent = agent  # Make an agent tag for this process
     last_execution[agent] = None

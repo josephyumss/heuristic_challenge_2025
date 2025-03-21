@@ -306,7 +306,7 @@ class GameBoard:
         :return: Current memory usage for the process having this board
         """
         try:
-            usage = self._process_info.memory_info().rss
+            usage = self._process_info.memory_full_info().uss
             if self._init_memory == 0:
                 self._init_memory = usage
             return usage
