@@ -93,6 +93,8 @@ class BLOCK(Action):
         board._board.place_fence(*self.edge, self.orientation)
         board._fence_count[self.player] -= 1
 
+        #fence 설치하고 self.edge 로그 띄우고, 보드에 적용하고, count 줄이는 듯
+
 
 # Export actions only
 __all__ = ['Action', 'MOVE', 'BLOCK']

@@ -5,6 +5,7 @@ from logging import Logger
 import psutil
 import os
 
+
 from pyquoridor.exceptions import InvalidMove, InvalidFence
 
 from action import Action, MOVE
@@ -21,9 +22,6 @@ def calculate_total_turns(board: GameBoard, solution: list[Action]) -> int:
     total_turns = 0
     current_pos = None
 
-    #여기
-    print("나 여기있다~~~~~~")
-    
     for action in solution:
         if isinstance(action, MOVE):
             if current_pos is None:
