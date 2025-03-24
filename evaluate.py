@@ -24,6 +24,12 @@ from agents.load import get_all_agents
 from evaluator import *
 from evaluator.util import MEGABYTES
 
+
+#여기
+import sys
+
+
+
 #: The number of games to run the evaluation
 GAMES = 10
 #: Limit of execution. (60 minutes)
@@ -178,6 +184,13 @@ if __name__ == '__main__':
         # Add random information for Part 3.
         if args.part == 3:
             prob_spec['random_action_indices'] = [randint(0, 65536) for _ in range(4)]
+
+
+        #여기
+        all_agents_test = get_all_agents()
+        print("Loaded agents:", all_agents_test)
+        sys.stdout.flush() 
+        #print(prob_spec)
 
         # Execute agents
         processes = []

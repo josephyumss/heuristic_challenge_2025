@@ -19,6 +19,9 @@ def calculate_total_turns(board: GameBoard, solution: list[Action]) -> int:
     
     total_turns = 0
     current_pos = None
+
+    #여기
+    print("나 여기있다~~~~~~")
     
     for action in solution:
         if isinstance(action, MOVE):
