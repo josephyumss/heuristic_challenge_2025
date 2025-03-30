@@ -86,12 +86,11 @@ class BLOCK(Action):
         if IS_DEBUG:  # Logging for debugging
             self._logger.debug(f'Calling BLOCK construction on edge {self.edge}.')
 
-        assert board._fence_count[self.player] > 0, f'{self.player} has no fences left.'
+        assert board._board.fences_left[self.player] > 0, f'{self.player} has no fences left.'
 
         # This can raise two exceptions: GameOver / InvalidMove
         # These two exceptions will be handled in the board.
         board._board.place_fence(*self.edge, self.orientation)
-        board._fence_count[self.player] -= 1
 
 
 # Export actions only

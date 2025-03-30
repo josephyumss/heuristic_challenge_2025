@@ -42,6 +42,13 @@ def _execute(initial_state, cls, logger):
     # Build a dummy board
     board = GameBoard()
     board._initialize()
+
+    # Apply distance conditions
+    distances = initial_state.pop('distances')
+    board._vertical_turns = distances['vertical']
+    board._horizontal_turns = distances['horizontal']
+
+    # Reset to specific state
     board.set_to_state(initial_state, is_initial=True)
 
     a = cls(player=initial_state['player_id'])
@@ -100,7 +107,7 @@ def _execute(initial_state, cls, logger):
     time_delta = round((time_end - time_start) * 100) / 100
 
     board_memory = board.get_max_memory_usage() / MEGABYTES
-    memory_usage = round(max(board_memory, peak_memory - initial_memory) * 10) / 10
+    memory_usage = round(max(board_memory, peak_memory - initial_memory) * 100) / 100
 
     if time_delta > HARD_TIME_LIMIT > 0:
         return Performance(
@@ -151,8 +158,8 @@ def execute_heuristic_search(agent, initial_state: dict, logger: Logger, res_ta:
     if res_ta is not None:
         is_beating_ta_outcome = ((res_ta.outcome >= res.outcome > 0)
                                  or (res_ta.outcome == res.outcome == 0))
-        is_beating_ta_time = res_ta.time >= res.time
-        is_beating_ta_memory = res_ta.memory >= res.memory
+        is_beating_ta_time = res_ta.time * 1.01 >= res.time  # Allow 1% errors
+        is_beating_ta_memory = res_ta.memory * 1.01 >= res.memory  # Allow 1% errors
 
     is_basic_stage = (res.failure is None) and (res.point > 1) and is_beating_ta_outcome
     is_intermediate_stage = is_basic_stage and (res.memory <= 1)

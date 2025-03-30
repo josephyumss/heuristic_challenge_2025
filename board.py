@@ -26,6 +26,7 @@ from util import print_board
 #: True if the program run with 'DEBUG' environment variable.
 IS_DEBUG = '--debug' in sys.argv
 IS_RUN = 'fixed_evaluation' in sys.argv[0]
+FENCES_MAX = 10
 
 
 class GameBoard:
@@ -52,8 +53,6 @@ class GameBoard:
     _max_memory = 0
     #: [PRIVATE] Random seed generator
     _rng = random.Random(2938)
-    #: [PRIVATE] Remaining amount of fences unused.
-    _fence_count = {'black': 10, 'white': 10}
 
     def _initialize(self, start_with_random_fence: int = 0):
         """
@@ -68,7 +67,6 @@ class GameBoard:
         
         # Initialize a new game board
         self._board = Board()
-        self._fence_count = {'black': 10, 'white': 10}
 
         self._vertical_turns = [[self._rng.randint(1, 5) for _ in range(9)] for _ in range(8)]
         self._horizontal_turns = [[self._rng.randint(1, 5) for _ in range(8)] for _ in range(9)]
@@ -126,14 +124,14 @@ class GameBoard:
         """Return the number of turns required to move between adjacent positions"""
         row1, col1 = current_pos
         row2, col2 = next_pos
+        min_row = min(row1, row2)
+        min_col = min(col1, col2)
         if col1 == col2:
-            min_row = min(row1, row2)
             return self._vertical_turns[min_row][col1]
         elif row1 == row2:
-            min_col = min(col1, col2)
             return self._horizontal_turns[row1][min_col]
         else:
-            return float('inf')
+            return max(self._horizontal_turns[min_row][min_col], self._vertical_turns[min_row][min_col])
     
     def print_turns(self):
         """Print the required turns for each edge in a visual format"""
@@ -273,7 +271,7 @@ class GameBoard:
 
         # Read all applicable positions
         player = self._board.current_player() if player is None else player
-        if self._fence_count[player] == 0:
+        if self._board.fences_left[player] == 0:
             if IS_DEBUG:  # Logging for debug
                 self._logger.debug(f'{player} used all fences.')
             return []
@@ -413,7 +411,7 @@ class GameBoard:
             'player': {
                 p: {  # Information about the current player
                     'pawn': list(self._board.pawns[p].square.location),
-                    'fences_left': self._fence_count[p]
+                    'fences_left': self._board.fences_left[p]
                 }
                 for p in ['black', 'white']
             }
@@ -424,29 +422,43 @@ class GameBoard:
         Helper function to restore board state to given state representation.
         """
         # Clear everything
-        self._board.fence_center_grid.grid[:, :] = False
+        self._board.fence_center_grid[:, :] = False
         self._board.horizontal_fence_grid[:, :] = False
         self._board.vertical_fence_grid[:, :] = False
 
-        # Set players first
+        # Set players' current position
         for p in ['black', 'white']:
             self._board.pawns[p].move(self._board.get_square_or_none(*state['player'][p]['pawn']))
-            self._fence_count[p] = state['player'][p]['fences_left']
 
-        # Recover fences
-        for r, c in state['board']['fence_center']:
-            self._board.fence_center_grid[r, c] = True
-        for r, c in state['board']['horizontal_fences']:
-            self._board.horizontal_fence_grid[r, c] = True
-        for r, c in state['board']['vertical_fences']:
-            self._board.vertical_fence_grid[r, c] = True
-
-        # Recover route-related information
+        # Recover route-related information (before building fences)
         for pawn in self._board.pawns.values():
             pawn.square.reset_neighbours()
 
         for pawn in self._board.pawns.values():
             self._board.update_neighbours(pawn.square)
+
+        # Recover fences. Before recovery, give all the fences to the current player.
+        current_player = self._board.current_player()
+        self._board.fences_left[current_player] = FENCES_MAX * 2
+
+        # Re-simulate fencing:
+        horizontals = [tuple(place) for place in state['board']['horizontal_fences']]
+        verticals = [tuple(place) for place in state['board']['vertical_fences']]
+        for r, c in state['board']['fence_center']:
+            if (r, c) in horizontals and (r, c + 1) in horizontals:
+                act = BLOCK(player=current_player, orientation='horizontal', edge=(r, c))
+            elif (r, c) in verticals and (r + 1, c) in verticals:
+                act = BLOCK(player=current_player, orientation='vertical', edge=(r, c))
+            else:
+                raise ValueError(f'Fence center {r}, {c} is not in both horizontal and vertical fences')
+            try:
+                act(self)
+            except GameOver:
+                continue
+
+        # Set players' information
+        for p in ['black', 'white']:
+            self._board.fences_left[p] = state['player'][p]['fences_left']
 
         self._player_side = state['player_id']
         self._board.turn = state['turn']

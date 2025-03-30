@@ -174,6 +174,11 @@ if __name__ == '__main__':
         # Generate new problem
         prob_generator._initialize(start_with_random_fence=STARTING_FENCES[args.part])
         prob_spec = prob_generator.get_initial_state()
+        # Apply the same distance condition across evaluations
+        prob_spec['distances'] = {
+            'horizontal': prob_generator._horizontal_turns,
+            'vertical': prob_generator._vertical_turns
+        }
         logging.info(f'Trial {t} begins!')
 
         # Add random information for Part 3.

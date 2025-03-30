@@ -20,6 +20,13 @@ def _execute(initial_state, cls, logger):
     # Set up the given problem
     board = GameBoard()
     board._initialize()
+
+    # Apply distance conditions
+    distances = initial_state.pop('distances')
+    board._vertical_turns = distances['vertical']
+    board._horizontal_turns = distances['horizontal']
+
+    # Reset to specific state
     board.set_to_state(initial_state, is_initial=True)
 
     # Override Heuristic Search Agent with TA's
@@ -46,7 +53,7 @@ def _execute(initial_state, cls, logger):
     time_limit = time_start + HARD_TIME_LIMIT
     try:
         def update_memory():
-            nonlocal peak_memory
+            nonlocal peak_memory, initial_memory
             try:
                 current = process.memory_info().rss / MEGABYTES
                 peak_memory = max(peak_memory, current)
@@ -95,7 +102,7 @@ def _execute(initial_state, cls, logger):
     time_delta = round((time_end - time_start) * 100) / 100
 
     board_memory = board.get_max_memory_usage() / MEGABYTES
-    memory_usage = round(max(board_memory, peak_memory - initial_memory) * 10) / 10
+    memory_usage = round(max(board_memory, peak_memory - initial_memory) * 100) / 100
 
     if time_delta > HARD_TIME_LIMIT > 0:
         return Performance(
@@ -152,7 +159,7 @@ def execute_local_search(agent, initial_state: dict, logger: Logger, res_ta: Per
     if res_ta is not None:
         # When TA agent exists, apply TA's result.
         is_beating_ta_outcome = res_ta.outcome <= res.outcome
-        is_beating_ta_time = res_ta.search >= res.search
+        is_beating_ta_time = res_ta.search * 1.01 >= res.search   # Allow 1% errors
 
     is_basic_stage = (res.failure is None) and is_beating_ta_outcome
     is_intermediate_stage = is_basic_stage and (res.time <= 10)

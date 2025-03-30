@@ -53,7 +53,8 @@ def evaluate_algorithm(agent_name, initial_state, problem_id,
         logger.error('Loading failed!', exc_info=e)
         result_queue.put(
             (agent_name,
-             Performance(failure, outcome=None, time=None, search=None, memory=None))
+             Performance(failure, outcome=float('inf'), time=float('inf'), search=float('inf'),
+                         memory=float('inf'), point=0))
         )
         return
 
