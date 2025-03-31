@@ -8,6 +8,7 @@ from action import *
 from board import GameBoard
 from copy import deepcopy
 
+from queue import PriorityQueue
 class Agent:  # Do not change the name of this class!
     """
     An agent class
@@ -25,16 +26,22 @@ class Agent:  # Do not change the name of this class!
         self.player = player
 
     def heuristic_search(self, board: GameBoard) -> List[Action]:
-        from queue import PriorityQueue
         goal_row = 8 if self.player=='white' else 0
         current_state=board.get_state()
         current_position = tuple(current_state['player'][self.player]['pawn'])
         frontier = PriorityQueue() 
         frontier.put((8,(current_position, [])))
         reached = {current_position:8}
+        initial_pos = current_position
 
-        def evalf(board : GameBoard, cur_pos, next_pos, goal_row):
-            return board.get_move_turns(cur_pos,next_pos) + abs(next_pos[0]-goal_row)
+        def evalf(board : GameBoard, initial_pos, cur_pos, next_pos, goal_row, local_path=[0]):
+            if len(local_path)==0 : return  board.get_move_turns(cur_pos,next_pos) + abs(next_pos[0]-goal_row)
+            sum = board.get_move_turns(initial_pos,local_path[0].position)
+            if len(local_path)==1 : return sum + board.get_move_turns(cur_pos,next_pos) + abs(next_pos[0]-goal_row)
+            for i in range(len(local_path)-1):
+                sum += board.get_move_turns(local_path[i].position,local_path[i+1].position)
+            return sum + board.get_move_turns(cur_pos,next_pos) + abs(next_pos[0]-goal_row) #g(n) + h(n)
+
 
         while frontier:
             
@@ -42,14 +49,15 @@ class Agent:  # Do not change the name of this class!
             if current_pos[0] == goal_row:
                 return path
 
-            current_state = board.simulate_action(None,*path,problem_type=1)
+            if current_pos is not initial_pos:
+                current_state = board.simulate_action(None,*path,problem_type=1)
 
             for action in board.get_applicable_moves(self.player):
-                f = evalf(board,current_pos,action,goal_row)
-                if action in reached and f >= reached[action]:
+                fn = evalf(board,initial_pos,current_pos,action,goal_row,path)
+                if action in reached and fn >= reached[action]:
                     continue
-                frontier.put((f,(action, path + [MOVE(self.player,action)])))
-                reached[action] = f
+                frontier.put((fn,(action, path + [MOVE(self.player,action)])))
+                reached[action]=fn
         return []
     
 

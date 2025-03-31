@@ -70,7 +70,8 @@ class GameBoard:
 
         self._vertical_turns = [[self._rng.randint(1, 5) for _ in range(9)] for _ in range(8)]
         self._horizontal_turns = [[self._rng.randint(1, 5) for _ in range(8)] for _ in range(9)]
-
+        #self._logger.debug(f'vertical turns: {self._vertical_turns}')
+        #self._logger.debug(f'horizental turns: {self._horizontal_turns}')
         # Initialize board renderer for debugging purposes
         if IS_DEBUG:  # Logging for debug
             self._logger.debug('Rendered board: \n' + self._unique_game_state_identifier())

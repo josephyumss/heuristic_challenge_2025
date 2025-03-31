@@ -1,15 +1,21 @@
 from pathlib import Path
 from random import choice
-from typing import List, Literal, Union
+from time import time
+from traceback import print_exc, format_exc
+from typing import Tuple, List, Callable, Dict, Generator, Optional, Literal, Union
 
 from action import *
 from board import GameBoard
+from copy import deepcopy
 
-
+import logging
+import heapq
 class Agent:  # Do not change the name of this class!
     """
     An agent class
     """
+    _logger = logging.getLogger('agent')
+    _logger.propagate = True
 
     # Do not modify this.
     name = Path(__file__).stem
@@ -24,26 +30,45 @@ class Agent:  # Do not change the name of this class!
         self.player = player
 
     def heuristic_search(self, board: GameBoard) -> List[Action]:
-        """
-        * Complete this function to answer the challenge PART I.
+        
+        goal_row = 8 if self.player=='white' else 0
+        current_state=board.get_state()
+        current_position = tuple(current_state['player'][self.player]['pawn'])
+        frontier = [] 
+        count=0
+        heapq.heappush(frontier, (8,(current_position,count,[])))
+        reached = {current_position:8}
+        initial_pos = current_position
 
-        This function uses heuristic search for finding the best route to the goal line.
-        You have to return a list of action, which denotes the shortest actions toward the goal.
+        def evalf(board : GameBoard, initial_pos, cur_pos, next_pos, goal_row, local_path=[0]):
+            if len(local_path)==0 : return  board.get_move_turns(cur_pos,next_pos) + abs(next_pos[0]-goal_row)
+            sum = board.get_move_turns(initial_pos,local_path[0].position)
+            if len(local_path)==1 : return sum + board.get_move_turns(cur_pos,next_pos) + abs(next_pos[0]-goal_row)
+            for i in range(len(local_path)-1):
+                sum += board.get_move_turns(local_path[i].position,local_path[i+1].position)
+            return sum + board.get_move_turns(cur_pos,next_pos) + abs(next_pos[0]-goal_row) #g(n) + h(n)
 
-        RESTRICTIONS: USE one of the following algorithms or its variant.
-        - Breadth-first search
-        - Depth-first search
-        - Uniform-cost search
-        - Greedy Best-first search
-        - A* search
-        - IDA*
-        - RBFS
-        - SMA*
 
-        :param board: The game board with initial game setup.
-        :return: A list of actions.
-        """
+        while frontier:
+            count+=1
+            #current_pos, path = frontier.get(block=False)[1]
+            pop = heapq.heappop(frontier)[1]
+            current_pos = pop[0]
+            path = pop[2]
+            if current_pos[0] == goal_row:
+                return path
+
+            if current_pos is not initial_pos:
+                current_state = board.simulate_action(None,*path,problem_type=1)
+
+            for action in board.get_applicable_moves(self.player):
+                fn = evalf(board,initial_pos,current_pos,action,goal_row,path)
+                if action in reached and fn >= reached[action]:
+                    continue
+                heapq.heappush(frontier,((fn,(action,count, path + [MOVE(self.player,action)]))))
+                reached[action]=fn
         return []
+    
 
     def local_search(self, board: GameBoard, time_limit: float) -> Union[MOVE, List[BLOCK]]:
         """
@@ -77,11 +102,7 @@ class Agent:  # Do not change the name of this class!
         :return: The next MOVE or list of three BLOCKs.
             That is, you should either return MOVE() action or [BLOCK(), BLOCK(), BLOCK()].
         """
-        return [
-            BLOCK(player=self.player, edge=(1, 1), orientation='vertical'),
-            BLOCK(player=self.player, edge=(2, 2), orientation='vertical'),
-            BLOCK(player=self.player, edge=(3, 3), orientation='vertical')
-        ]
+        raise NotImplementedError()
 
     def belief_state_search(self, board: GameBoard, time_limit: float) -> List[Action]:
         """
@@ -102,10 +123,7 @@ class Agent:  # Do not change the name of this class!
         :param time_limit: The time limit for the search. Datetime.now() should have lower timestamp value than this.
         :return: The next move.
         """
-        return [BLOCK(self.player, edge=(1,1), orientation='horizontal'),
-                BLOCK(self.player, edge=(7,7), orientation='horizontal'),
-                BLOCK(self.player, edge=(3,3), orientation='horizontal'),
-                BLOCK(self.player, edge=(6,6), orientation='horizontal'),]
+        raise NotImplementedError()
 
     def adversarial_search(self, board: GameBoard, time_limit: float) -> Action:
         """
@@ -130,14 +148,5 @@ class Agent:  # Do not change the name of this class!
         :param time_limit: The time limit for the search. Datetime.now() should have lower timestamp value than this.
         :return: The next move.
         """
-
-        fence_actions = [BLOCK(self.player, *f)
-                         for f in board.get_applicable_fences(self.player)]
-        move_actions = [MOVE(self.player, m)
-                        for m in board.get_applicable_moves(self.player)]
-
-        actions = fence_actions + move_actions
-        action = choice(actions)
-
-        return action
+        raise NotImplementedError()
 

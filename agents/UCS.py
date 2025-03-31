@@ -8,10 +8,15 @@ from action import *
 from board import GameBoard
 from copy import deepcopy
 
+import logging
+import heapq
 class Agent:  # Do not change the name of this class!
     """
     An agent class
     """
+    _logger = logging.getLogger('agent')
+    _logger.propagate = True
+
     # Do not modify this.
     name = Path(__file__).stem
 
@@ -25,31 +30,45 @@ class Agent:  # Do not change the name of this class!
         self.player = player
 
     def heuristic_search(self, board: GameBoard) -> List[Action]:
-        from queue import PriorityQueue
+        
         goal_row = 8 if self.player=='white' else 0
         current_state=board.get_state()
         current_position = tuple(current_state['player'][self.player]['pawn'])
-        frontier = PriorityQueue() 
-        frontier.put((0,(current_position, [])))
-        reached = {(8,0):0}
+        frontier = [] 
+        count=0
+        heapq.heappush(frontier, (8,(current_position,count,[])))
+        reached = {current_position:0}
+        initial_pos = current_position
+
+        def evalf(board : GameBoard, initial_pos, cur_pos, next_pos, goal_row, local_path=[0]):
+            if len(local_path)==0 : return  board.get_move_turns(cur_pos,next_pos)
+            sum = board.get_move_turns(initial_pos,local_path[0].position)
+            if len(local_path)==1 : return sum + board.get_move_turns(cur_pos,next_pos)
+            for i in range(len(local_path)-1):
+                sum += board.get_move_turns(local_path[i].position,local_path[i+1].position)
+            return sum + board.get_move_turns(cur_pos,next_pos)
+
 
         while frontier:
-            current_pos, path = frontier.get(block=False)[1]
-
+            count+=1
+            #current_pos, path = frontier.get(block=False)[1]
+            pop = heapq.heappop(frontier)[1]
+            current_pos = pop[0]
+            path = pop[2]
             if current_pos[0] == goal_row:
-                return path  
+                return path
 
-            current_state = board.simulate_action(None,*path,problem_type=1)
+            if current_pos is not initial_pos:
+                current_state = board.simulate_action(None,*path,problem_type=1)
 
             for action in board.get_applicable_moves(self.player):
-                if action in reached and board.get_move_turns(current_pos,action)>=reached[action]:
+                fn = evalf(board,initial_pos,current_pos,action,goal_row,path)
+                if action in reached and fn >= reached[action]:
                     continue
-
-                frontier.put((board.get_move_turns(current_pos,action),(action, path + [MOVE(self.player,action)])))
-                reached[action]=board.get_move_turns(current_pos,action)
-
+                heapq.heappush(frontier,((fn,(action,count, path + [MOVE(self.player,action)]))))
+                reached[action]=fn
         return []
-
+    
 
     def local_search(self, board: GameBoard, time_limit: float) -> Union[MOVE, List[BLOCK]]:
         """
