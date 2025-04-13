@@ -75,7 +75,7 @@ class Agent:  # Do not change the name of this class!
             pos_diff_x = abs(opponent_pos[0]-cur_pos[0])
             pos_diff_y = abs(opponent_pos[1]-cur_pos[1])
             
-            if cur_pos[1]==8 : return 999
+            if cur_pos[0]==8 : return -999
 
             if player =='black':
                 # 수평 fence
@@ -90,22 +90,58 @@ class Agent:  # Do not change the name of this class!
             W_pos = 1
             W_turn = 1
             return W_turn*block_turn - W_pos*pos_diff_y
-
+        
         childs = board.get_applicable_moves(self.player)
+        opponent_position = tuple(current_state['player'][opponent]['pawn'])
+        cur_pos_obj = obj(self.player,current_position,opponent_position)
+        best_3_pos = [(cur_pos_obj, current_position)]
         while True :
+            self._logger.debug("while")
+            tag = 0
             if not childs :
-                 return [BLOCK(self.player,current_position,'horizontal'),]
+                 self._logger.debug("1")
+                 if len(best_3_pos)<3 : raise ValueError
+                 return [BLOCK(self.player,best_3_pos[0][1],'horizontal'),
+                         BLOCK(self.player,best_3_pos[1][1],'horizontal'),
+                         BLOCK(self.player,best_3_pos[2][1],'horizontal'),]
+            
             neighbor = choice(childs)
+            neighbor_obj = obj(self.player,neighbor,opponent_position)
             childs.remove(neighbor)
-            if obj(neighbor) > obj(current_position) : 
+
+            if (neighbor,'horizontal') not in board.get_applicable_fences() : 
+                self._logger.debug(f"(neighbor,'horizental') : {(neighbor,'horizontal')}")
+                self._logger.debug("2")
+                continue
+
+            for candidate in best_3_pos:
+                self._logger.debug(f"neighbor[0] : {neighbor[0]}")
+                self._logger.debug(f"candidate[1][0] : {candidate[1][0]}")
+                self._logger.debug(f"neighbor[1] : {neighbor[1]}")
+                self._logger.debug(f"candidate[1][1] : {candidate[1][1]}")
+                if neighbor[0] == candidate[1][0] and (neighbor[1] == candidate[1][1]-1 or neighbor[1] == candidate[1][1]+1) : 
+                    self._logger.debug("hi")
+                    tag = 1 
+                    continue
+            if tag == 1 : continue
+
+            if neighbor_obj > cur_pos_obj :
+                self._logger.debug("3") 
                 return MOVE(self.player, neighbor)
+            
+            if len(best_3_pos)<3 :
+                self._logger.debug("4")
+                best_3_pos += [(neighbor_obj,neighbor)]
 
-        opponent_position = tuple(current_state['player'][opponent]['pawn'])        
-        childrens = [child for child in board.get_applicable_moves(self.player)]
-        currentK = selectK(board,childrens,currentK,opponent_position)
+            else :
+                self._logger.debug("5")
+                if neighbor_obj >= min(best_3_pos)[0] : 
+                    self._logger.debug("6")
+                    best_3_pos.remove(min(best_3_pos))
+                    best_3_pos += [(neighbor_obj,neighbor)]
 
-        return MOVE(self.player,(7,0))
-    
+            self._logger.debug(f"best 3 : {best_3_pos}")
+
         # def select_fence_pos(childrens, currentK, opponent_pos):
         #     every_pos = currentK+childrens
 

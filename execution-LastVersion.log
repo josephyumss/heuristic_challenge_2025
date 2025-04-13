@@ -1,8 +1,8 @@
-2025-04-13 20:30:25,502 [Evaluate    ] INFO     Loading LastVersion agent to memory...
-2025-04-13 20:30:25,505 [GameBoard   ] DEBUG    Initializing a new game board...
-2025-04-13 20:30:25,505 [GameBoard   ] DEBUG    Rendered board: 
+2025-04-14 01:05:51,596 [Evaluate    ] INFO     Loading LastVersion agent to memory...
+2025-04-14 01:05:51,599 [GameBoard   ] DEBUG    Initializing a new game board...
+2025-04-14 01:05:51,600 [GameBoard   ] DEBUG    Rendered board: 
 //E1E9
-2025-04-13 20:30:25,505 [GameBoard   ] DEBUG    
+2025-04-14 01:05:51,600 [GameBoard   ] DEBUG    
    . . . . . . . . . . . . . . . . . .
 8 :   ·   ·   ·   · B ·   ·   ·   ·   ·
    . . . . . . . . . . . . . . . . . .
@@ -23,10 +23,10 @@
 0 :   ·   ·   ·   · W ·   ·   ·   ·   ·
    ··· ··· ··· ··· ··· ··· ··· ··· ···
     0   1   2   3   4   5   6   7   8 
-2025-04-13 20:30:25,506 [GameBoard   ] DEBUG    You're player black
-2025-04-13 20:30:25,506 [GameBoard   ] DEBUG    After moving initial position: 
-//F1G9
-2025-04-13 20:30:25,506 [GameBoard   ] DEBUG    
+2025-04-14 01:05:51,600 [GameBoard   ] DEBUG    You're player white
+2025-04-14 01:05:51,600 [GameBoard   ] DEBUG    After moving initial position: 
+//H1G9
+2025-04-14 01:05:51,600 [GameBoard   ] DEBUG    
    . . . . . . . . . . . . . . . . . .
 8 :   ·   ·   ·   ·   ·   · B ·   ·   ·
    . . . . . . . . . . . . . . . . . .
@@ -44,20 +44,20 @@
    . . . . . . . . . . . . . . . . . .
 1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
    . . . . . . . . . . . . . . . . . .
-0 :   ·   ·   ·   ·   · W ·   ·   ·   ·
+0 :   ·   ·   ·   ·   ·   ·   · W ·   ·
    ··· ··· ··· ··· ··· ··· ··· ··· ···
     0   1   2   3   4   5   6   7   8 
-2025-04-13 20:30:25,507 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
-2025-04-13 20:30:25,508 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
-2025-04-13 20:30:25,508 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
-2025-04-13 20:30:25,508 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
-2025-04-13 20:30:25,509 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
-2025-04-13 20:30:25,509 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
-2025-04-13 20:30:25,509 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
-2025-04-13 20:30:25,510 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
-2025-04-13 20:30:25,511 [GameBoard   ] DEBUG    State has been set as follows: 
+2025-04-14 01:05:51,602 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,602 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,603 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,603 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,603 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,603 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,604 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,604 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,606 [GameBoard   ] DEBUG    State has been set as follows: 
 A3G1G2/A1B1B3E5F3/E1A9
-2025-04-13 20:30:25,511 [GameBoard   ] DEBUG    
+2025-04-14 01:05:51,606 [GameBoard   ] DEBUG    
    . . . . . . . . . . . . . . . . . .
 8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
    . . . . . . . . . . . . . . . . . .
@@ -78,26 +78,30 @@ A3G1G2/A1B1B3E5F3/E1A9
 0 :   |   |   ·   · W ·   ·   ·   ·   ·
    ··· ··· ··· ··· ··· ··· ··· ··· ···
     0   1   2   3   4   5   6   7   8 
-2025-04-13 20:30:25,514 [Evaluate    ] INFO     Begin to search using LastVersion agent.
-2025-04-13 20:30:25,514 [GameBoard   ] DEBUG    Querying current state...
-2025-04-13 20:30:25,514 [GameBoard   ] DEBUG    Querying applicable move directions...
-2025-04-13 20:30:25,516 [GameBoard   ] DEBUG    List of applicable fence positions: [((0, 2), 'horizontal'), ((0, 2), 'vertical'), ((0, 3), 'horizontal'), ((0, 3), 'vertical'), ((0, 4), 'horizontal'), ((0, 4), 'vertical'), ((0, 5), 'vertical'), ((0, 7), 'vertical'), ((1, 0), 'horizontal'), ((1, 1), 'horizontal'), ((1, 2), 'horizontal'), ((1, 2), 'vertical'), ((1, 3), 'horizontal'), ((1, 3), 'vertical'), ((1, 4), 'horizontal'), ((1, 4), 'vertical'), ((1, 7), 'vertical'), ((2, 2), 'horizontal'), ((2, 2), 'vertical'), ((2, 3), 'horizontal'), ((2, 3), 'vertical'), ((2, 4), 'horizontal'), ((2, 4), 'vertical'), ((2, 6), 'horizontal'), ((2, 6), 'vertical'), ((2, 7), 'horizontal'), ((2, 7), 'vertical'), ((3, 0), 'horizontal'), ((3, 0), 'vertical'), ((3, 1), 'horizontal'), ((3, 2), 'horizontal'), ((3, 2), 'vertical'), ((3, 3), 'horizontal'), ((3, 3), 'vertical'), ((3, 4), 'horizontal'), ((3, 5), 'horizontal'), ((3, 6), 'horizontal'), ((3, 6), 'vertical'), ((3, 7), 'horizontal'), ((3, 7), 'vertical'), ((4, 0), 'horizontal'), ((4, 0), 'vertical'), ((4, 1), 'horizontal'), ((4, 1), 'vertical'), ((4, 2), 'horizontal'), ((4, 2), 'vertical'), ((4, 3), 'horizontal'), ((4, 3), 'vertical'), ((4, 5), 'horizontal'), ((4, 5), 'vertical'), ((4, 6), 'horizontal'), ((4, 6), 'vertical'), ((4, 7), 'horizontal'), ((4, 7), 'vertical'), ((5, 0), 'horizontal'), ((5, 0), 'vertical'), ((5, 1), 'horizontal'), ((5, 1), 'vertical'), ((5, 2), 'horizontal'), ((5, 2), 'vertical'), ((5, 3), 'horizontal'), ((5, 3), 'vertical'), ((5, 4), 'horizontal'), ((5, 5), 'horizontal'), ((5, 5), 'vertical'), ((5, 6), 'horizontal'), ((5, 6), 'vertical'), ((5, 7), 'horizontal'), ((5, 7), 'vertical'), ((6, 0), 'horizontal'), ((6, 0), 'vertical'), ((6, 1), 'horizontal'), ((6, 1), 'vertical'), ((6, 2), 'horizontal'), ((6, 2), 'vertical'), ((6, 3), 'horizontal'), ((6, 3), 'vertical'), ((6, 4), 'horizontal'), ((6, 4), 'vertical'), ((6, 5), 'horizontal'), ((6, 5), 'vertical'), ((6, 6), 'horizontal'), ((6, 6), 'vertical'), ((6, 7), 'horizontal'), ((6, 7), 'vertical'), ((7, 0), 'horizontal'), ((7, 0), 'vertical'), ((7, 1), 'horizontal'), ((7, 1), 'vertical'), ((7, 2), 'horizontal'), ((7, 2), 'vertical'), ((7, 3), 'horizontal'), ((7, 3), 'vertical'), ((7, 4), 'horizontal'), ((7, 4), 'vertical'), ((7, 5), 'horizontal'), ((7, 5), 'vertical'), ((7, 6), 'horizontal'), ((7, 6), 'vertical'), ((7, 7), 'horizontal'), ((7, 7), 'vertical')]
-2025-04-13 20:30:25,516 [GameBoard   ] DEBUG    Querying applicable move directions...
-2025-04-13 20:30:25,517 [GameBoard   ] DEBUG    List of applicable move positions: [(7, 0), (8, 1)]
-2025-04-13 20:30:25,517 [SA agent    ] DEBUG    applicable moves : [(7, 0), (8, 1)]
-2025-04-13 20:30:25,517 [SA agent    ] DEBUG    [3, 4]
-2025-04-13 20:30:25,517 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(7, 0) of black,) -------
-2025-04-13 20:30:25,517 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
-2025-04-13 20:30:25,517 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
-2025-04-13 20:30:25,518 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
-2025-04-13 20:30:25,518 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
-2025-04-13 20:30:25,518 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
-2025-04-13 20:30:25,518 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
-2025-04-13 20:30:25,519 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
-2025-04-13 20:30:25,519 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
-2025-04-13 20:30:25,520 [GameBoard   ] DEBUG    State has been set as follows: 
+2025-04-14 01:05:51,608 [Evaluate    ] INFO     Begin to search using LastVersion agent.
+2025-04-14 01:05:51,609 [GameBoard   ] DEBUG    Querying current state...
+2025-04-14 01:05:51,609 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,610 [GameBoard   ] DEBUG    List of applicable move positions: [(7, 0), (8, 1)]
+2025-04-14 01:05:51,610 [SA agent    ] DEBUG    while
+2025-04-14 01:05:51,610 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,611 [GameBoard   ] DEBUG    List of applicable fence positions: [((0, 2), 'horizontal'), ((0, 2), 'vertical'), ((0, 3), 'horizontal'), ((0, 3), 'vertical'), ((0, 4), 'horizontal'), ((0, 4), 'vertical'), ((0, 5), 'vertical'), ((0, 7), 'vertical'), ((1, 0), 'horizontal'), ((1, 1), 'horizontal'), ((1, 2), 'horizontal'), ((1, 2), 'vertical'), ((1, 3), 'horizontal'), ((1, 3), 'vertical'), ((1, 4), 'horizontal'), ((1, 4), 'vertical'), ((1, 7), 'vertical'), ((2, 2), 'horizontal'), ((2, 2), 'vertical'), ((2, 3), 'horizontal'), ((2, 3), 'vertical'), ((2, 4), 'horizontal'), ((2, 4), 'vertical'), ((2, 6), 'horizontal'), ((2, 6), 'vertical'), ((2, 7), 'horizontal'), ((2, 7), 'vertical'), ((3, 0), 'horizontal'), ((3, 0), 'vertical'), ((3, 1), 'horizontal'), ((3, 2), 'horizontal'), ((3, 2), 'vertical'), ((3, 3), 'horizontal'), ((3, 3), 'vertical'), ((3, 4), 'horizontal'), ((3, 5), 'horizontal'), ((3, 6), 'horizontal'), ((3, 6), 'vertical'), ((3, 7), 'horizontal'), ((3, 7), 'vertical'), ((4, 0), 'horizontal'), ((4, 0), 'vertical'), ((4, 1), 'horizontal'), ((4, 1), 'vertical'), ((4, 2), 'horizontal'), ((4, 2), 'vertical'), ((4, 3), 'horizontal'), ((4, 3), 'vertical'), ((4, 5), 'horizontal'), ((4, 5), 'vertical'), ((4, 6), 'horizontal'), ((4, 6), 'vertical'), ((4, 7), 'horizontal'), ((4, 7), 'vertical'), ((5, 0), 'horizontal'), ((5, 0), 'vertical'), ((5, 1), 'horizontal'), ((5, 1), 'vertical'), ((5, 2), 'horizontal'), ((5, 2), 'vertical'), ((5, 3), 'horizontal'), ((5, 3), 'vertical'), ((5, 4), 'horizontal'), ((5, 5), 'horizontal'), ((5, 5), 'vertical'), ((5, 6), 'horizontal'), ((5, 6), 'vertical'), ((5, 7), 'horizontal'), ((5, 7), 'vertical'), ((6, 0), 'horizontal'), ((6, 0), 'vertical'), ((6, 1), 'horizontal'), ((6, 1), 'vertical'), ((6, 2), 'horizontal'), ((6, 2), 'vertical'), ((6, 3), 'horizontal'), ((6, 3), 'vertical'), ((6, 4), 'horizontal'), ((6, 4), 'vertical'), ((6, 5), 'horizontal'), ((6, 5), 'vertical'), ((6, 6), 'horizontal'), ((6, 6), 'vertical'), ((6, 7), 'horizontal'), ((6, 7), 'vertical'), ((7, 0), 'horizontal'), ((7, 0), 'vertical'), ((7, 1), 'horizontal'), ((7, 1), 'vertical'), ((7, 2), 'horizontal'), ((7, 2), 'vertical'), ((7, 3), 'horizontal'), ((7, 3), 'vertical'), ((7, 4), 'horizontal'), ((7, 4), 'vertical'), ((7, 5), 'horizontal'), ((7, 5), 'vertical'), ((7, 6), 'horizontal'), ((7, 6), 'vertical'), ((7, 7), 'horizontal'), ((7, 7), 'vertical')]
+2025-04-14 01:05:51,611 [SA agent    ] DEBUG    neighbor[0] : 7
+2025-04-14 01:05:51,611 [SA agent    ] DEBUG    candidate[1][0] : 8
+2025-04-14 01:05:51,611 [SA agent    ] DEBUG    neighbor[1] : 0
+2025-04-14 01:05:51,611 [SA agent    ] DEBUG    candidate[1][1] : 0
+2025-04-14 01:05:51,612 [SA agent    ] DEBUG    3
+2025-04-14 01:05:51,612 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(7, 0) of black,) -------
+2025-04-14 01:05:51,612 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,612 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,612 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,613 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,613 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,613 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,613 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,614 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,615 [GameBoard   ] DEBUG    State has been set as follows: 
 A3G1G2/A1B1B3E5F3/E1A9
-2025-04-13 20:30:25,520 [GameBoard   ] DEBUG    
+2025-04-14 01:05:51,615 [GameBoard   ] DEBUG    
    . . . . . . . . . . . . . . . . . .
 8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
    . . . . . . . . . . . . . . . . . .
@@ -118,11 +122,11 @@ A3G1G2/A1B1B3E5F3/E1A9
 0 :   |   |   ·   · W ·   ·   ·   ·   ·
    ··· ··· ··· ··· ··· ··· ··· ··· ···
     0   1   2   3   4   5   6   7   8 
-2025-04-13 20:30:25,520 [Action      ] DEBUG    Calling MOVE(7, 0) of black action
-2025-04-13 20:30:25,521 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
-2025-04-13 20:30:25,521 [GameBoard   ] DEBUG    State has been changed to: 
+2025-04-14 01:05:51,615 [Action      ] DEBUG    Calling MOVE(7, 0) of black action
+2025-04-14 01:05:51,615 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,616 [GameBoard   ] DEBUG    State has been changed to: 
 A3G1G2/A1B1B3E5F3/E1A8
-2025-04-13 20:30:25,521 [GameBoard   ] DEBUG    
+2025-04-14 01:05:51,616 [GameBoard   ] DEBUG    
    . . . . . . . . . . . . . . . . . .
 8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
    . . . . . . . . . . . . . . . . . .
@@ -143,26 +147,38 @@ A3G1G2/A1B1B3E5F3/E1A8
 0 :   |   |   ·   · W ·   ·   ·   ·   ·
    ··· ··· ··· ··· ··· ··· ··· ··· ···
     0   1   2   3   4   5   6   7   8 
-2025-04-13 20:30:25,521 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
-2025-04-13 20:30:25,522 [GameBoard   ] DEBUG    Querying current state...
-2025-04-13 20:30:25,522 [GameBoard   ] DEBUG    Querying applicable move directions...
-2025-04-13 20:30:25,523 [GameBoard   ] DEBUG    List of applicable fence positions: [((0, 2), 'horizontal'), ((0, 2), 'vertical'), ((0, 3), 'horizontal'), ((0, 3), 'vertical'), ((0, 4), 'horizontal'), ((0, 4), 'vertical'), ((0, 5), 'vertical'), ((0, 7), 'vertical'), ((1, 0), 'horizontal'), ((1, 1), 'horizontal'), ((1, 2), 'horizontal'), ((1, 2), 'vertical'), ((1, 3), 'horizontal'), ((1, 3), 'vertical'), ((1, 4), 'horizontal'), ((1, 4), 'vertical'), ((1, 7), 'vertical'), ((2, 2), 'horizontal'), ((2, 2), 'vertical'), ((2, 3), 'horizontal'), ((2, 3), 'vertical'), ((2, 4), 'horizontal'), ((2, 4), 'vertical'), ((2, 6), 'horizontal'), ((2, 6), 'vertical'), ((2, 7), 'horizontal'), ((2, 7), 'vertical'), ((3, 0), 'horizontal'), ((3, 0), 'vertical'), ((3, 1), 'horizontal'), ((3, 2), 'horizontal'), ((3, 2), 'vertical'), ((3, 3), 'horizontal'), ((3, 3), 'vertical'), ((3, 4), 'horizontal'), ((3, 5), 'horizontal'), ((3, 6), 'horizontal'), ((3, 6), 'vertical'), ((3, 7), 'horizontal'), ((3, 7), 'vertical'), ((4, 0), 'horizontal'), ((4, 0), 'vertical'), ((4, 1), 'horizontal'), ((4, 1), 'vertical'), ((4, 2), 'horizontal'), ((4, 2), 'vertical'), ((4, 3), 'horizontal'), ((4, 3), 'vertical'), ((4, 5), 'horizontal'), ((4, 5), 'vertical'), ((4, 6), 'horizontal'), ((4, 6), 'vertical'), ((4, 7), 'horizontal'), ((4, 7), 'vertical'), ((5, 0), 'horizontal'), ((5, 0), 'vertical'), ((5, 1), 'horizontal'), ((5, 1), 'vertical'), ((5, 2), 'horizontal'), ((5, 2), 'vertical'), ((5, 3), 'horizontal'), ((5, 3), 'vertical'), ((5, 4), 'horizontal'), ((5, 5), 'horizontal'), ((5, 5), 'vertical'), ((5, 6), 'horizontal'), ((5, 6), 'vertical'), ((5, 7), 'horizontal'), ((5, 7), 'vertical'), ((6, 0), 'horizontal'), ((6, 0), 'vertical'), ((6, 1), 'horizontal'), ((6, 1), 'vertical'), ((6, 2), 'horizontal'), ((6, 2), 'vertical'), ((6, 3), 'horizontal'), ((6, 3), 'vertical'), ((6, 4), 'horizontal'), ((6, 4), 'vertical'), ((6, 5), 'horizontal'), ((6, 5), 'vertical'), ((6, 6), 'horizontal'), ((6, 6), 'vertical'), ((6, 7), 'horizontal'), ((6, 7), 'vertical'), ((7, 0), 'horizontal'), ((7, 0), 'vertical'), ((7, 1), 'horizontal'), ((7, 1), 'vertical'), ((7, 2), 'horizontal'), ((7, 2), 'vertical'), ((7, 3), 'horizontal'), ((7, 3), 'vertical'), ((7, 4), 'horizontal'), ((7, 4), 'vertical'), ((7, 5), 'horizontal'), ((7, 5), 'vertical'), ((7, 6), 'horizontal'), ((7, 6), 'vertical'), ((7, 7), 'horizontal'), ((7, 7), 'vertical')]
-2025-04-13 20:30:25,523 [GameBoard   ] DEBUG    Querying applicable move directions...
-2025-04-13 20:30:25,524 [GameBoard   ] DEBUG    List of applicable move positions: [(6, 0), (7, 1), (8, 0)]
-2025-04-13 20:30:25,524 [SA agent    ] DEBUG    applicable moves : [(6, 0), (7, 1), (8, 0)]
-2025-04-13 20:30:25,524 [SA agent    ] DEBUG    [1, 1, 3]
-2025-04-13 20:30:25,524 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(7, 0) of black,) -------
-2025-04-13 20:30:25,524 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
-2025-04-13 20:30:25,524 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
-2025-04-13 20:30:25,525 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
-2025-04-13 20:30:25,525 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
-2025-04-13 20:30:25,525 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
-2025-04-13 20:30:25,526 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
-2025-04-13 20:30:25,526 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
-2025-04-13 20:30:25,526 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
-2025-04-13 20:30:25,527 [GameBoard   ] DEBUG    State has been set as follows: 
+2025-04-14 01:05:51,616 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,617 [GameBoard   ] DEBUG    Querying current state...
+2025-04-14 01:05:51,617 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,617 [GameBoard   ] DEBUG    List of applicable move positions: [(6, 0), (7, 1), (8, 0)]
+2025-04-14 01:05:51,617 [SA agent    ] DEBUG    while
+2025-04-14 01:05:51,617 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,618 [GameBoard   ] DEBUG    List of applicable fence positions: [((0, 2), 'horizontal'), ((0, 2), 'vertical'), ((0, 3), 'horizontal'), ((0, 3), 'vertical'), ((0, 4), 'horizontal'), ((0, 4), 'vertical'), ((0, 5), 'vertical'), ((0, 7), 'vertical'), ((1, 0), 'horizontal'), ((1, 1), 'horizontal'), ((1, 2), 'horizontal'), ((1, 2), 'vertical'), ((1, 3), 'horizontal'), ((1, 3), 'vertical'), ((1, 4), 'horizontal'), ((1, 4), 'vertical'), ((1, 7), 'vertical'), ((2, 2), 'horizontal'), ((2, 2), 'vertical'), ((2, 3), 'horizontal'), ((2, 3), 'vertical'), ((2, 4), 'horizontal'), ((2, 4), 'vertical'), ((2, 6), 'horizontal'), ((2, 6), 'vertical'), ((2, 7), 'horizontal'), ((2, 7), 'vertical'), ((3, 0), 'horizontal'), ((3, 0), 'vertical'), ((3, 1), 'horizontal'), ((3, 2), 'horizontal'), ((3, 2), 'vertical'), ((3, 3), 'horizontal'), ((3, 3), 'vertical'), ((3, 4), 'horizontal'), ((3, 5), 'horizontal'), ((3, 6), 'horizontal'), ((3, 6), 'vertical'), ((3, 7), 'horizontal'), ((3, 7), 'vertical'), ((4, 0), 'horizontal'), ((4, 0), 'vertical'), ((4, 1), 'horizontal'), ((4, 1), 'vertical'), ((4, 2), 'horizontal'), ((4, 2), 'vertical'), ((4, 3), 'horizontal'), ((4, 3), 'vertical'), ((4, 5), 'horizontal'), ((4, 5), 'vertical'), ((4, 6), 'horizontal'), ((4, 6), 'vertical'), ((4, 7), 'horizontal'), ((4, 7), 'vertical'), ((5, 0), 'horizontal'), ((5, 0), 'vertical'), ((5, 1), 'horizontal'), ((5, 1), 'vertical'), ((5, 2), 'horizontal'), ((5, 2), 'vertical'), ((5, 3), 'horizontal'), ((5, 3), 'vertical'), ((5, 4), 'horizontal'), ((5, 5), 'horizontal'), ((5, 5), 'vertical'), ((5, 6), 'horizontal'), ((5, 6), 'vertical'), ((5, 7), 'horizontal'), ((5, 7), 'vertical'), ((6, 0), 'horizontal'), ((6, 0), 'vertical'), ((6, 1), 'horizontal'), ((6, 1), 'vertical'), ((6, 2), 'horizontal'), ((6, 2), 'vertical'), ((6, 3), 'horizontal'), ((6, 3), 'vertical'), ((6, 4), 'horizontal'), ((6, 4), 'vertical'), ((6, 5), 'horizontal'), ((6, 5), 'vertical'), ((6, 6), 'horizontal'), ((6, 6), 'vertical'), ((6, 7), 'horizontal'), ((6, 7), 'vertical'), ((7, 0), 'horizontal'), ((7, 0), 'vertical'), ((7, 1), 'horizontal'), ((7, 1), 'vertical'), ((7, 2), 'horizontal'), ((7, 2), 'vertical'), ((7, 3), 'horizontal'), ((7, 3), 'vertical'), ((7, 4), 'horizontal'), ((7, 4), 'vertical'), ((7, 5), 'horizontal'), ((7, 5), 'vertical'), ((7, 6), 'horizontal'), ((7, 6), 'vertical'), ((7, 7), 'horizontal'), ((7, 7), 'vertical')]
+2025-04-14 01:05:51,618 [SA agent    ] DEBUG    neighbor[0] : 7
+2025-04-14 01:05:51,618 [SA agent    ] DEBUG    candidate[1][0] : 7
+2025-04-14 01:05:51,618 [SA agent    ] DEBUG    neighbor[1] : 1
+2025-04-14 01:05:51,618 [SA agent    ] DEBUG    candidate[1][1] : 0
+2025-04-14 01:05:51,619 [SA agent    ] DEBUG    hi
+2025-04-14 01:05:51,619 [SA agent    ] DEBUG    while
+2025-04-14 01:05:51,619 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,619 [GameBoard   ] DEBUG    List of applicable fence positions: [((0, 2), 'horizontal'), ((0, 2), 'vertical'), ((0, 3), 'horizontal'), ((0, 3), 'vertical'), ((0, 4), 'horizontal'), ((0, 4), 'vertical'), ((0, 5), 'vertical'), ((0, 7), 'vertical'), ((1, 0), 'horizontal'), ((1, 1), 'horizontal'), ((1, 2), 'horizontal'), ((1, 2), 'vertical'), ((1, 3), 'horizontal'), ((1, 3), 'vertical'), ((1, 4), 'horizontal'), ((1, 4), 'vertical'), ((1, 7), 'vertical'), ((2, 2), 'horizontal'), ((2, 2), 'vertical'), ((2, 3), 'horizontal'), ((2, 3), 'vertical'), ((2, 4), 'horizontal'), ((2, 4), 'vertical'), ((2, 6), 'horizontal'), ((2, 6), 'vertical'), ((2, 7), 'horizontal'), ((2, 7), 'vertical'), ((3, 0), 'horizontal'), ((3, 0), 'vertical'), ((3, 1), 'horizontal'), ((3, 2), 'horizontal'), ((3, 2), 'vertical'), ((3, 3), 'horizontal'), ((3, 3), 'vertical'), ((3, 4), 'horizontal'), ((3, 5), 'horizontal'), ((3, 6), 'horizontal'), ((3, 6), 'vertical'), ((3, 7), 'horizontal'), ((3, 7), 'vertical'), ((4, 0), 'horizontal'), ((4, 0), 'vertical'), ((4, 1), 'horizontal'), ((4, 1), 'vertical'), ((4, 2), 'horizontal'), ((4, 2), 'vertical'), ((4, 3), 'horizontal'), ((4, 3), 'vertical'), ((4, 5), 'horizontal'), ((4, 5), 'vertical'), ((4, 6), 'horizontal'), ((4, 6), 'vertical'), ((4, 7), 'horizontal'), ((4, 7), 'vertical'), ((5, 0), 'horizontal'), ((5, 0), 'vertical'), ((5, 1), 'horizontal'), ((5, 1), 'vertical'), ((5, 2), 'horizontal'), ((5, 2), 'vertical'), ((5, 3), 'horizontal'), ((5, 3), 'vertical'), ((5, 4), 'horizontal'), ((5, 5), 'horizontal'), ((5, 5), 'vertical'), ((5, 6), 'horizontal'), ((5, 6), 'vertical'), ((5, 7), 'horizontal'), ((5, 7), 'vertical'), ((6, 0), 'horizontal'), ((6, 0), 'vertical'), ((6, 1), 'horizontal'), ((6, 1), 'vertical'), ((6, 2), 'horizontal'), ((6, 2), 'vertical'), ((6, 3), 'horizontal'), ((6, 3), 'vertical'), ((6, 4), 'horizontal'), ((6, 4), 'vertical'), ((6, 5), 'horizontal'), ((6, 5), 'vertical'), ((6, 6), 'horizontal'), ((6, 6), 'vertical'), ((6, 7), 'horizontal'), ((6, 7), 'vertical'), ((7, 0), 'horizontal'), ((7, 0), 'vertical'), ((7, 1), 'horizontal'), ((7, 1), 'vertical'), ((7, 2), 'horizontal'), ((7, 2), 'vertical'), ((7, 3), 'horizontal'), ((7, 3), 'vertical'), ((7, 4), 'horizontal'), ((7, 4), 'vertical'), ((7, 5), 'horizontal'), ((7, 5), 'vertical'), ((7, 6), 'horizontal'), ((7, 6), 'vertical'), ((7, 7), 'horizontal'), ((7, 7), 'vertical')]
+2025-04-14 01:05:51,619 [SA agent    ] DEBUG    neighbor[0] : 6
+2025-04-14 01:05:51,619 [SA agent    ] DEBUG    candidate[1][0] : 7
+2025-04-14 01:05:51,620 [SA agent    ] DEBUG    neighbor[1] : 0
+2025-04-14 01:05:51,620 [SA agent    ] DEBUG    candidate[1][1] : 0
+2025-04-14 01:05:51,620 [SA agent    ] DEBUG    3
+2025-04-14 01:05:51,620 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(6, 0) of black,) -------
+2025-04-14 01:05:51,620 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,620 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,620 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,621 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,621 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,621 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,622 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,622 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,623 [GameBoard   ] DEBUG    State has been set as follows: 
 A3G1G2/A1B1B3E5F3/E1A8
-2025-04-13 20:30:25,528 [GameBoard   ] DEBUG    
+2025-04-14 01:05:51,623 [GameBoard   ] DEBUG    
    . . . . . . . . . . . . . . . . . .
 8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
    . . . . . . . . . . . . . . . . . .
@@ -183,5 +199,2479 @@ A3G1G2/A1B1B3E5F3/E1A8
 0 :   |   |   ·   · W ·   ·   ·   ·   ·
    ··· ··· ··· ··· ··· ··· ··· ··· ···
     0   1   2   3   4   5   6   7   8 
-2025-04-13 20:30:25,528 [Action      ] DEBUG    Calling MOVE(7, 0) of black action
-2025-04-13 20:30:25,530 [Evaluate    ] DEBUG    Execution Result: Performance(failure='Traceback (most recent call last):\n  File "C:\\Users\\Jinhee\\source\\repos\\heuristic_challenge_2025\\evaluator\\part2.py", line 85, in _execute\n    state = board.simulate_action(state, move, problem_type=1)\n  File "C:\\Users\\Jinhee\\source\\repos\\heuristic_challenge_2025\\board.py", line 360, in simulate_action\n    act(self)\n  File "C:\\Users\\Jinhee\\source\\repos\\heuristic_challenge_2025\\action.py", line 58, in __call__\n    board._board.move_pawn(self.player, *self.position)\n  File "C:\\Users\\Jinhee\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site-packages\\pyquoridor\\board.py", line 456, in move_pawn\n    raise InvalidMove(f\'Cannot move {player} pawn to square ({target_row}, {target_col})\')\npyquoridor.exceptions.InvalidMove: Cannot move black pawn to square (7, 0)\n', outcome=None, time=0.02, search=2, memory=0.1, point=1).
+2025-04-14 01:05:51,623 [Action      ] DEBUG    Calling MOVE(6, 0) of black action
+2025-04-14 01:05:51,623 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,624 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1A7
+2025-04-14 01:05:51,624 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,624 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,625 [GameBoard   ] DEBUG    Querying current state...
+2025-04-14 01:05:51,625 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,625 [GameBoard   ] DEBUG    List of applicable move positions: [(5, 0), (6, 1), (7, 0)]
+2025-04-14 01:05:51,625 [SA agent    ] DEBUG    while
+2025-04-14 01:05:51,625 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,626 [GameBoard   ] DEBUG    List of applicable fence positions: [((0, 2), 'horizontal'), ((0, 2), 'vertical'), ((0, 3), 'horizontal'), ((0, 3), 'vertical'), ((0, 4), 'horizontal'), ((0, 4), 'vertical'), ((0, 5), 'vertical'), ((0, 7), 'vertical'), ((1, 0), 'horizontal'), ((1, 1), 'horizontal'), ((1, 2), 'horizontal'), ((1, 2), 'vertical'), ((1, 3), 'horizontal'), ((1, 3), 'vertical'), ((1, 4), 'horizontal'), ((1, 4), 'vertical'), ((1, 7), 'vertical'), ((2, 2), 'horizontal'), ((2, 2), 'vertical'), ((2, 3), 'horizontal'), ((2, 3), 'vertical'), ((2, 4), 'horizontal'), ((2, 4), 'vertical'), ((2, 6), 'horizontal'), ((2, 6), 'vertical'), ((2, 7), 'horizontal'), ((2, 7), 'vertical'), ((3, 0), 'horizontal'), ((3, 0), 'vertical'), ((3, 1), 'horizontal'), ((3, 2), 'horizontal'), ((3, 2), 'vertical'), ((3, 3), 'horizontal'), ((3, 3), 'vertical'), ((3, 4), 'horizontal'), ((3, 5), 'horizontal'), ((3, 6), 'horizontal'), ((3, 6), 'vertical'), ((3, 7), 'horizontal'), ((3, 7), 'vertical'), ((4, 0), 'horizontal'), ((4, 0), 'vertical'), ((4, 1), 'horizontal'), ((4, 1), 'vertical'), ((4, 2), 'horizontal'), ((4, 2), 'vertical'), ((4, 3), 'horizontal'), ((4, 3), 'vertical'), ((4, 5), 'horizontal'), ((4, 5), 'vertical'), ((4, 6), 'horizontal'), ((4, 6), 'vertical'), ((4, 7), 'horizontal'), ((4, 7), 'vertical'), ((5, 0), 'horizontal'), ((5, 0), 'vertical'), ((5, 1), 'horizontal'), ((5, 1), 'vertical'), ((5, 2), 'horizontal'), ((5, 2), 'vertical'), ((5, 3), 'horizontal'), ((5, 3), 'vertical'), ((5, 4), 'horizontal'), ((5, 5), 'horizontal'), ((5, 5), 'vertical'), ((5, 6), 'horizontal'), ((5, 6), 'vertical'), ((5, 7), 'horizontal'), ((5, 7), 'vertical'), ((6, 0), 'horizontal'), ((6, 0), 'vertical'), ((6, 1), 'horizontal'), ((6, 1), 'vertical'), ((6, 2), 'horizontal'), ((6, 2), 'vertical'), ((6, 3), 'horizontal'), ((6, 3), 'vertical'), ((6, 4), 'horizontal'), ((6, 4), 'vertical'), ((6, 5), 'horizontal'), ((6, 5), 'vertical'), ((6, 6), 'horizontal'), ((6, 6), 'vertical'), ((6, 7), 'horizontal'), ((6, 7), 'vertical'), ((7, 0), 'horizontal'), ((7, 0), 'vertical'), ((7, 1), 'horizontal'), ((7, 1), 'vertical'), ((7, 2), 'horizontal'), ((7, 2), 'vertical'), ((7, 3), 'horizontal'), ((7, 3), 'vertical'), ((7, 4), 'horizontal'), ((7, 4), 'vertical'), ((7, 5), 'horizontal'), ((7, 5), 'vertical'), ((7, 6), 'horizontal'), ((7, 6), 'vertical'), ((7, 7), 'horizontal'), ((7, 7), 'vertical')]
+2025-04-14 01:05:51,626 [SA agent    ] DEBUG    neighbor[0] : 5
+2025-04-14 01:05:51,626 [SA agent    ] DEBUG    candidate[1][0] : 6
+2025-04-14 01:05:51,626 [SA agent    ] DEBUG    neighbor[1] : 0
+2025-04-14 01:05:51,626 [SA agent    ] DEBUG    candidate[1][1] : 0
+2025-04-14 01:05:51,626 [SA agent    ] DEBUG    4
+2025-04-14 01:05:51,627 [SA agent    ] DEBUG    best 3 : [(0, (6, 0)), (-1, (5, 0))]
+2025-04-14 01:05:51,627 [SA agent    ] DEBUG    while
+2025-04-14 01:05:51,627 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,627 [GameBoard   ] DEBUG    List of applicable fence positions: [((0, 2), 'horizontal'), ((0, 2), 'vertical'), ((0, 3), 'horizontal'), ((0, 3), 'vertical'), ((0, 4), 'horizontal'), ((0, 4), 'vertical'), ((0, 5), 'vertical'), ((0, 7), 'vertical'), ((1, 0), 'horizontal'), ((1, 1), 'horizontal'), ((1, 2), 'horizontal'), ((1, 2), 'vertical'), ((1, 3), 'horizontal'), ((1, 3), 'vertical'), ((1, 4), 'horizontal'), ((1, 4), 'vertical'), ((1, 7), 'vertical'), ((2, 2), 'horizontal'), ((2, 2), 'vertical'), ((2, 3), 'horizontal'), ((2, 3), 'vertical'), ((2, 4), 'horizontal'), ((2, 4), 'vertical'), ((2, 6), 'horizontal'), ((2, 6), 'vertical'), ((2, 7), 'horizontal'), ((2, 7), 'vertical'), ((3, 0), 'horizontal'), ((3, 0), 'vertical'), ((3, 1), 'horizontal'), ((3, 2), 'horizontal'), ((3, 2), 'vertical'), ((3, 3), 'horizontal'), ((3, 3), 'vertical'), ((3, 4), 'horizontal'), ((3, 5), 'horizontal'), ((3, 6), 'horizontal'), ((3, 6), 'vertical'), ((3, 7), 'horizontal'), ((3, 7), 'vertical'), ((4, 0), 'horizontal'), ((4, 0), 'vertical'), ((4, 1), 'horizontal'), ((4, 1), 'vertical'), ((4, 2), 'horizontal'), ((4, 2), 'vertical'), ((4, 3), 'horizontal'), ((4, 3), 'vertical'), ((4, 5), 'horizontal'), ((4, 5), 'vertical'), ((4, 6), 'horizontal'), ((4, 6), 'vertical'), ((4, 7), 'horizontal'), ((4, 7), 'vertical'), ((5, 0), 'horizontal'), ((5, 0), 'vertical'), ((5, 1), 'horizontal'), ((5, 1), 'vertical'), ((5, 2), 'horizontal'), ((5, 2), 'vertical'), ((5, 3), 'horizontal'), ((5, 3), 'vertical'), ((5, 4), 'horizontal'), ((5, 5), 'horizontal'), ((5, 5), 'vertical'), ((5, 6), 'horizontal'), ((5, 6), 'vertical'), ((5, 7), 'horizontal'), ((5, 7), 'vertical'), ((6, 0), 'horizontal'), ((6, 0), 'vertical'), ((6, 1), 'horizontal'), ((6, 1), 'vertical'), ((6, 2), 'horizontal'), ((6, 2), 'vertical'), ((6, 3), 'horizontal'), ((6, 3), 'vertical'), ((6, 4), 'horizontal'), ((6, 4), 'vertical'), ((6, 5), 'horizontal'), ((6, 5), 'vertical'), ((6, 6), 'horizontal'), ((6, 6), 'vertical'), ((6, 7), 'horizontal'), ((6, 7), 'vertical'), ((7, 0), 'horizontal'), ((7, 0), 'vertical'), ((7, 1), 'horizontal'), ((7, 1), 'vertical'), ((7, 2), 'horizontal'), ((7, 2), 'vertical'), ((7, 3), 'horizontal'), ((7, 3), 'vertical'), ((7, 4), 'horizontal'), ((7, 4), 'vertical'), ((7, 5), 'horizontal'), ((7, 5), 'vertical'), ((7, 6), 'horizontal'), ((7, 6), 'vertical'), ((7, 7), 'horizontal'), ((7, 7), 'vertical')]
+2025-04-14 01:05:51,627 [SA agent    ] DEBUG    neighbor[0] : 7
+2025-04-14 01:05:51,627 [SA agent    ] DEBUG    candidate[1][0] : 6
+2025-04-14 01:05:51,628 [SA agent    ] DEBUG    neighbor[1] : 0
+2025-04-14 01:05:51,628 [SA agent    ] DEBUG    candidate[1][1] : 0
+2025-04-14 01:05:51,628 [SA agent    ] DEBUG    neighbor[0] : 7
+2025-04-14 01:05:51,628 [SA agent    ] DEBUG    candidate[1][0] : 5
+2025-04-14 01:05:51,628 [SA agent    ] DEBUG    neighbor[1] : 0
+2025-04-14 01:05:51,628 [SA agent    ] DEBUG    candidate[1][1] : 0
+2025-04-14 01:05:51,628 [SA agent    ] DEBUG    4
+2025-04-14 01:05:51,628 [SA agent    ] DEBUG    best 3 : [(0, (6, 0)), (-1, (5, 0)), (-3, (7, 0))]
+2025-04-14 01:05:51,628 [SA agent    ] DEBUG    while
+2025-04-14 01:05:51,628 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,629 [GameBoard   ] DEBUG    List of applicable fence positions: [((0, 2), 'horizontal'), ((0, 2), 'vertical'), ((0, 3), 'horizontal'), ((0, 3), 'vertical'), ((0, 4), 'horizontal'), ((0, 4), 'vertical'), ((0, 5), 'vertical'), ((0, 7), 'vertical'), ((1, 0), 'horizontal'), ((1, 1), 'horizontal'), ((1, 2), 'horizontal'), ((1, 2), 'vertical'), ((1, 3), 'horizontal'), ((1, 3), 'vertical'), ((1, 4), 'horizontal'), ((1, 4), 'vertical'), ((1, 7), 'vertical'), ((2, 2), 'horizontal'), ((2, 2), 'vertical'), ((2, 3), 'horizontal'), ((2, 3), 'vertical'), ((2, 4), 'horizontal'), ((2, 4), 'vertical'), ((2, 6), 'horizontal'), ((2, 6), 'vertical'), ((2, 7), 'horizontal'), ((2, 7), 'vertical'), ((3, 0), 'horizontal'), ((3, 0), 'vertical'), ((3, 1), 'horizontal'), ((3, 2), 'horizontal'), ((3, 2), 'vertical'), ((3, 3), 'horizontal'), ((3, 3), 'vertical'), ((3, 4), 'horizontal'), ((3, 5), 'horizontal'), ((3, 6), 'horizontal'), ((3, 6), 'vertical'), ((3, 7), 'horizontal'), ((3, 7), 'vertical'), ((4, 0), 'horizontal'), ((4, 0), 'vertical'), ((4, 1), 'horizontal'), ((4, 1), 'vertical'), ((4, 2), 'horizontal'), ((4, 2), 'vertical'), ((4, 3), 'horizontal'), ((4, 3), 'vertical'), ((4, 5), 'horizontal'), ((4, 5), 'vertical'), ((4, 6), 'horizontal'), ((4, 6), 'vertical'), ((4, 7), 'horizontal'), ((4, 7), 'vertical'), ((5, 0), 'horizontal'), ((5, 0), 'vertical'), ((5, 1), 'horizontal'), ((5, 1), 'vertical'), ((5, 2), 'horizontal'), ((5, 2), 'vertical'), ((5, 3), 'horizontal'), ((5, 3), 'vertical'), ((5, 4), 'horizontal'), ((5, 5), 'horizontal'), ((5, 5), 'vertical'), ((5, 6), 'horizontal'), ((5, 6), 'vertical'), ((5, 7), 'horizontal'), ((5, 7), 'vertical'), ((6, 0), 'horizontal'), ((6, 0), 'vertical'), ((6, 1), 'horizontal'), ((6, 1), 'vertical'), ((6, 2), 'horizontal'), ((6, 2), 'vertical'), ((6, 3), 'horizontal'), ((6, 3), 'vertical'), ((6, 4), 'horizontal'), ((6, 4), 'vertical'), ((6, 5), 'horizontal'), ((6, 5), 'vertical'), ((6, 6), 'horizontal'), ((6, 6), 'vertical'), ((6, 7), 'horizontal'), ((6, 7), 'vertical'), ((7, 0), 'horizontal'), ((7, 0), 'vertical'), ((7, 1), 'horizontal'), ((7, 1), 'vertical'), ((7, 2), 'horizontal'), ((7, 2), 'vertical'), ((7, 3), 'horizontal'), ((7, 3), 'vertical'), ((7, 4), 'horizontal'), ((7, 4), 'vertical'), ((7, 5), 'horizontal'), ((7, 5), 'vertical'), ((7, 6), 'horizontal'), ((7, 6), 'vertical'), ((7, 7), 'horizontal'), ((7, 7), 'vertical')]
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    neighbor[0] : 6
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    candidate[1][0] : 6
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    neighbor[1] : 1
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    candidate[1][1] : 0
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    hi
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    neighbor[0] : 6
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    candidate[1][0] : 5
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    neighbor[1] : 1
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    candidate[1][1] : 0
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    neighbor[0] : 6
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    candidate[1][0] : 7
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    neighbor[1] : 1
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    candidate[1][1] : 0
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    while
+2025-04-14 01:05:51,629 [SA agent    ] DEBUG    1
+2025-04-14 01:05:51,717 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,717 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,718 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,718 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,718 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,719 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,719 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,719 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,721 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,721 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,721 [GameBoard   ] DEBUG    ------- SIMULATION START: (BLOCK_h(6, 0) of player black, BLOCK_h(5, 0) of player black, BLOCK_h(7, 0) of player black) -------
+2025-04-14 01:05:51,721 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,721 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,722 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,722 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,722 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,723 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,723 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,723 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,725 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,725 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,725 [Action      ] DEBUG    Calling BLOCK construction on edge (6, 0).
+2025-04-14 01:05:51,725 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,725 [Action      ] DEBUG    Calling BLOCK construction on edge (5, 0).
+2025-04-14 01:05:51,726 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,726 [Action      ] DEBUG    Calling BLOCK construction on edge (7, 0).
+2025-04-14 01:05:51,726 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,726 [GameBoard   ] DEBUG    State has been changed to: 
+A3A6A7A8G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,726 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   ---*--- . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   ---*--- . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   ---*--- . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,726 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,727 [GameBoard   ] DEBUG    Querying current state...
+2025-04-14 01:05:51,727 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,728 [GameBoard   ] DEBUG    List of applicable move positions: [(8, 1)]
+2025-04-14 01:05:51,728 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black,) -------
+2025-04-14 01:05:51,728 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,728 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,729 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,729 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,729 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,730 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,730 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,730 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,731 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,731 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,732 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,732 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,732 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1B9
+2025-04-14 01:05:51,732 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   · B ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,732 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,733 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,734 [GameBoard   ] DEBUG    List of applicable move positions: [(8, 0), (8, 2)]
+2025-04-14 01:05:51,734 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black) -------
+2025-04-14 01:05:51,734 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,734 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,734 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,735 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,735 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,735 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,736 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,736 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,737 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,737 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,737 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,737 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,737 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,737 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,738 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1C9
+2025-04-14 01:05:51,738 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   · B ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,738 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,738 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,739 [GameBoard   ] DEBUG    List of applicable move positions: [(7, 2), (8, 1), (8, 3)]
+2025-04-14 01:05:51,739 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black) -------
+2025-04-14 01:05:51,739 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,740 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,740 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,740 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,740 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,741 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,741 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,741 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,742 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,743 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,743 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,743 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,743 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,743 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,743 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,743 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,743 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1C8
+2025-04-14 01:05:51,743 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   · B ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,743 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,744 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,745 [GameBoard   ] DEBUG    List of applicable move positions: [(6, 2), (7, 1), (7, 3), (8, 2)]
+2025-04-14 01:05:51,745 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(7, 1) of black) -------
+2025-04-14 01:05:51,745 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,745 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,745 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,746 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,746 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,746 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,746 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,746 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,748 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,748 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,748 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,748 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,748 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,748 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,748 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,748 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,748 [Action      ] DEBUG    Calling MOVE(7, 1) of black action
+2025-04-14 01:05:51,748 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,749 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1B8
+2025-04-14 01:05:51,749 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   · B ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,749 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,750 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,750 [GameBoard   ] DEBUG    List of applicable move positions: [(7, 0), (7, 2)]
+2025-04-14 01:05:51,750 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black) -------
+2025-04-14 01:05:51,750 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,751 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,751 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,751 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,751 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,751 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,751 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,751 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,752 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,753 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,753 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,753 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,753 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,753 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,753 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,753 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,753 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,753 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,753 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1C7
+2025-04-14 01:05:51,753 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   · B ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,753 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,754 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,755 [GameBoard   ] DEBUG    List of applicable move positions: [(5, 2), (6, 1), (6, 3), (7, 2)]
+2025-04-14 01:05:51,755 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(7, 1) of black, MOVE(7, 0) of black) -------
+2025-04-14 01:05:51,755 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,755 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,755 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,756 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,756 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,756 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,757 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,757 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,758 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,758 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,758 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,758 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,758 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,758 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,758 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,758 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,758 [Action      ] DEBUG    Calling MOVE(7, 1) of black action
+2025-04-14 01:05:51,758 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,758 [Action      ] DEBUG    Calling MOVE(7, 0) of black action
+2025-04-14 01:05:51,758 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,759 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1A8
+2025-04-14 01:05:51,759 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,759 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,760 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,760 [GameBoard   ] DEBUG    List of applicable move positions: [(7, 1)]
+2025-04-14 01:05:51,760 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(6, 3) of black) -------
+2025-04-14 01:05:51,760 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,761 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,761 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,761 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,761 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,762 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,762 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,762 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,763 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,763 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,764 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,764 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,764 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,764 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,764 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,764 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,764 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,764 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,764 [Action      ] DEBUG    Calling MOVE(6, 3) of black action
+2025-04-14 01:05:51,764 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,764 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1D7
+2025-04-14 01:05:51,764 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   · B ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,764 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,765 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,766 [GameBoard   ] DEBUG    List of applicable move positions: [(5, 3), (6, 2), (6, 4), (7, 3)]
+2025-04-14 01:05:51,766 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(6, 3) of black, MOVE(5, 3) of black) -------
+2025-04-14 01:05:51,766 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,766 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,766 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,767 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,767 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,767 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,768 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,768 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,769 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,769 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,769 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,769 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,769 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,769 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,769 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,769 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,769 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,769 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,769 [Action      ] DEBUG    Calling MOVE(6, 3) of black action
+2025-04-14 01:05:51,769 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,769 [Action      ] DEBUG    Calling MOVE(5, 3) of black action
+2025-04-14 01:05:51,770 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,770 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1D6
+2025-04-14 01:05:51,770 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   · B ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,770 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,771 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,771 [GameBoard   ] DEBUG    List of applicable move positions: [(4, 3), (5, 2), (5, 4), (6, 3)]
+2025-04-14 01:05:51,771 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(5, 2) of black) -------
+2025-04-14 01:05:51,771 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,772 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,772 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,772 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,773 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,773 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,773 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,773 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,774 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,774 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,775 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,775 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,775 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,775 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,775 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,775 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,775 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,775 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,775 [Action      ] DEBUG    Calling MOVE(5, 2) of black action
+2025-04-14 01:05:51,775 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,775 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1C6
+2025-04-14 01:05:51,775 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   · B ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,775 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,776 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,777 [GameBoard   ] DEBUG    List of applicable move positions: [(4, 2), (5, 1), (5, 3), (6, 2)]
+2025-04-14 01:05:51,777 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(7, 3) of black) -------
+2025-04-14 01:05:51,777 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,777 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,777 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,778 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,778 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,778 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,779 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,779 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,780 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,780 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,780 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,780 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,780 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,780 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,780 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,780 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,780 [Action      ] DEBUG    Calling MOVE(7, 3) of black action
+2025-04-14 01:05:51,780 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,781 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1D8
+2025-04-14 01:05:51,781 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   · B ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,781 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,781 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,782 [GameBoard   ] DEBUG    List of applicable move positions: [(6, 3), (7, 2), (7, 4), (8, 3)]
+2025-04-14 01:05:51,782 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(8, 3) of black) -------
+2025-04-14 01:05:51,782 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,782 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,783 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,783 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,783 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,784 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,784 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,784 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,785 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,785 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,785 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,785 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,785 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,786 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,786 [Action      ] DEBUG    Calling MOVE(8, 3) of black action
+2025-04-14 01:05:51,786 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,786 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1D9
+2025-04-14 01:05:51,786 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   · B ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,786 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,787 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,787 [GameBoard   ] DEBUG    List of applicable move positions: [(7, 3), (8, 2), (8, 4)]
+2025-04-14 01:05:51,787 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(6, 3) of black, MOVE(5, 3) of black, MOVE(5, 4) of black) -------
+2025-04-14 01:05:51,787 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,788 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,788 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,788 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,789 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,789 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,789 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,789 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,790 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,791 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,791 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,791 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,791 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,791 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,791 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,791 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,791 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,791 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,791 [Action      ] DEBUG    Calling MOVE(6, 3) of black action
+2025-04-14 01:05:51,791 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,791 [Action      ] DEBUG    Calling MOVE(5, 3) of black action
+2025-04-14 01:05:51,791 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,791 [Action      ] DEBUG    Calling MOVE(5, 4) of black action
+2025-04-14 01:05:51,791 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,791 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1E6
+2025-04-14 01:05:51,792 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   · B |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,792 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,792 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,793 [GameBoard   ] DEBUG    List of applicable move positions: [(4, 4), (5, 3), (6, 4)]
+2025-04-14 01:05:51,793 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(6, 3) of black, MOVE(5, 3) of black, MOVE(4, 3) of black) -------
+2025-04-14 01:05:51,793 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,793 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,794 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,794 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,794 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,794 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,795 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,795 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,796 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,796 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,796 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,796 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,796 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,796 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,796 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,796 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,797 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,797 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,797 [Action      ] DEBUG    Calling MOVE(6, 3) of black action
+2025-04-14 01:05:51,797 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,797 [Action      ] DEBUG    Calling MOVE(5, 3) of black action
+2025-04-14 01:05:51,797 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,797 [Action      ] DEBUG    Calling MOVE(4, 3) of black action
+2025-04-14 01:05:51,797 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,797 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1D5
+2025-04-14 01:05:51,797 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   · B ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,797 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,798 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,799 [GameBoard   ] DEBUG    List of applicable move positions: [(3, 3), (4, 2), (4, 4), (5, 3)]
+2025-04-14 01:05:51,799 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(5, 2) of black, MOVE(4, 2) of black) -------
+2025-04-14 01:05:51,799 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,799 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,799 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,800 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,800 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,800 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,800 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,801 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,802 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,802 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,802 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,802 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,802 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,802 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,802 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,802 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,802 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,802 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,802 [Action      ] DEBUG    Calling MOVE(5, 2) of black action
+2025-04-14 01:05:51,802 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,802 [Action      ] DEBUG    Calling MOVE(4, 2) of black action
+2025-04-14 01:05:51,802 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,803 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1C5
+2025-04-14 01:05:51,803 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   · B ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,803 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,803 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,804 [GameBoard   ] DEBUG    List of applicable move positions: [(3, 2), (4, 1), (4, 3), (5, 2)]
+2025-04-14 01:05:51,804 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(6, 3) of black, MOVE(5, 3) of black, MOVE(5, 4) of black, MOVE(4, 4) of black) -------
+2025-04-14 01:05:51,804 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,804 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,805 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,805 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,805 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,806 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,806 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,806 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,807 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,807 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,807 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,807 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,807 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,808 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,808 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,808 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,808 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,808 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,808 [Action      ] DEBUG    Calling MOVE(6, 3) of black action
+2025-04-14 01:05:51,808 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,808 [Action      ] DEBUG    Calling MOVE(5, 3) of black action
+2025-04-14 01:05:51,808 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,808 [Action      ] DEBUG    Calling MOVE(5, 4) of black action
+2025-04-14 01:05:51,808 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,808 [Action      ] DEBUG    Calling MOVE(4, 4) of black action
+2025-04-14 01:05:51,808 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,808 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1E5
+2025-04-14 01:05:51,808 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   · B |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,808 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,809 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,810 [GameBoard   ] DEBUG    List of applicable move positions: [(3, 4), (4, 3), (5, 4)]
+2025-04-14 01:05:51,810 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(6, 1) of black) -------
+2025-04-14 01:05:51,810 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,810 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,811 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,811 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,811 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,811 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,812 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,812 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,813 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,813 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,813 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,813 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,813 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,813 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,813 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,813 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,813 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,814 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,814 [Action      ] DEBUG    Calling MOVE(6, 1) of black action
+2025-04-14 01:05:51,814 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,814 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1B7
+2025-04-14 01:05:51,814 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   · B ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,814 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,815 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,815 [GameBoard   ] DEBUG    List of applicable move positions: [(6, 0), (6, 2)]
+2025-04-14 01:05:51,815 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(6, 3) of black, MOVE(6, 4) of black) -------
+2025-04-14 01:05:51,815 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,816 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,816 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,816 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,817 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,817 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,817 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,817 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,818 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,819 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,819 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,819 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,819 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,819 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,819 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,819 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,819 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,819 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,819 [Action      ] DEBUG    Calling MOVE(6, 3) of black action
+2025-04-14 01:05:51,819 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,819 [Action      ] DEBUG    Calling MOVE(6, 4) of black action
+2025-04-14 01:05:51,819 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,819 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1E7
+2025-04-14 01:05:51,819 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,820 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,820 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,821 [GameBoard   ] DEBUG    List of applicable move positions: [(5, 4), (6, 3), (6, 5), (7, 4)]
+2025-04-14 01:05:51,821 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(5, 2) of black, MOVE(4, 2) of black, MOVE(3, 2) of black) -------
+2025-04-14 01:05:51,821 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,821 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,822 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,822 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,822 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,822 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,823 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,823 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,824 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,824 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,824 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,824 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,824 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,824 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,824 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,824 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,824 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,825 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,825 [Action      ] DEBUG    Calling MOVE(5, 2) of black action
+2025-04-14 01:05:51,825 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,825 [Action      ] DEBUG    Calling MOVE(4, 2) of black action
+2025-04-14 01:05:51,825 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,825 [Action      ] DEBUG    Calling MOVE(3, 2) of black action
+2025-04-14 01:05:51,825 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,825 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1C4
+2025-04-14 01:05:51,825 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   | B ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,825 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,826 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,827 [GameBoard   ] DEBUG    List of applicable move positions: [(2, 2), (3, 3), (4, 2)]
+2025-04-14 01:05:51,827 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(5, 2) of black, MOVE(5, 1) of black) -------
+2025-04-14 01:05:51,827 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,828 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,828 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,828 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,829 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,829 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,829 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,829 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,831 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,831 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,831 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,831 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,831 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,831 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,831 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,832 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,832 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,832 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,832 [Action      ] DEBUG    Calling MOVE(5, 2) of black action
+2025-04-14 01:05:51,832 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,832 [Action      ] DEBUG    Calling MOVE(5, 1) of black action
+2025-04-14 01:05:51,832 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,832 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1B6
+2025-04-14 01:05:51,832 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   · B ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,832 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,833 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,834 [GameBoard   ] DEBUG    List of applicable move positions: [(4, 1), (5, 0), (5, 2)]
+2025-04-14 01:05:51,834 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(5, 2) of black, MOVE(5, 1) of black, MOVE(4, 1) of black) -------
+2025-04-14 01:05:51,834 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,835 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,835 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,835 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,835 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,836 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,836 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,836 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,838 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,839 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,839 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,839 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,839 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,839 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,839 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,839 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,839 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,839 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,839 [Action      ] DEBUG    Calling MOVE(5, 2) of black action
+2025-04-14 01:05:51,839 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,839 [Action      ] DEBUG    Calling MOVE(5, 1) of black action
+2025-04-14 01:05:51,839 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,840 [Action      ] DEBUG    Calling MOVE(4, 1) of black action
+2025-04-14 01:05:51,840 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,840 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1B5
+2025-04-14 01:05:51,840 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   · B ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,840 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,844 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,846 [GameBoard   ] DEBUG    List of applicable move positions: [(3, 1), (4, 0), (4, 2), (5, 1)]
+2025-04-14 01:05:51,846 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(7, 3) of black, MOVE(7, 4) of black) -------
+2025-04-14 01:05:51,846 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,847 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,847 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,847 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,848 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,848 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,848 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,849 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,851 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,852 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,852 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,852 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,852 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,852 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,852 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,852 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,852 [Action      ] DEBUG    Calling MOVE(7, 3) of black action
+2025-04-14 01:05:51,853 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,853 [Action      ] DEBUG    Calling MOVE(7, 4) of black action
+2025-04-14 01:05:51,853 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,853 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1E8
+2025-04-14 01:05:51,853 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,853 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,855 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,860 [GameBoard   ] DEBUG    List of applicable move positions: [(6, 4), (7, 3), (7, 5), (8, 4)]
+2025-04-14 01:05:51,860 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(8, 3) of black, MOVE(8, 4) of black) -------
+2025-04-14 01:05:51,860 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,860 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,861 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,861 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,861 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,862 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,862 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,862 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,865 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,865 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,866 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,866 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,866 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,866 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,866 [Action      ] DEBUG    Calling MOVE(8, 3) of black action
+2025-04-14 01:05:51,866 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,866 [Action      ] DEBUG    Calling MOVE(8, 4) of black action
+2025-04-14 01:05:51,866 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,866 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1E9
+2025-04-14 01:05:51,867 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,867 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,869 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,871 [GameBoard   ] DEBUG    List of applicable move positions: [(7, 4), (8, 3), (8, 5)]
+2025-04-14 01:05:51,871 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(5, 2) of black, MOVE(4, 2) of black, MOVE(3, 2) of black, MOVE(2, 2) of black) -------
+2025-04-14 01:05:51,871 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,872 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,872 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,873 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,873 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,873 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,874 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,874 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,876 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,876 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,876 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,876 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,876 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,876 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,876 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,876 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,876 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,876 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,876 [Action      ] DEBUG    Calling MOVE(5, 2) of black action
+2025-04-14 01:05:51,877 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,877 [Action      ] DEBUG    Calling MOVE(4, 2) of black action
+2025-04-14 01:05:51,877 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,877 [Action      ] DEBUG    Calling MOVE(3, 2) of black action
+2025-04-14 01:05:51,877 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,877 [Action      ] DEBUG    Calling MOVE(2, 2) of black action
+2025-04-14 01:05:51,877 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,877 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1C3
+2025-04-14 01:05:51,877 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   | B ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,877 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,879 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,881 [GameBoard   ] DEBUG    List of applicable move positions: [(1, 2), (2, 3), (3, 2)]
+2025-04-14 01:05:51,881 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(5, 2) of black, MOVE(5, 1) of black, MOVE(4, 1) of black, MOVE(3, 1) of black) -------
+2025-04-14 01:05:51,881 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,881 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,882 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,882 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,882 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,883 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,883 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,883 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,886 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,887 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,887 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,887 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,887 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,887 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,887 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,887 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,888 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,888 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,888 [Action      ] DEBUG    Calling MOVE(5, 2) of black action
+2025-04-14 01:05:51,888 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,888 [Action      ] DEBUG    Calling MOVE(5, 1) of black action
+2025-04-14 01:05:51,888 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,888 [Action      ] DEBUG    Calling MOVE(4, 1) of black action
+2025-04-14 01:05:51,888 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,888 [Action      ] DEBUG    Calling MOVE(3, 1) of black action
+2025-04-14 01:05:51,888 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,888 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1B4
+2025-04-14 01:05:51,889 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   · B |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,889 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,891 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,893 [GameBoard   ] DEBUG    List of applicable move positions: [(3, 0), (4, 1)]
+2025-04-14 01:05:51,893 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(6, 3) of black, MOVE(5, 3) of black, MOVE(4, 3) of black, MOVE(3, 3) of black) -------
+2025-04-14 01:05:51,893 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,893 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,894 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,894 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,894 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,894 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,895 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,895 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,896 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,897 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,897 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,897 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,897 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,897 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,897 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,897 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,897 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,897 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,897 [Action      ] DEBUG    Calling MOVE(6, 3) of black action
+2025-04-14 01:05:51,897 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,897 [Action      ] DEBUG    Calling MOVE(5, 3) of black action
+2025-04-14 01:05:51,897 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,897 [Action      ] DEBUG    Calling MOVE(4, 3) of black action
+2025-04-14 01:05:51,897 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,897 [Action      ] DEBUG    Calling MOVE(3, 3) of black action
+2025-04-14 01:05:51,897 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,897 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1D4
+2025-04-14 01:05:51,898 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   · B ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,898 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,898 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,899 [GameBoard   ] DEBUG    List of applicable move positions: [(2, 3), (3, 2), (3, 4), (4, 3)]
+2025-04-14 01:05:51,899 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(5, 2) of black, MOVE(4, 2) of black, MOVE(4, 1) of black) -------
+2025-04-14 01:05:51,899 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,899 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,900 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,900 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,900 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,901 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,901 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,901 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,902 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,902 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,902 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,902 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,902 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,903 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,903 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,903 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,903 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,903 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,903 [Action      ] DEBUG    Calling MOVE(5, 2) of black action
+2025-04-14 01:05:51,903 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,903 [Action      ] DEBUG    Calling MOVE(4, 2) of black action
+2025-04-14 01:05:51,903 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,903 [Action      ] DEBUG    Calling MOVE(4, 1) of black action
+2025-04-14 01:05:51,903 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,903 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1B5
+2025-04-14 01:05:51,903 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   · B ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,903 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,904 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,905 [GameBoard   ] DEBUG    List of applicable move positions: [(3, 1), (4, 0), (4, 2), (5, 1)]
+2025-04-14 01:05:51,905 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(5, 2) of black, MOVE(4, 2) of black, MOVE(3, 2) of black, MOVE(2, 2) of black, MOVE(1, 2) of black) -------
+2025-04-14 01:05:51,905 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,905 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,905 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,906 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,906 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,906 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,907 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,907 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,908 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,908 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,908 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,908 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,908 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,908 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,908 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,908 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,909 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,909 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,909 [Action      ] DEBUG    Calling MOVE(5, 2) of black action
+2025-04-14 01:05:51,909 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,909 [Action      ] DEBUG    Calling MOVE(4, 2) of black action
+2025-04-14 01:05:51,909 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,909 [Action      ] DEBUG    Calling MOVE(3, 2) of black action
+2025-04-14 01:05:51,909 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,909 [Action      ] DEBUG    Calling MOVE(2, 2) of black action
+2025-04-14 01:05:51,909 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,909 [Action      ] DEBUG    Calling MOVE(1, 2) of black action
+2025-04-14 01:05:51,909 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,909 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1C2
+2025-04-14 01:05:51,909 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   | B ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,909 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,910 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,911 [GameBoard   ] DEBUG    List of applicable move positions: [(0, 2), (1, 3), (2, 2)]
+2025-04-14 01:05:51,911 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(6, 3) of black, MOVE(5, 3) of black, MOVE(4, 3) of black, MOVE(3, 3) of black, MOVE(2, 3) of black) -------
+2025-04-14 01:05:51,911 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,911 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,911 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,912 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,912 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,912 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,913 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,913 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,914 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,914 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,914 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,914 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,914 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,914 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,914 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,914 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,914 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,914 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,914 [Action      ] DEBUG    Calling MOVE(6, 3) of black action
+2025-04-14 01:05:51,915 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,915 [Action      ] DEBUG    Calling MOVE(5, 3) of black action
+2025-04-14 01:05:51,915 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,915 [Action      ] DEBUG    Calling MOVE(4, 3) of black action
+2025-04-14 01:05:51,915 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,915 [Action      ] DEBUG    Calling MOVE(3, 3) of black action
+2025-04-14 01:05:51,915 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,915 [Action      ] DEBUG    Calling MOVE(2, 3) of black action
+2025-04-14 01:05:51,915 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,915 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1D3
+2025-04-14 01:05:51,915 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   · B ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,915 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,916 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,917 [GameBoard   ] DEBUG    List of applicable move positions: [(1, 3), (2, 2), (2, 4), (3, 3)]
+2025-04-14 01:05:51,917 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(5, 2) of black, MOVE(5, 1) of black, MOVE(4, 1) of black, MOVE(3, 1) of black, MOVE(3, 0) of black) -------
+2025-04-14 01:05:51,917 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,917 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,917 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,918 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,918 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,918 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,919 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,919 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,920 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,920 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,920 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,920 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,920 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,920 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,920 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,920 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,920 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,920 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,920 [Action      ] DEBUG    Calling MOVE(5, 2) of black action
+2025-04-14 01:05:51,921 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,921 [Action      ] DEBUG    Calling MOVE(5, 1) of black action
+2025-04-14 01:05:51,921 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,921 [Action      ] DEBUG    Calling MOVE(4, 1) of black action
+2025-04-14 01:05:51,921 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,921 [Action      ] DEBUG    Calling MOVE(3, 1) of black action
+2025-04-14 01:05:51,921 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,921 [Action      ] DEBUG    Calling MOVE(3, 0) of black action
+2025-04-14 01:05:51,921 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,921 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1A4
+2025-04-14 01:05:51,921 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 : B ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,921 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,922 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,923 [GameBoard   ] DEBUG    List of applicable move positions: [(3, 1), (4, 0)]
+2025-04-14 01:05:51,923 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(6, 3) of black, MOVE(5, 3) of black, MOVE(5, 4) of black, MOVE(4, 4) of black, MOVE(3, 4) of black) -------
+2025-04-14 01:05:51,923 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,923 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,923 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,924 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,924 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,924 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,924 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,925 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,926 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,926 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,926 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,926 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,926 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,926 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,926 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,926 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,926 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,926 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,926 [Action      ] DEBUG    Calling MOVE(6, 3) of black action
+2025-04-14 01:05:51,926 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,926 [Action      ] DEBUG    Calling MOVE(5, 3) of black action
+2025-04-14 01:05:51,926 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,926 [Action      ] DEBUG    Calling MOVE(5, 4) of black action
+2025-04-14 01:05:51,927 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,927 [Action      ] DEBUG    Calling MOVE(4, 4) of black action
+2025-04-14 01:05:51,927 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,927 [Action      ] DEBUG    Calling MOVE(3, 4) of black action
+2025-04-14 01:05:51,927 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,927 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1E4
+2025-04-14 01:05:51,927 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   · B ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,927 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,928 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,928 [GameBoard   ] DEBUG    List of applicable move positions: [(2, 4), (3, 3), (3, 5), (4, 4)]
+2025-04-14 01:05:51,928 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(6, 1) of black, MOVE(6, 0) of black) -------
+2025-04-14 01:05:51,929 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,929 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,929 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,929 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,930 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,930 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,930 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,931 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,931 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,932 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,932 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,932 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,932 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,932 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,932 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,932 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,932 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,932 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,932 [Action      ] DEBUG    Calling MOVE(6, 1) of black action
+2025-04-14 01:05:51,932 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,932 [Action      ] DEBUG    Calling MOVE(6, 0) of black action
+2025-04-14 01:05:51,932 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,932 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1A7
+2025-04-14 01:05:51,933 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,933 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,933 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,934 [GameBoard   ] DEBUG    List of applicable move positions: [(6, 1)]
+2025-04-14 01:05:51,934 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(8, 3) of black, MOVE(8, 4) of black, MOVE(8, 5) of black) -------
+2025-04-14 01:05:51,934 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,934 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,935 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,935 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,935 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,936 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,936 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,936 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,937 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,937 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,937 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,938 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,938 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,938 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,938 [Action      ] DEBUG    Calling MOVE(8, 3) of black action
+2025-04-14 01:05:51,938 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,938 [Action      ] DEBUG    Calling MOVE(8, 4) of black action
+2025-04-14 01:05:51,938 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,938 [Action      ] DEBUG    Calling MOVE(8, 5) of black action
+2025-04-14 01:05:51,938 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,938 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1F9
+2025-04-14 01:05:51,938 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   · B ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,938 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,939 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,940 [GameBoard   ] DEBUG    List of applicable move positions: [(7, 5), (8, 4), (8, 6)]
+2025-04-14 01:05:51,940 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(8, 1) of black, MOVE(8, 2) of black, MOVE(7, 2) of black, MOVE(6, 2) of black, MOVE(5, 2) of black, MOVE(4, 2) of black, MOVE(3, 2) of black, MOVE(2, 2) of black, MOVE(1, 2) of black, MOVE(1, 3) of black) -------
+2025-04-14 01:05:51,940 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 0).
+2025-04-14 01:05:51,940 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 1).
+2025-04-14 01:05:51,940 [Action      ] DEBUG    Calling BLOCK construction on edge (0, 6).
+2025-04-14 01:05:51,941 [Action      ] DEBUG    Calling BLOCK construction on edge (1, 6).
+2025-04-14 01:05:51,941 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 0).
+2025-04-14 01:05:51,941 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 1).
+2025-04-14 01:05:51,941 [Action      ] DEBUG    Calling BLOCK construction on edge (2, 5).
+2025-04-14 01:05:51,942 [Action      ] DEBUG    Calling BLOCK construction on edge (4, 4).
+2025-04-14 01:05:51,943 [GameBoard   ] DEBUG    State has been set as follows: 
+A3G1G2/A1B1B3E5F3/E1A9
+2025-04-14 01:05:51,943 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 : B ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   ·   ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,943 [Action      ] DEBUG    Calling MOVE(8, 1) of black action
+2025-04-14 01:05:51,943 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,943 [Action      ] DEBUG    Calling MOVE(8, 2) of black action
+2025-04-14 01:05:51,943 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,943 [Action      ] DEBUG    Calling MOVE(7, 2) of black action
+2025-04-14 01:05:51,943 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,943 [Action      ] DEBUG    Calling MOVE(6, 2) of black action
+2025-04-14 01:05:51,943 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,943 [Action      ] DEBUG    Calling MOVE(5, 2) of black action
+2025-04-14 01:05:51,943 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,943 [Action      ] DEBUG    Calling MOVE(4, 2) of black action
+2025-04-14 01:05:51,943 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,943 [Action      ] DEBUG    Calling MOVE(3, 2) of black action
+2025-04-14 01:05:51,944 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,944 [Action      ] DEBUG    Calling MOVE(2, 2) of black action
+2025-04-14 01:05:51,944 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,944 [Action      ] DEBUG    Calling MOVE(1, 2) of black action
+2025-04-14 01:05:51,944 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,944 [Action      ] DEBUG    Calling MOVE(1, 3) of black action
+2025-04-14 01:05:51,944 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-04-14 01:05:51,944 [GameBoard   ] DEBUG    State has been changed to: 
+A3G1G2/A1B1B3E5F3/E1D2
+2025-04-14 01:05:51,944 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . .*. . . . . . . .
+4 :   ·   ·   ·   ·   |   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   ---*---*. . . . . . . .*. . . . . .
+2 :   ·   |   ·   ·   ·   |   ·   ·   ·
+   . . . . . . . . . . . . ---*--- . .
+1 :   |   |   · B ·   ·   ·   ·   ·   ·
+   . .*. .*. . . . . . . . ---*--- . .
+0 :   |   |   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-04-14 01:05:51,944 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-04-14 01:05:51,945 [GameBoard   ] DEBUG    Querying applicable move directions...
+2025-04-14 01:05:51,945 [GameBoard   ] DEBUG    List of applicable move positions: [(0, 3), (1, 2), (1, 4), (2, 3)]
+2025-04-14 01:05:51,946 [Evaluate    ] DEBUG    Execution Result: Performance(failure=None, outcome=11, time=0.11, search=3, memory=0.1, point=4).
