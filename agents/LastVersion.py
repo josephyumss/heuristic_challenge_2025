@@ -9,13 +9,15 @@ from board import GameBoard
 from copy import deepcopy
 
 from queue import PriorityQueue
+
+import logging
 class Agent:  # Do not change the name of this class!
     """
     An agent class
     """
     # Do not modify this.
     name = Path(__file__).stem
-
+    _logger = logging.getLogger('SA agent')
     # Do not change the constructor argument!
     def __init__(self, player: Literal['white', 'black']):
         """
@@ -93,7 +95,74 @@ class Agent:  # Do not change the name of this class!
         :return: The next MOVE or list of three BLOCKs.
             That is, you should either return MOVE() action or [BLOCK(), BLOCK(), BLOCK()].
         """
-        raise NotImplementedError()
+        current_state=board.get_state()
+        current_position = tuple(current_state['player'][self.player]['pawn'])
+
+        if self.player == 'black' : opponent = 'white'
+        else : opponent = 'black'
+
+        all_applicable_fence = board.get_applicable_fences(self.player)
+        applicable_moves = board.get_applicable_moves(self.player)
+        #self._logger.debug(f"applicable moves : {applicable_moves}")
+
+        #moves_turn = sorted([board.get_move_turns(current_position,applicable_move) for applicable_move in applicable_moves])
+        #self._logger.debug(moves_turn[:3])
+
+        def obj(player, cur_pos, opponent_pos):
+            pos_diff_x = abs(opponent_pos[0]-cur_pos[0])
+            pos_diff_y = abs(opponent_pos[1]-cur_pos[1])
+            
+            if cur_pos[1]==8 : return 999
+
+            if player =='black':
+                # 수평 fence
+                v_pos_from_current = (cur_pos[0],cur_pos[1]-1)
+                block_turn = board.get_move_turns(cur_pos,v_pos_from_current)
+
+            if player =='white':
+                # 수평 fence
+                v_pos_from_current = (cur_pos[0],cur_pos[1]+1)
+                block_turn = board.get_move_turns(v_pos_from_current,cur_pos)
+
+            W_pos = 1
+            W_turn = 1
+            return W_turn*block_turn - W_pos*pos_diff_y
+
+        def select_fence_pos(childrens, currentK, opponent_pos):
+            every_pos = currentK+childrens
+
+            max1 = max(every_pos,key=lambda x : obj(self.player,x,opponent_pos))
+            every_pos.remove(max1)
+
+            max2 = max(every_pos,key=lambda x : obj(self.player,x,opponent_pos))
+            every_pos.remove(max2)
+
+            max3 = max(every_pos,key=lambda x : obj(self.player,x,opponent_pos))
+            every_pos.remove(max3)
+
+            return [max1,max2,max3]
+
+        # c = True
+        currentK = [current_position]
+
+        # def get_moves_for_curK(currentK,state):
+        #     for pos in currentK:
+        #         tmp_board = deepcopy(board)
+        #         tmp_state = tmp_board.get_state()
+        #         tmp_board.simulate_action(tmp_state,MOVE(self.player,pos))
+
+        opponent_position = tuple(current_state['player'][opponent]['pawn'])        
+        childrens = [child for child in board.get_applicable_moves(self.player)]
+        currentK = selectK(board,childrens,currentK,opponent_position)
+        
+        # fence_pos = [applicable_fence[-1][0],applicable_fence[-3][0],applicable_fence[-5][0]]
+        # fence_head = [applicable_fence[-1][1],applicable_fence[-3][1],applicable_fence[-5][1]]
+        # self._logger.debug(applicable_fence)
+
+        #def obj(board : GameBoard, pos=None, )
+        #return [BLOCK(self.player,fence_pos[0],fence_head[0]),BLOCK(self.player,fence_pos[1],fence_head[1]),BLOCK(self.player,fence_pos[2],fence_head[2])]
+        
+        return MOVE(self.player,(7,0))
 
     def belief_state_search(self, board: GameBoard, time_limit: float) -> List[Action]:
         """

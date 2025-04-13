@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\Jinhee\source\repos\heuristic_challenge_2025\evaluator\part2.py", line 85, in _execute
+    state = board.simulate_action(state, move, problem_type=1)
+  File "C:\Users\Jinhee\source\repos\heuristic_challenge_2025\board.py", line 360, in simulate_action
+    act(self)
+  File "C:\Users\Jinhee\source\repos\heuristic_challenge_2025\action.py", line 58, in __call__
+    board._board.move_pawn(self.player, *self.position)
+  File "C:\Users\Jinhee\AppData\Local\Programs\Python\Python39\lib\site-packages\pyquoridor\board.py", line 456, in move_pawn
+    raise InvalidMove(f'Cannot move {player} pawn to square ({target_row}, {target_col})')
+pyquoridor.exceptions.InvalidMove: Cannot move black pawn to square (7, 0)
