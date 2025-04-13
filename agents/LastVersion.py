@@ -64,49 +64,12 @@ class Agent:  # Do not change the name of this class!
     
 
     def local_search(self, board: GameBoard, time_limit: float) -> Union[MOVE, List[BLOCK]]:
-        """
-        * Complete this function to answer the challenge PART II.
 
-        This function uses local search for finding the three best place of the fence.
-        The system calls your algorithm multiple times, repeatedly.
-        Each time, it provides new position of your pawn and asks your next decision
-         until time limit is reached, or until you return a BLOCK action.
-
-        Each time you have to decide one of the action.
-        - If you want to look around neighborhood places, return MOVE action
-        - If you decide to answer the best place, return BLOCK action
-        * Note: you cannot move to the position that your opponent already occupied.
-
-        You can use your heuristic search function, which is previously implemented, to compute the fitness score of each place.
-        * Note that we will not provide any official fitness function here. The quality of your answer depends on the first part.
-
-        RESTRICTIONS: USE one of the following algorithms or its variant.
-        - Hill-climbing search and its variants
-        - Simulated annealing and its variants
-        - Tabu search and its variants
-        - Greedy Best-first search
-        - Local/stochastic beam search (note: parallel execution should be called as sequentially)
-        - Evolutionary algorithms
-        - Empirical/Stochastic gradient methods
-        - Newton-Raphson method
-
-        :param board: The game board with current state.
-        :param time_limit: The time limit for the search. Datetime.now() should have lower timestamp value than this.
-        :return: The next MOVE or list of three BLOCKs.
-            That is, you should either return MOVE() action or [BLOCK(), BLOCK(), BLOCK()].
-        """
         current_state=board.get_state()
         current_position = tuple(current_state['player'][self.player]['pawn'])
 
         if self.player == 'black' : opponent = 'white'
         else : opponent = 'black'
-
-        all_applicable_fence = board.get_applicable_fences(self.player)
-        applicable_moves = board.get_applicable_moves(self.player)
-        #self._logger.debug(f"applicable moves : {applicable_moves}")
-
-        #moves_turn = sorted([board.get_move_turns(current_position,applicable_move) for applicable_move in applicable_moves])
-        #self._logger.debug(moves_turn[:3])
 
         def obj(player, cur_pos, opponent_pos):
             pos_diff_x = abs(opponent_pos[0]-cur_pos[0])
@@ -128,41 +91,34 @@ class Agent:  # Do not change the name of this class!
             W_turn = 1
             return W_turn*block_turn - W_pos*pos_diff_y
 
-        def select_fence_pos(childrens, currentK, opponent_pos):
-            every_pos = currentK+childrens
-
-            max1 = max(every_pos,key=lambda x : obj(self.player,x,opponent_pos))
-            every_pos.remove(max1)
-
-            max2 = max(every_pos,key=lambda x : obj(self.player,x,opponent_pos))
-            every_pos.remove(max2)
-
-            max3 = max(every_pos,key=lambda x : obj(self.player,x,opponent_pos))
-            every_pos.remove(max3)
-
-            return [max1,max2,max3]
-
-        # c = True
-        currentK = [current_position]
-
-        # def get_moves_for_curK(currentK,state):
-        #     for pos in currentK:
-        #         tmp_board = deepcopy(board)
-        #         tmp_state = tmp_board.get_state()
-        #         tmp_board.simulate_action(tmp_state,MOVE(self.player,pos))
+        childs = board.get_applicable_moves(self.player)
+        while True :
+            if not childs :
+                 return [BLOCK(self.player,current_position,'horizontal'),]
+            neighbor = choice(childs)
+            childs.remove(neighbor)
+            if obj(neighbor) > obj(current_position) : 
+                return MOVE(self.player, neighbor)
 
         opponent_position = tuple(current_state['player'][opponent]['pawn'])        
         childrens = [child for child in board.get_applicable_moves(self.player)]
         currentK = selectK(board,childrens,currentK,opponent_position)
-        
-        # fence_pos = [applicable_fence[-1][0],applicable_fence[-3][0],applicable_fence[-5][0]]
-        # fence_head = [applicable_fence[-1][1],applicable_fence[-3][1],applicable_fence[-5][1]]
-        # self._logger.debug(applicable_fence)
 
-        #def obj(board : GameBoard, pos=None, )
-        #return [BLOCK(self.player,fence_pos[0],fence_head[0]),BLOCK(self.player,fence_pos[1],fence_head[1]),BLOCK(self.player,fence_pos[2],fence_head[2])]
-        
         return MOVE(self.player,(7,0))
+    
+        # def select_fence_pos(childrens, currentK, opponent_pos):
+        #     every_pos = currentK+childrens
+
+        #     max1 = max(every_pos,key=lambda x : obj(self.player,x,opponent_pos))
+        #     every_pos.remove(max1)
+
+        #     max2 = max(every_pos,key=lambda x : obj(self.player,x,opponent_pos))
+        #     every_pos.remove(max2)
+
+        #     max3 = max(every_pos,key=lambda x : obj(self.player,x,opponent_pos))
+        #     every_pos.remove(max3)
+
+        #     return [max1,max2,max3]
 
     def belief_state_search(self, board: GameBoard, time_limit: float) -> List[Action]:
         """
@@ -209,4 +165,5 @@ class Agent:  # Do not change the name of this class!
         :return: The next move.
         """
         raise NotImplementedError()
+    
 
