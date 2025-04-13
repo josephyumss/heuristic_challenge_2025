@@ -1,4 +1,5 @@
 # Logging method for board execution
+import heapq
 import logging
 # Library for OS environment
 import os
@@ -19,7 +20,7 @@ from pyquoridor.exceptions import GameOver, InvalidFence  # InvalidFence 추가
 from pyquoridor.square import MAX_COL, MAX_ROW
 
 # Import action specifications
-from action import Action, BLOCK
+from action import Action, BLOCK, MOVE
 # Import some utilities
 from util import print_board
 
@@ -27,6 +28,74 @@ from util import print_board
 IS_DEBUG = '--debug' in sys.argv
 IS_RUN = 'fixed_evaluation' in sys.argv[0]
 FENCES_MAX = 10
+
+
+class HeuristicAgent:
+    def heuristic(self, current_row: int, target_row: int, current_col: int, board_width=5) -> float:
+        rowDist = abs(current_row - target_row)
+
+        # How far from the center column
+        colCenter = board_width // 2
+        colDist = abs(current_col - colCenter)
+
+        # Mainly considering row distance, including the column distance slightly.
+        return rowDist + 0.1 * colDist
+
+    def heuristic_search(self, board: "GameBoard", player: str) -> int:
+        # Initialize
+        initial_state = board.get_state()
+        target_row = 8 if player else 0
+
+        initial_pos = initial_state['player'][player]['pawn']
+        initial_id = initial_state['state_id']
+
+        came_from = {}
+        g_score = {initial_id: 0}
+        states = {initial_id: initial_state}
+
+        h_init = self.heuristic(initial_pos[0], target_row, initial_pos[1])
+        open_set = [(h_init, initial_id)]
+
+        visited_positions = {initial_pos: 0}
+
+        board.set_to_state(initial_state)
+
+        while open_set:
+            _, current_id = heapq.heappop(open_set)
+
+            current_state = states[current_id]
+            board.set_to_state(current_state)
+
+            current_pos = current_state['player'][player]['pawn']
+            current_turns = g_score[current_id]
+            current_row, current_col = current_pos
+
+            if current_row == target_row:
+                return current_turns
+
+            for next_pos in board.get_applicable_moves(player):
+                move_cost = board.get_move_turns(current_pos, next_pos)
+                new_turns = current_turns + move_cost
+
+                if (next_pos in visited_positions
+                        and visited_positions[next_pos] <= new_turns):
+                    continue
+
+                move = MOVE(player, next_pos)
+                next_state = board.simulate_action(current_state, move, problem_type=1)
+                next_id = next_state['state_id']
+
+                came_from[next_id] = (current_id, move)
+                g_score[next_id] = new_turns
+                visited_positions[next_pos] = new_turns
+                states[next_id] = next_state
+
+                # 새 휴리스틱
+                h_val = self.heuristic(next_pos[0], target_row, next_pos[1])
+                f_val = new_turns + h_val
+                heapq.heappush(open_set, (f_val, next_id))
+
+        return 0
 
 
 class GameBoard:
@@ -327,6 +396,15 @@ class GameBoard:
         """
         if self._max_memory >= 0:
             self._max_memory = max(self._max_memory, self.get_current_memory_usage())
+
+    def distance_to_goal(self, player: Literal['black', 'white']):
+        """
+        Compute distance toward the goal line.
+        :param player: Player name to compute the distance toward the goal line.
+        :return: (int) Total distance (counting turns of movement)
+        """
+        agent = HeuristicAgent()
+        return agent.heuristic_search(self, player)
 
     def simulate_action(self, state: dict = None, *actions: Action, problem_type: int = 4) -> dict:
         """
