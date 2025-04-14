@@ -25,7 +25,7 @@ from evaluator import *
 from evaluator.util import MEGABYTES
 
 #: The number of games to run the evaluation
-GAMES = 1
+GAMES = 10
 #: Limit of execution. (60 minutes)
 TIME_LIMIT = 3600
 MEMORY_LIMIT = 4096

@@ -64,97 +64,126 @@ class Agent:  # Do not change the name of this class!
     
 
     def local_search(self, board: GameBoard, time_limit: float) -> Union[MOVE, List[BLOCK]]:
-
         current_state=board.get_state()
         current_position = tuple(current_state['player'][self.player]['pawn'])
+        applicable_fence = board.get_applicable_fences()
 
         if self.player == 'black' : opponent = 'white'
         else : opponent = 'black'
 
-        def obj(player, cur_pos, opponent_pos):
+        def obj(player,applicable_fence, cur_pos, opponent_pos):
             pos_diff_x = abs(opponent_pos[0]-cur_pos[0])
             pos_diff_y = abs(opponent_pos[1]-cur_pos[1])
+            hfence_W_pos = 1
+            hfence_W_turn = 1
+            vfence_W_pos = 1 
+            vfence_W_turn = 1
+
+            if cur_pos[0]==8 : h_fence_obj = -999
+            if cur_pos[1]==8 : v_fence_obj = -999
             
-            if cur_pos[0]==8 : return -999
+            if cur_pos[0] != 8 :
+                if player =='black':
+                    v_pos_from_current = (cur_pos[0]-1,cur_pos[1])
+                    block_turn_v = board.get_move_turns(cur_pos,v_pos_from_current)
 
-            if player =='black':
-                # 수평 fence
-                v_pos_from_current = (cur_pos[0],cur_pos[1]-1)
-                block_turn = board.get_move_turns(cur_pos,v_pos_from_current)
+                if player =='white':
+                    v_pos_from_current = (cur_pos[0]+1,cur_pos[1])
+                    block_turn_v = board.get_move_turns(v_pos_from_current,cur_pos)
+                
+                h_fence_obj = hfence_W_turn*block_turn_v - hfence_W_pos*pos_diff_y
+            
+            if cur_pos[1] != 8 :
+                h_pos_from_current = (cur_pos[0],cur_pos[1]+1)
+                block_turn_h = board.get_move_turns(h_pos_from_current,cur_pos)
 
-            if player =='white':
-                # 수평 fence
-                v_pos_from_current = (cur_pos[0],cur_pos[1]+1)
-                block_turn = board.get_move_turns(v_pos_from_current,cur_pos)
+                v_fence_obj = vfence_W_turn*block_turn_h - vfence_W_pos*pos_diff_x
 
-            W_pos = 1
-            W_turn = 1
-            return W_turn*block_turn - W_pos*pos_diff_y
-        
+            if (cur_pos,'horizontal') not in applicable_fence : h_fence_obj = -999
+            if (cur_pos,'vertical') not in applicable_fence : v_fence_obj = -999
+
+            return ((h_fence_obj,'horizontal'),(v_fence_obj, 'vertical'))
+
+        def Neighbor_is_better_Position(cur_obj, nbr_obj):
+            cur_h_obj = cur_obj[0][0]
+            cur_v_obj = cur_obj[1][0]
+            nbr_h_obj = nbr_obj[0][0]
+            nbr_v_obj = nbr_obj[1][0]
+
+            if (nbr_h_obj > cur_h_obj) and (nbr_v_obj > cur_v_obj): return True
+            elif (nbr_h_obj < cur_h_obj) and (nbr_v_obj < cur_v_obj) : return False
+            elif (nbr_h_obj == cur_h_obj) and (nbr_v_obj == cur_v_obj): return True
+            else :
+                h_obj_diff = abs(nbr_h_obj - cur_h_obj) 
+                v_obj_diff = abs(nbr_v_obj - cur_v_obj)
+
+                if nbr_h_obj == cur_h_obj:
+                    if nbr_v_obj > cur_v_obj : return True
+                    else : return False
+
+                if nbr_v_obj == cur_v_obj:
+                    if nbr_h_obj > cur_h_obj : return True
+                    else : return False
+
+                if nbr_h_obj > cur_h_obj:
+                    if h_obj_diff >= v_obj_diff : return True
+                    else : return False
+
+                if nbr_v_obj > cur_v_obj:
+                    if v_obj_diff >= h_obj_diff : return True
+                    else : return False
+               
         childs = board.get_applicable_moves(self.player)
         opponent_position = tuple(current_state['player'][opponent]['pawn'])
-        cur_pos_obj = obj(self.player,current_position,opponent_position)
-        best_3_pos = [(cur_pos_obj, current_position)]
+        cur_pos_obj = obj(self.player,applicable_fence,current_position,opponent_position)
+        if cur_pos_obj[0] >= cur_pos_obj[1]:
+            best_3_pos = [(cur_pos_obj[0][0],current_position,'horizontal')]
+        else : best_3_pos = [(cur_pos_obj[1][0],current_position,'vertical')]
+
+        reached = [current_position]
+
         while True :
-            self._logger.debug("while")
-            tag = 0
             if not childs :
-                 self._logger.debug("1")
-                 if len(best_3_pos)<3 : raise ValueError
-                 return [BLOCK(self.player,best_3_pos[0][1],'horizontal'),
-                         BLOCK(self.player,best_3_pos[1][1],'horizontal'),
-                         BLOCK(self.player,best_3_pos[2][1],'horizontal'),]
+                if len(best_3_pos)<3 : 
+                    self._logger.debug(f"len best 3 pos is not enough : {len(best_3_pos)}")
+
+                    return MOVE(self.player,choice(board.get_applicable_moves()))
+                
+                self._logger.debug(f"best 3 pos is : {best_3_pos}")
+                return [BLOCK(self.player,best_3_pos[0][1],best_3_pos[0][2]),
+                        BLOCK(self.player,best_3_pos[1][1],best_3_pos[1][2]),
+                        BLOCK(self.player,best_3_pos[2][1],best_3_pos[2][2]),]
             
             neighbor = choice(childs)
-            neighbor_obj = obj(self.player,neighbor,opponent_position)
+            neighbor_obj= obj(self.player,applicable_fence,neighbor,opponent_position) # hobj, vobj
             childs.remove(neighbor)
 
-            if (neighbor,'horizontal') not in board.get_applicable_fences() : 
-                self._logger.debug(f"(neighbor,'horizental') : {(neighbor,'horizontal')}")
-                self._logger.debug("2")
+            if ((neighbor,'horizontal') not in applicable_fence) and ((neighbor,'vertical') not in applicable_fence): 
                 continue
-
-            for candidate in best_3_pos:
-                self._logger.debug(f"neighbor[0] : {neighbor[0]}")
-                self._logger.debug(f"candidate[1][0] : {candidate[1][0]}")
-                self._logger.debug(f"neighbor[1] : {neighbor[1]}")
-                self._logger.debug(f"candidate[1][1] : {candidate[1][1]}")
-                if neighbor[0] == candidate[1][0] and (neighbor[1] == candidate[1][1]-1 or neighbor[1] == candidate[1][1]+1) : 
-                    self._logger.debug("hi")
-                    tag = 1 
-                    continue
-            if tag == 1 : continue
-
-            if neighbor_obj > cur_pos_obj :
-                self._logger.debug("3") 
+            
+            # 한번 Move 를 반환하고 나면 reached는 초기화 되므로 동일한 obj 값을 가지는 위치를 왔다 갔다 반복함.
+            if Neighbor_is_better_Position(cur_pos_obj,neighbor_obj) and neighbor not in reached:
+                self._logger.debug(f"cur_pos_obj : {cur_pos_obj}")
+                self._logger.debug(f"neighbor_obj : {neighbor_obj}")
                 return MOVE(self.player, neighbor)
             
-            if len(best_3_pos)<3 :
-                self._logger.debug("4")
-                best_3_pos += [(neighbor_obj,neighbor)]
+            if best_3_pos[0][2] == 'horizontal':
+                if (neighbor[0] == best_3_pos[0][1][0]-1 or neighbor[0] == best_3_pos[0][1][0]+1):
+                    if len(best_3_pos)<3 : best_3_pos += [(neighbor_obj[1][0],neighbor,'vertical')]
 
-            else :
-                self._logger.debug("5")
-                if neighbor_obj >= min(best_3_pos)[0] : 
-                    self._logger.debug("6")
-                    best_3_pos.remove(min(best_3_pos))
-                    best_3_pos += [(neighbor_obj,neighbor)]
+                    else :
+                        if neighbor_obj[1][0] > min(best_3_pos)[0]:
+                            best_3_pos.remove(min(best_3_pos))
+                            best_3_pos += [(neighbor_obj[1][0],neighbor,'vertical')]
+                
+            else : 
+                if (neighbor[1] == best_3_pos[0][1][1]-1 or neighbor[1] == best_3_pos[0][1][1]+1):
+                    if len(best_3_pos) < 3 : best_3_pos += [(neighbor_obj[0][0],neighbor,'horizontal')]
 
-            self._logger.debug(f"best 3 : {best_3_pos}")
-
-        # def select_fence_pos(childrens, currentK, opponent_pos):
-        #     every_pos = currentK+childrens
-
-        #     max1 = max(every_pos,key=lambda x : obj(self.player,x,opponent_pos))
-        #     every_pos.remove(max1)
-
-        #     max2 = max(every_pos,key=lambda x : obj(self.player,x,opponent_pos))
-        #     every_pos.remove(max2)
-
-        #     max3 = max(every_pos,key=lambda x : obj(self.player,x,opponent_pos))
-        #     every_pos.remove(max3)
-
-        #     return [max1,max2,max3]
+                    else:
+                        if neighbor_obj[0][0] > min(best_3_pos)[0]:
+                            best_3_pos.remove(min(best_3_pos))
+                            best_3_pos += [(neighbor_obj[0][0],neighbor,'horizontal')]
 
     def belief_state_search(self, board: GameBoard, time_limit: float) -> List[Action]:
         """
