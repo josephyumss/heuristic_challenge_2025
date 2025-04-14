@@ -86,7 +86,14 @@ class BLOCK(Action):
         if IS_DEBUG:  # Logging for debugging
             self._logger.debug(f'Calling BLOCK construction on edge {self.edge}.')
 
-        assert board._board.fences_left[self.player] > 0, f'{self.player} has no fences left.'
+        #edit (assert board._board.fences_left[self.player] > 0, f'{self.player} has no fences left.')
+        if hasattr(board._board, 'fences_left'):
+            assert board._board.fences_left[self.player] > 0, f'{self.player} has no fences left.'
+
+        elif board._current is not None:
+            current_state = board.get_state()
+            assert current_state['player'][self.player]['fences_left'] > 0, f'{self.player} has no fences left.'
+        #end edit
 
         # This can raise two exceptions: GameOver / InvalidMove
         # These two exceptions will be handled in the board.

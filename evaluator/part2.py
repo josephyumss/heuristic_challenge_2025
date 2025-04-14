@@ -132,10 +132,12 @@ def _execute(initial_state, cls, logger):
 
             # Now, use agent to find the shortest path of opponent.
             # TODO: I'll provide TA's answer for part I, after the submission.
-            board._player_side = 'white' if board._player_side == 'black' else 'black'
-            route = a.heuristic_search(board)
+            #board._player_side = 'white' if board._player_side == 'black' else 'black'
+            #route = a.heuristic_search(board)
 
-            length = len(route)
+            #length = len(route)
+            opponent = 'white' if board._player_side == 'black' else 'black'
+            length = board.distance_to_goal(opponent)
         except (InvalidMove, InvalidFence):
             failure = traceback.format_exc()
 

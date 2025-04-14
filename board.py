@@ -29,7 +29,6 @@ IS_DEBUG = '--debug' in sys.argv
 IS_RUN = 'fixed_evaluation' in sys.argv[0]
 FENCES_MAX = 10
 
-
 class HeuristicAgent:
     def heuristic(self, current_row: int, target_row: int, current_col: int, board_width=5) -> float:
         rowDist = abs(current_row - target_row)
@@ -46,7 +45,7 @@ class HeuristicAgent:
         initial_state = board.get_state()
         target_row = 8 if player else 0
 
-        initial_pos = initial_state['player'][player]['pawn']
+        initial_pos = tuple(initial_state['player'][player]['pawn'])
         initial_id = initial_state['state_id']
 
         came_from = {}
@@ -66,7 +65,7 @@ class HeuristicAgent:
             current_state = states[current_id]
             board.set_to_state(current_state)
 
-            current_pos = current_state['player'][player]['pawn']
+            current_pos = tuple(current_state['player'][player]['pawn'])
             current_turns = g_score[current_id]
             current_row, current_col = current_pos
 
@@ -96,7 +95,6 @@ class HeuristicAgent:
                 heapq.heappush(open_set, (f_val, next_id))
 
         return 0
-
 
 class GameBoard:
     """
@@ -137,6 +135,9 @@ class GameBoard:
         # Initialize a new game board
         self._board = Board()
 
+        if not hasattr(self._board, "fences_left"):
+            self._board.fences_left = {"white": FENCES_MAX, "black": FENCES_MAX}
+
         self._vertical_turns = [[self._rng.randint(1, 5) for _ in range(9)] for _ in range(8)]
         self._horizontal_turns = [[self._rng.randint(1, 5) for _ in range(8)] for _ in range(9)]
 
@@ -155,6 +156,7 @@ class GameBoard:
             col = random_integer(0, MAX_COL - 1)
             self._board.pawns[p].move(self._board.get_square_or_none(row, col))
 
+        self._board.turn = 0 if self._player_side == 'white' else 1
         # Update position information with a new starting point
         for pawn in self._board.pawns.values():
             pawn.square.reset_neighbours()
@@ -340,10 +342,13 @@ class GameBoard:
 
         # Read all applicable positions
         player = self._board.current_player() if player is None else player
-        if self._board.fences_left[player] == 0:
-            if IS_DEBUG:  # Logging for debug
-                self._logger.debug(f'{player} used all fences.')
-            return []
+        try:
+            if self._board.fences_left[player] == 0:
+                if IS_DEBUG:  # Logging for debug
+                    self._logger.debug(f'{player} used all fences.')
+                return []
+        except (AttributeError, KeyError) :
+            pass
 
         applicable_fences = []
         for r in range(MAX_ROW - 1):
@@ -405,7 +410,7 @@ class GameBoard:
         """
         agent = HeuristicAgent()
         return agent.heuristic_search(self, player)
-
+    
     def simulate_action(self, state: dict = None, *actions: Action, problem_type: int = 4) -> dict:
         """
         Simulate given actions.
@@ -516,7 +521,10 @@ class GameBoard:
             self._board.update_neighbours(pawn.square)
 
         # Recover fences. Before recovery, give all the fences to the current player.
-        current_player = self._board.current_player()
+        # current_player = self._board.current_player()
+        # self._board.fences_left[current_player] = FENCES_MAX * 2
+        turn_val = getattr(self._board, "turn", 0)      
+        current_player = "white" if turn_val == 0 else "black"
         self._board.fences_left[current_player] = FENCES_MAX * 2
 
         # Re-simulate fencing:
