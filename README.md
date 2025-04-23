@@ -92,41 +92,52 @@ If the given piece cannot be moved to the victory point, return an empty list []
 
 #### Part 2, Local search
 
-The goal of this problem is to find the three most appropriate barrier positions that interfere with your opponent's path, given that your path is already determined. While searching, you will know the opponent's position, but you should not search for the opponent's shortest path. Additionally, your search must start from one of the adjacent edges to your current position, and you can only move to one of the 8 adjacent areas.
+The goal of this problem is to find the most appropriate barrier positions that interfere with your opponent's path, given that your path is already determined. While searching, you will know the opponent's position, but you should not search for the opponent's shortest path. Additionally, your search must start from one of the adjacent edges to your current position, and you can only move to one of the 8 adjacent areas.
 
-이 문제의 목표는 여러분의 경로가 결정된 상태에서, 상대방의 진로를 방해하는 가장 적절한 장벽 위치 3개를 찾는 것입니다. 탐색 시 상대방의 위치는 알고있겠지만, 여러분은 상대방의 최단경로를 탐색해서는 안됩니다. 또한, 여러분의 탐색은 여러분의 현 위치에 인접한 모서리에서 시작해야 하고, 인접한 8개 영역으로만 움직일 수 있습니다.
+이 문제의 목표는 여러분의 경로가 결정된 상태에서, 상대방의 진로를 방해하는 가장 적절한 장벽 위치 조합을 찾는 것입니다. 탐색 시 상대방의 위치는 알고있겠지만, 여러분은 상대방의 최단경로를 탐색해서는 안됩니다. 또한, 여러분의 탐색은 여러분의 현 위치에 인접한 모서리에서 시작해야 하고, 인접한 8개 영역으로만 움직일 수 있습니다.
+
+To obtain the shortest distance of your opponent's path, you should use the provided function `board.distance_to_goal()` (You cannot use your own function, to make a fair comparison of time/memory)
+
+상대방의 최단경로 길이를 알고 싶다면, `board.distance_to_goal()` 함수를 사용하세요. (시간/메모리 계측의 공정성을 위해서, 각자 만든 함수로 측정할 수 없습니다.)
 
 - Format: Individual task
 
   형태: 개인과제
   
-- Disqualification: You will be disqualified if any of the following conditions are **violated**:
+  - Disqualification: You will be disqualified if any of the following conditions are **violated**:
 
-  실격: 다음 조건 중 하나라도 **위반**하였을 때
+    실격: 다음 조건 중 하나라도 **위반**하였을 때
   
-  1. You must use the Local Search algorithm as described in the course materials, with or without modification, and heuristic/uninformed search cannot be combined.
+    1. You must use the Local Search algorithm as described in the course materials, with or without modification, and heuristic/uninformed search cannot be combined.
 
-     수업 자료에 적힌 Local search 알고리즘을 그대로 또는 변형하여 사용해야 하고, heuristic/uninformed search는 결합할 수 없다.
+       수업 자료에 적힌 Local search 알고리즘을 그대로 또는 변형하여 사용해야 하고, heuristic/uninformed search는 결합할 수 없습니다.
      
-  2. The starting position for the search must be one of the four adjacent edges to your current position.
+    2. You cannot search for the path that the opponent will actually take. To get the minimum distance of the opponent, use `board.distance_to_goal()`
 
-     탐색의 시작 위치는 현재 자신의 위치에 인접한 모서리 4개 중 하나만 가능하다.
+       상대방이 실제로 이동할 경로 탐색은 할 수 없습니다. 상대방의 최단 경로 길이를 알고 싶다면, `board.distance_to_goal()`을 사용하세요.
      
-  3. You cannot search for the path that the opponent will actually take.
-
-     상대방이 실제로 이동할 경로 탐색은 할 수 없다.
+    3. You should find a complete configuration where all of your fences installed (Not three fences anymore). For example, if you're starting with 7 fences left, you should find the position of all seven fences.
+    
+       탐색 결과로 모든 장벽이 설치된 완전한 조합을 찾아야 합니다 (이전처럼 세 장벽이 아닙니다). 예를 들어, 여러분이 7개의 장벽이 남아있다면, 그 7개 장벽을 모두 설치해야 합니다. 
+ 
+    4. During the local search process, the number of fences should not be changed. You can only change the position of already placed fences, after the initial state.
+  
+       국소 탐색 과정에서, 장벽의 개수는 변할 수 없습니다. 초기 상태 이후에 여러분은 장벽의 위치를 바꿀수만 있습니다.
      
-  4. During the local search process, movement is only allowed to one of the 8 cells that share the current edge and vertex being searched.
-
-     국소 탐색 과정에서의 움직임은 현재 탐색하던 모서리와 꼭짓점을 공유하는 8개 칸으로만 가능하다.
+    5. During the search procedure, maximum three fences can be replaced when moving to other states. 
+       So, whenever you change the state using `board.simulate_action()` or `board.set_state()` after initialization, 
+       the system automatically checks whether the number of removed fences are at most three between the previous state and the new one. 
+       
+       탐색 과정 동안, 다른 상태로 변경하는 작업은 최대 3개의 장벽까지만 교체를 허용합니다.
+       그러니까, 판 초기화 이후에 여러분이 `board.simulate_action()` 또는 `board.set_state()` 함수를 부를 때마다, 함수는 이전 상태와 현재 상태 사이에서 제거된 펜스가 최대 3개인지를 확인합니다.
      
-  5. You cannot use parallel execution or parallel search, such as multi-threading or multi-processing.
+    6. You cannot use parallel execution or parallel search, such as multi-threading or multi-processing.
 
-     multi-threading이나 multi-processing 등 병렬 실행이나 병렬 탐색은 할 수 없다.
+       multi-threading이나 multi-processing 등 병렬 실행이나 병렬 탐색은 할 수 없습니다.
      
-  6. The algorithm execution time must not exceed 5 minutes, and the memory usage must not exceed 5MB.
+    7. The algorithm execution time must not exceed 5 minutes, and the memory usage must not exceed 5MB.
 
-     알고리즘 구동 시간은 5분을 초과할 수 없고, 메모리 사용량은 5MB를 초과할 수 없다.
+       알고리즘 구동 시간은 5분을 초과할 수 없고, 메모리 사용량은 5MB를 초과할 수 없습니다.
      
 - Victory / 승리
   1. Basic Level: Find the optimal barrier positions* that are equal to or better than the TA model's within 5 minutes while satisfying the restricted conditions without errors.
@@ -149,6 +160,9 @@ The goal of this problem is to find the three most appropriate barrier positions
 
 **참고**: 조교 코드는 역시 공개되지 않습니다. 조교 모델이 찾은 장벽 위치와 대등하거나 더 적합한 위치는 상대방의 최단경로가 얼마나 증가하는지를 바탕으로 계산하며, 더 많이 증가한 경우에 더 적합한 장벽 위치로 판단합니다. 단, 게임 규칙에 위반되는 경우는 실격패를 당하게 되므로, 상대방의 거리는 무한대가 아니라 "0"으로 계산됩니다. 마찬가지로 평가 시스템에 코드를 제출하면 결과를 6시간 내로 알 수 있습니다.
 
+**Note**: The program will check the existence of new fences using its center information. Thus, rotating a fence is not treated as a removal of a fence.
+
+**참고**: 프로그램은 새로 세워진 장벽이 사라졌는지를 장벽의 중심 위치로만 판단합니다. 그러니까, 장벽을 회전하는 것은 장벽을 삭제하는 것으로 취급되지 않습니다.
 
 #### Part 3. Belief-state search (disclosed)
 

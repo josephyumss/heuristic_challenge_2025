@@ -16,18 +16,17 @@ from typing import Tuple, List, Literal
 from psutil import Process as PUInfo, NoSuchProcess
 # Import some class definitions that implements the Settlers of Catan game.
 from pyquoridor.board import Board
-from pyquoridor.exceptions import GameOver, InvalidFence  # InvalidFence 추가
+from pyquoridor.exceptions import GameOver, InvalidFence, InvalidMove  # InvalidFence 추가
 from pyquoridor.square import MAX_COL, MAX_ROW
 
 # Import action specifications
-from action import Action, BLOCK, MOVE
+from action import Action, BLOCK, MOVE, FENCES_MAX
 # Import some utilities
 from util import print_board
 
 #: True if the program run with 'DEBUG' environment variable.
 IS_DEBUG = '--debug' in sys.argv
 IS_RUN = 'fixed_evaluation' in sys.argv[0]
-FENCES_MAX = 10
 
 class HeuristicAgent:
     def heuristic(self, current_row: int, target_row: int, current_col: int, board_width=5) -> float:
@@ -89,7 +88,7 @@ class HeuristicAgent:
                 visited_positions[next_pos] = new_turns
                 states[next_id] = next_state
 
-                # 새 휴리스틱
+                # New heuristic
                 h_val = self.heuristic(next_pos[0], target_row, next_pos[1])
                 f_val = new_turns + h_val
                 heapq.heappush(open_set, (f_val, next_id))
@@ -118,6 +117,8 @@ class GameBoard:
     #: [PRIVATE] Fields for computing maximum memory usage. Don't access this directly in your agent code!
     _init_memory = 0
     _max_memory = 0
+    _heuristic_calls = 0
+    _initial_fences_dict = {}
     #: [PRIVATE] Random seed generator
     _rng = random.Random(2938)
 
@@ -134,9 +135,6 @@ class GameBoard:
         
         # Initialize a new game board
         self._board = Board()
-
-        if not hasattr(self._board, "fences_left"):
-            self._board.fences_left = {"white": FENCES_MAX, "black": FENCES_MAX}
 
         self._vertical_turns = [[self._rng.randint(1, 5) for _ in range(9)] for _ in range(8)]
         self._horizontal_turns = [[self._rng.randint(1, 5) for _ in range(8)] for _ in range(9)]
@@ -225,6 +223,7 @@ class GameBoard:
         """
         self._init_memory = 0
         self._max_memory = 0
+        self._heuristic_calls = 0
         self._update_memory_usage()
 
     def set_to_state(self, specific_state=None, is_initial: bool = False):
@@ -240,6 +239,8 @@ class GameBoard:
             self._initial = specific_state
             self._current = deepcopy(self._initial)
             self._rng.seed(hash(self._initial['state_id']))  # Use state_id as hash seed.
+        else:
+            self.check_state_difference(self._current, specific_state)
 
         # Restore the board to the given state.
         self._restore_state(specific_state)
@@ -250,6 +251,12 @@ class GameBoard:
         if IS_DEBUG:  # Logging for debug
             self._logger.debug('State has been set as follows: \n' + self._unique_game_state_identifier())
             self._logger.debug('\n' + print_board(self._board))
+
+    def _set_initial_fences(self, fences):
+        """
+        Store the initial state of the fences
+        """
+        self._initial_fences_dict = fences
 
     def is_game_end(self):
         """
@@ -342,13 +349,10 @@ class GameBoard:
 
         # Read all applicable positions
         player = self._board.current_player() if player is None else player
-        try:
-            if self._board.fences_left[player] == 0:
-                if IS_DEBUG:  # Logging for debug
-                    self._logger.debug(f'{player} used all fences.')
-                return []
-        except (AttributeError, KeyError) :
-            pass
+        if self._board.fences_left[player] == 0:
+            if IS_DEBUG:  # Logging for debug
+                self._logger.debug(f'{player} used all fences.')
+            return []
 
         applicable_fences = []
         for r in range(MAX_ROW - 1):
@@ -402,12 +406,35 @@ class GameBoard:
         if self._max_memory >= 0:
             self._max_memory = max(self._max_memory, self.get_current_memory_usage())
 
+    def number_of_fences_left(self, player: Literal['black', 'white']):
+        """
+        Number of fences remained as uninstalled.
+        :param player: Player name to compute the number of fences unused
+        :return: (int) The number of unused fences
+        """
+        return self._board.fences_left[player]
+
+    def check_state_difference(self, state_from, state_to):
+        """
+        Check whether the state transition is allowed within the current problem setting (Challenge II)
+        If not, the function will raise an Exception.
+        :param state_from: The previous state moving from
+        :param state_to: The next state moving to
+        """
+
+        prev_fences = {tuple(r) for r in state_from['board']['fence_center']}
+        next_fences = {tuple(r) for r in state_to['board']['fence_center']}
+        fences_removed = len(prev_fences.difference(next_fences))
+
+        assert fences_removed <= 3, f'More than 3 fences were removed: {fences_removed} fences'
+
     def distance_to_goal(self, player: Literal['black', 'white']):
         """
         Compute distance toward the goal line.
         :param player: Player name to compute the distance toward the goal line.
         :return: (int) Total distance (counting turns of movement)
         """
+        self._heuristic_calls += 1
         agent = HeuristicAgent()
         return agent.heuristic_search(self, player)
     
@@ -436,12 +463,17 @@ class GameBoard:
             # Run actions through calling each action object. If error occurs, raise as it is (except for GameOver)
             try:
                 # For challenge I and II, force the current player to agents
-                if problem_type < 3:
+                if problem_type == 1:
+                    self._board.turn = 0 if act.player == 'white' else 1
+                if problem_type == 2:
                     self._board.turn = 0 if self._player_side == 'white' else 1
 
-                act(self)
+                act(self, avoid_check=problem_type == 2)
             except GameOver:
                 break
+            except InvalidMove as e:
+                if problem_type != 2:
+                    raise e
 
             # Break the loop if the game ends within executing actions.
             if self.is_game_end():
@@ -453,6 +485,18 @@ class GameBoard:
             assert self._board.turn == (0 if self._player_side == 'white' else 1)
 
         self._current = self._save_state()
+
+        # Check whether the students installed all fences or not.
+        if problem_type == 2:
+            self.check_state_difference(state, self._current)
+
+            fences_left_player = self.number_of_fences_left(self.get_player_id())
+            fences_left_other = self.number_of_fences_left(self.get_opponent_id())
+
+            assert fences_left_player == 0, 'Some fences left as unused after the simulation!'
+            assert (FENCES_MAX * 2 - (fences_left_other + fences_left_other)
+                    == len(self._board.fence_center_grid.argwhere().tolist())), \
+                'Number mismatch! The number of recorded fence usage != The number of installed fences'
 
         if IS_DEBUG:  # Logging for debug
             self._logger.debug('State has been changed to: \n' + self._unique_game_state_identifier())
@@ -521,10 +565,7 @@ class GameBoard:
             self._board.update_neighbours(pawn.square)
 
         # Recover fences. Before recovery, give all the fences to the current player.
-        # current_player = self._board.current_player()
-        # self._board.fences_left[current_player] = FENCES_MAX * 2
-        turn_val = getattr(self._board, "turn", 0)      
-        current_player = "white" if turn_val == 0 else "black"
+        current_player = self._board.current_player()
         self._board.fences_left[current_player] = FENCES_MAX * 2
 
         # Re-simulate fencing:

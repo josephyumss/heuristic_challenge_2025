@@ -7,9 +7,14 @@ import sys
 # Type definition of Python
 from typing import Tuple, Literal
 
+import pyquoridor.board
+from pyquoridor.exceptions import InvalidFence
+
 #: True if the program run with 'DEBUG' environment variable.
 IS_DEBUG = '--debug' in sys.argv
 
+# Maximum number of fences
+FENCES_MAX = 10
 
 class Action(abc.ABC):
     """
@@ -20,11 +25,12 @@ class Action(abc.ABC):
     _logger = logging.getLogger('Action')
 
     @abc.abstractmethod
-    def __call__(self, board):
+    def __call__(self, board, avoid_check=False):
         """
         Executing/Simulating an action on a game board
 
         :param board: Game board to manipulate
+        :param avoid_check: Check whether the game finished or not
         """
         raise NotImplementedError()
 
@@ -49,13 +55,14 @@ class MOVE(Action):
     def __repr__(self):  # String representation for this
         return f'MOVE{self.position} of {self.player}'
 
-    def __call__(self, board):
+    def __call__(self, board, avoid_check=False):
         if IS_DEBUG:  # Logging for debugging
             self._logger.debug(f'Calling {str(self)} action')
 
         # This can raise two exceptions: GameOver / InvalidMove
         # These two exceptions will be handled in the board.
-        board._board.move_pawn(self.player, *self.position)
+        board._board.move_pawn(self.player, *self.position,
+                               check_winner=not avoid_check, check_player=not avoid_check)
 
 
 class BLOCK(Action):
@@ -82,23 +89,59 @@ class BLOCK(Action):
     def __repr__(self):  # String representation for this
         return f'BLOCK_{self.orientation}{self.edge} of player {self.player}'
 
-    def __call__(self, board):
+    def __call__(self, board, avoid_check=False):
         if IS_DEBUG:  # Logging for debugging
             self._logger.debug(f'Calling BLOCK construction on edge {self.edge}.')
 
-        #edit (assert board._board.fences_left[self.player] > 0, f'{self.player} has no fences left.')
-        if hasattr(board._board, 'fences_left'):
-            assert board._board.fences_left[self.player] > 0, f'{self.player} has no fences left.'
-
-        elif board._current is not None:
-            current_state = board.get_state()
-            assert current_state['player'][self.player]['fences_left'] > 0, f'{self.player} has no fences left.'
-        #end edit
+        assert board._board.fences_left[self.player] > 0, f'{self.player} has no fences left.'
 
         # This can raise two exceptions: GameOver / InvalidMove
         # These two exceptions will be handled in the board.
-        board._board.place_fence(*self.edge, self.orientation)
+        board._board.place_fence(*self.edge, self.orientation, check_winner=not avoid_check)
+
+
+class REMOVE_BLOCK(BLOCK):
+    """
+    Remove a fence
+    """
+
+    def __init__(self, player: Literal['black', 'white'], edge: Tuple[int, int],
+                 orientation: Literal['horizontal', 'vertical']):
+        """
+        Action for removing a fence at edge.
+
+        :param player: ID of the current player. black or white. (You can get this from board.get_player_index())
+        :param edge: The center coordinate of the edge, i.e., (row, col)
+        :param orientation: 'horizontal' or 'vertical', Direction of the fence.
+        """
+        self.player = player
+        self.edge = edge
+        self.orientation = orientation[0]
+
+        assert self.orientation in 'hv', 'Orientation must be one of "horizontal" or "vertical"'
+        assert self.player in ('black', 'white'), 'Player must be one of "black" or "white"'
+
+    def __repr__(self):  # String representation for this
+        return f'REMOVE_BLOCK_{self.orientation}{self.edge} of player {self.player}'
+
+    def __call__(self, board, avoid_check=False):
+        if IS_DEBUG:  # Logging for debugging
+            self._logger.debug(f'Calling BLOCK removal on edge {self.edge}.')
+
+        assert board._board.fences_left[self.player] == FENCES_MAX, f'{self.player} has no fences to remove.'
+
+        # This can raise two exceptions: GameOver / InvalidMove
+        # These two exceptions will be handled in the board.
+        board._board: pyquoridor.board.Board
+
+        # Check if fence position is occupied
+        invalid = board._board.fence_exists(*self.edge, self.orientation)
+        if not invalid:
+            raise InvalidFence(f'Invalid fence {self.edge}: Fence does not exist')
+
+        board._board._place_or_remove_fence(*self.edge, self.orientation, place=False)
+        board._board.fences_left[self.player] += 1
 
 
 # Export actions only
-__all__ = ['Action', 'MOVE', 'BLOCK']
+__all__ = ['Action', 'MOVE', 'BLOCK', 'REMOVE_BLOCK', 'FENCES_MAX']

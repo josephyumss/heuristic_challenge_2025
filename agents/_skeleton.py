@@ -47,7 +47,7 @@ class Agent:  # Do not change the name of this class!
         """
         raise NotImplementedError()
 
-    def local_search(self, board: GameBoard, time_limit: float) -> Union[MOVE, List[BLOCK]]:
+    def local_search(self, board: GameBoard, time_limit: float) -> List[BLOCK]:
         """
         * Complete this function to answer the challenge PART II.
 
@@ -76,8 +76,7 @@ class Agent:  # Do not change the name of this class!
 
         :param board: The game board with current state.
         :param time_limit: The time limit for the search. Datetime.now() should have lower timestamp value than this.
-        :return: The next MOVE or list of three BLOCKs.
-            That is, you should either return MOVE() action or [BLOCK(), BLOCK(), BLOCK()].
+        :return: The list of three BLOCKs. That is, you should return [BLOCK(), BLOCK(), BLOCK()].
         """
         raise NotImplementedError()
 
