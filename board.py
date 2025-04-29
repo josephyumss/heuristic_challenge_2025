@@ -93,6 +93,7 @@ class HeuristicAgent:
                 f_val = new_turns + h_val
                 heapq.heappush(open_set, (f_val, next_id))
 
+        board.set_to_state(initial_state)
         return 0
 
 class GameBoard:
@@ -240,7 +241,8 @@ class GameBoard:
             self._current = deepcopy(self._initial)
             self._rng.seed(hash(self._initial['state_id']))  # Use state_id as hash seed.
         else:
-            self.check_state_difference(self._current, specific_state)
+            if self._current['player'][self._player_side]['fences_left'] == 0:
+                self.check_state_difference(self._current, specific_state)
 
         # Restore the board to the given state.
         self._restore_state(specific_state)
@@ -426,19 +428,24 @@ class GameBoard:
         next_fences = {tuple(r) for r in state_to['board']['fence_center']}
         fences_removed = len(prev_fences.difference(next_fences))
 
-        assert fences_removed <= 3, f'More than 3 fences were removed: {fences_removed} fences'
+        assert fences_removed <= 5, f'More than 5 fences were removed: {fences_removed} fences'
 
-    def distance_to_goal(self, player: Literal['black', 'white']):
+    def distance_to_goal(self, player: Literal['black', 'white'], state=None):
         """
         Compute distance toward the goal line.
         :param player: Player name to compute the distance toward the goal line.
+        :param state: New state to check
         :return: (int) Total distance (counting turns of movement)
         """
         self._heuristic_calls += 1
         agent = HeuristicAgent()
+
+        if state != None:
+            self.set_to_state(state)
+
         return agent.heuristic_search(self, player)
     
-    def simulate_action(self, state: dict = None, *actions: Action, problem_type: int = 4) -> dict:
+    def simulate_action(self, state: dict = None, *actions: Action, problem_type: int = 2) -> dict:
         """
         Simulate given actions.
 
@@ -458,6 +465,7 @@ class GameBoard:
 
         # Restore to the given state
         self.set_to_state(state)
+        _prev_current = self.get_state()
 
         for act in actions:  # For each actions in the variable arguments,
             # Run actions through calling each action object. If error occurs, raise as it is (except for GameOver)
@@ -471,9 +479,6 @@ class GameBoard:
                 act(self, avoid_check=problem_type == 2)
             except GameOver:
                 break
-            except InvalidMove as e:
-                if problem_type != 2:
-                    raise e
 
             # Break the loop if the game ends within executing actions.
             if self.is_game_end():
@@ -488,13 +493,14 @@ class GameBoard:
 
         # Check whether the students installed all fences or not.
         if problem_type == 2:
-            self.check_state_difference(state, self._current)
+            if _prev_current['player'][self._player_side]['fences_left'] == 0:
+                self.check_state_difference(_prev_current, self._current)
 
             fences_left_player = self.number_of_fences_left(self.get_player_id())
             fences_left_other = self.number_of_fences_left(self.get_opponent_id())
 
-            assert fences_left_player == 0, 'Some fences left as unused after the simulation!'
-            assert (FENCES_MAX * 2 - (fences_left_other + fences_left_other)
+            assert fences_left_player == 0, f'{fences_left_player} fences left as unused after the simulation!'
+            assert (FENCES_MAX * 2 - (fences_left_other + fences_left_player)
                     == len(self._board.fence_center_grid.argwhere().tolist())), \
                 'Number mismatch! The number of recorded fence usage != The number of installed fences'
 
@@ -565,13 +571,14 @@ class GameBoard:
             self._board.update_neighbours(pawn.square)
 
         # Recover fences. Before recovery, give all the fences to the current player.
-        current_player = self._board.current_player()
-        self._board.fences_left[current_player] = FENCES_MAX * 2
+        self._board.fences_left['black'] = FENCES_MAX * 2
+        self._board.fences_left['white'] = FENCES_MAX * 2
 
         # Re-simulate fencing:
         horizontals = [tuple(place) for place in state['board']['horizontal_fences']]
         verticals = [tuple(place) for place in state['board']['vertical_fences']]
         for r, c in state['board']['fence_center']:
+            current_player = self._board.current_player()
             if (r, c) in horizontals and (r, c + 1) in horizontals:
                 act = BLOCK(player=current_player, orientation='horizontal', edge=(r, c))
             elif (r, c) in verticals and (r + 1, c) in verticals:
@@ -579,7 +586,7 @@ class GameBoard:
             else:
                 raise ValueError(f'Fence center {r}, {c} is not in both horizontal and vertical fences')
             try:
-                act(self)
+                act(self, avoid_check=True)
             except GameOver:
                 continue
 

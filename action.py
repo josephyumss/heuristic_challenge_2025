@@ -128,7 +128,7 @@ class REMOVE_BLOCK(BLOCK):
         if IS_DEBUG:  # Logging for debugging
             self._logger.debug(f'Calling BLOCK removal on edge {self.edge}.')
 
-        assert board._board.fences_left[self.player] == FENCES_MAX, f'{self.player} has no fences to remove.'
+        assert board._board.fences_left[self.player] < FENCES_MAX, f'{self.player} has no fences to remove.'
 
         # This can raise two exceptions: GameOver / InvalidMove
         # These two exceptions will be handled in the board.

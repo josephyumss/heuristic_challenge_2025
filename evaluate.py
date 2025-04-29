@@ -27,7 +27,7 @@ from evaluator.util import MEGABYTES
 #: The number of games to run the evaluation
 GAMES = 10
 #: Limit of execution. (60 minutes)
-TIME_LIMIT = 3600
+TIME_LIMIT = 360
 MEMORY_LIMIT = 4096
 #: Number of starting fences for each problem.
 STARTING_FENCES = {
@@ -41,7 +41,7 @@ NOTE = {
     1: '                    * Outcome = Length of found path (smaller = better).\n'
        '                            * SearchActs are not used in this challenge.\n',
     2: '      * Outcome = Length of opponent path after BLOCK (larger = better).\n'
-       '                  * SearchActs = Number of search calls before decision.\n',
+       '      * SearchActs = Number of objective function calls before decision.\n',
     3: '    * Outcome = Length of opponent path after 4 turns (larger = better).\n'
        '                            * SearchActs are not used in this challenge.\n',
     4: '                                                   * Outcome = Win Rate.\n'

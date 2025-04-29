@@ -11,6 +11,8 @@ def get_all_agents():
     agents = []
     for code in Path(__file__).parent.glob('*.py'):  # Query for all python files in this directory
         if code.stem != 'load' and not code.stem.startswith('_'):  # If the file name doesn't match with special file names,
+            if 't_' in code.stem:
+                continue
             agents.append(code.stem)  # Include them
 
     return sorted(agents)

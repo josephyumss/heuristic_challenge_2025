@@ -126,11 +126,11 @@ To obtain the shortest distance of your opponent's path, you should use the prov
      
     5. During the search procedure, maximum three fences can be replaced when moving to other states. 
        So, whenever you change the state using `board.simulate_action()` or `board.set_state()` after initialization, 
-       the system automatically checks whether the number of removed fences are at most three between the previous state and the new one. 
-       
-       탐색 과정 동안, 다른 상태로 변경하는 작업은 최대 3개의 장벽까지만 교체를 허용합니다.
+       the system automatically checks whether the number of removed fences are at most five between the previous state and the new one. 
+
+       탐색 과정 동안, 다른 상태로 변경하는 작업은 최대 5개의 장벽까지만 교체를 허용합니다.
        그러니까, 판 초기화 이후에 여러분이 `board.simulate_action()` 또는 `board.set_state()` 함수를 부를 때마다, 함수는 이전 상태와 현재 상태 사이에서 제거된 펜스가 최대 3개인지를 확인합니다.
-     
+
     6. You cannot use parallel execution or parallel search, such as multi-threading or multi-processing.
 
        multi-threading이나 multi-processing 등 병렬 실행이나 병렬 탐색은 할 수 없습니다.
@@ -146,7 +146,7 @@ To obtain the shortest distance of your opponent's path, you should use the prov
      
   2. Intermediate Level: Achieve the basic level and complete the search within 10 seconds.
 
-     중급 단계: 기초 단계를 달성하고, 탐색을 10초 이내로 완료하세요.
+     중급 단계: 기초 단계를 달성하고, 탐색을 60초 이내로 완료하세요.
      
   3. Advanced Level: Achieve the intermediate level and complete the search with memory usage within 1MB.
 

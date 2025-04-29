@@ -72,9 +72,9 @@ def _execute(initial_state, cls, logger):
         monitor_thread.start()
 
         time_start = time()
-        final_answer = a.local_search(board, time_limit=time_limit)
-        assert isinstance(move, list) and len(move) == 3 and all(isinstance(x, BLOCK) for x in move),\
-            'Solution should be a LIST of 3 BLOCKs.'
+        final_answer = a.local_search(board, time_limit=time_start + HARD_TIME_LIMIT)
+        assert isinstance(final_answer, list) and all(isinstance(x, BLOCK) for x in final_answer),\
+            'Solution should be a LIST of BLOCKs.'
 
         time_end = time()
         time_delta = time_end - time_start
@@ -123,7 +123,6 @@ def _execute(initial_state, cls, logger):
             next_state = board.simulate_action(None, *final_answer, problem_type=2)
 
             # Now, use agent to find the shortest path of opponent.
-            # TODO: I'll provide TA's answer for part I, after the submission.
             length = board.distance_to_goal(board.get_opponent_id())
 
             # Check whether the initial fences exists
@@ -132,7 +131,7 @@ def _execute(initial_state, cls, logger):
                 init_fences = {tuple(r) for r in initial_fences[key]}
 
                 assert next_fences.issuperset(init_fences), 'Initial fences are moved!'
-        except (InvalidMove, InvalidFence):
+        except (InvalidMove, InvalidFence, AssertionError):
             failure = traceback.format_exc()
 
     return Performance(
@@ -158,7 +157,7 @@ def execute_local_search(agent, initial_state: dict, logger: Logger, res_ta: Per
         is_beating_ta_time = res_ta.search * 1.01 >= res.search   # Allow 1% errors
 
     is_basic_stage = (res.failure is None) and is_beating_ta_outcome
-    is_intermediate_stage = is_basic_stage and (res.time <= 10)
+    is_intermediate_stage = is_basic_stage and (res.time <= 60)
     is_advanced_stage = is_intermediate_stage and (res.memory <= 1)
     is_challenge_stage = is_advanced_stage and is_beating_ta_time
     # TA computation time will be measured on online system.
