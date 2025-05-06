@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Users\Jinhee\source\repos\heuristic_challenge_2025\evaluator\part2.py", line 78, in _execute
+    move = a.local_search(board, time_limit=time_limit)
+  File "C:\Users\Jinhee\source\repos\heuristic_challenge_2025\agents\LastVersion.py", line 67, in local_search
+    self._logger.debug(f"left fence : {GameBoard._board.fences_left[self.player]}")
+AttributeError: 'NoneType' object has no attribute 'fences_left'
