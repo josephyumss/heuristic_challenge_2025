@@ -26,13 +26,12 @@ def _execute(initial_state, cls, logger):
     board._vertical_turns = distances['vertical']
     board._horizontal_turns = distances['horizontal']
 
+    # Copy the initial set of fences
+    initial_fences = {k: v.copy() for k, v in initial_state['board'].items()}
+
     # Reset to specific state
     board.set_to_state(initial_state, is_initial=True)
-
-    # Override Heuristic Search Agent with TA's
-    ta_cls = load_ta_agent()
-    if ta_cls is not None:
-        cls.heuristic_search = ta_cls.heuristic_search
+    board._set_initial_fences(initial_fences)
 
     # For each agent, execute the same problem.
     a = cls(player=initial_state['player_id'])
@@ -41,7 +40,6 @@ def _execute(initial_state, cls, logger):
     board.reset_memory_usage()
     board.get_current_memory_usage()
 
-    search_call = 0
     final_answer = None
     state = None
     failure = None
@@ -49,8 +47,7 @@ def _execute(initial_state, cls, logger):
 
     # Start to search
     logger.info(f'Begin to search using {a.name} agent.')
-    time_start = time()
-    time_limit = time_start + HARD_TIME_LIMIT
+    time_delta = 0
     try:
         def update_memory():
             nonlocal peak_memory, initial_memory
@@ -74,18 +71,13 @@ def _execute(initial_state, cls, logger):
         monitor_thread = threading.Thread(target=memory_monitor, daemon=True)
         monitor_thread.start()
 
-        while time() < time_limit:
-            move = a.local_search(board, time_limit=time_limit)
-            search_call += 1
-            assert isinstance(move, MOVE) or (isinstance(move, list) and len(move) == 3
-                                              and all(isinstance(x, BLOCK) for x in move)),\
-                'Solution should be either MOVE or a LIST of 3 BLOCKs.'
+        time_start = time()
+        final_answer = a.local_search(board, time_limit=time_start + HARD_TIME_LIMIT)
+        assert isinstance(final_answer, list) and all(isinstance(x, BLOCK) for x in final_answer),\
+            'Solution should be a LIST of BLOCKs.'
 
-            if isinstance(move, MOVE):
-                state = board.simulate_action(state, move, problem_type=1)
-            else:
-                final_answer = move
-                break
+        time_end = time()
+        time_delta = time_end - time_start
 
         stop_monitoring = True
         monitor_thread.join(timeout=1.0)
@@ -98,8 +90,8 @@ def _execute(initial_state, cls, logger):
         stop_monitoring = True
 
     # Compute how much time passed
-    time_end = time()
-    time_delta = round((time_end - time_start) * 100) / 100
+    time_delta = round(time_delta * 100) / 100
+    search_call = board._heuristic_calls
 
     board_memory = board.get_max_memory_usage() / MEGABYTES
     memory_usage = round(max(board_memory, peak_memory - initial_memory) * 100) / 100
@@ -128,15 +120,18 @@ def _execute(initial_state, cls, logger):
     if final_answer is not None:
         try:
             board.set_to_state(initial_state, is_initial=True)  # Reset to initial state
-            board.simulate_action(None, *final_answer, problem_type=1)
+            next_state = board.simulate_action(None, *final_answer, problem_type=2)
 
             # Now, use agent to find the shortest path of opponent.
-            # TODO: I'll provide TA's answer for part I, after the submission.
-            board._player_side = 'white' if board._player_side == 'black' else 'black'
-            route = a.heuristic_search(board)
+            length = board.distance_to_goal(board.get_opponent_id())
 
-            length = len(route)
-        except (InvalidMove, InvalidFence):
+            # Check whether the initial fences exists
+            for key in ['fence_center', 'horizontal_fences', 'vertical_fences']:
+                next_fences = {tuple(r) for r in next_state['board'][key]}
+                init_fences = {tuple(r) for r in initial_fences[key]}
+
+                assert next_fences.issuperset(init_fences), 'Initial fences are moved!'
+        except (InvalidMove, InvalidFence, AssertionError):
             failure = traceback.format_exc()
 
     return Performance(
@@ -162,7 +157,7 @@ def execute_local_search(agent, initial_state: dict, logger: Logger, res_ta: Per
         is_beating_ta_time = res_ta.search * 1.01 >= res.search   # Allow 1% errors
 
     is_basic_stage = (res.failure is None) and is_beating_ta_outcome
-    is_intermediate_stage = is_basic_stage and (res.time <= 10)
+    is_intermediate_stage = is_basic_stage and (res.time <= 60)
     is_advanced_stage = is_intermediate_stage and (res.memory <= 1)
     is_challenge_stage = is_advanced_stage and is_beating_ta_time
     # TA computation time will be measured on online system.
