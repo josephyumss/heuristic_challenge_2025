@@ -28,7 +28,11 @@ from util import print_board
 IS_DEBUG = '--debug' in sys.argv
 IS_RUN = 'fixed_evaluation' in sys.argv[0]
 
+
+
+
 class HeuristicAgent:
+    _logger = logging.getLogger('씨발럼')
     def heuristic(self, current_row: int, target_row: int, current_col: int, board_width=5) -> float:
         rowDist = abs(current_row - target_row)
 
@@ -43,6 +47,8 @@ class HeuristicAgent:
         # Initialize
         initial_state = board.get_state()
         target_row = 8 if player else 0
+        
+        self._logger.debug("heuristic serch 가 왜 실행되냐?")
 
         initial_pos = tuple(initial_state['player'][player]['pawn'])
         initial_id = initial_state['state_id']
