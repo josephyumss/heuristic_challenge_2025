@@ -146,26 +146,68 @@ class Agent:  # Do not change the name of this class!
                 fence_position.remove(fence)
         self._logger.debug(f"the result is {candidate}")
 
+        def candidate_to_BLOCK(candidate : list):
+            return [BLOCK(self.player,fence[0],fence[1]) for fence in candidate]
+
         def generate_neighbor(candidate,applicable_fence,FC,FH,FV):
-            applicable_fence = [fence for fence in applicable_fence if (fence not in candidate) and (check_valid(fence[0],fence[1],FC,FH,FV))]
+            copied_candidate = deepcopy(candidate)
+            applicable_fence = [fence for fence in applicable_fence if (fence not in copied_candidate) and (check_valid(fence[0],fence[1],FC,FH,FV))]
             n = randint(1,5)
             for i in range(n):
-                candidate.pop()
+                copied_candidate.pop()
             new_cand = sample(applicable_fence,n)
-            new_cand = candidate + new_cand
+            new_cand = copied_candidate + new_cand
             return new_cand
 
         def obj(state, fence, opponent):
-            neighbor_state = board.simulate_action(state,fence)
-            return board.distance_to_goal(opponent,neighbor_state)
+            self._logger.debug("compute obj..")
+            state = board.simulate_action(None,*candidate_to_BLOCK(fence))
+            self._logger.debug("simulate done")
+            return board.distance_to_goal(opponent,state)
         
-        change = True
-        while change:
-            neighbor = generate_neighbor(shuffle(candidate),board.get_applicable_fences(),FC,FH,FV) # FC,FH,FV가 update되어야 함. 여기 수정.
+        def change_to_neighbor(cur_cand, neighbor_cand, FC, FH, FV):
+            for fence in cur_cand:
+                if list(fence[0]) in FC:
+                    if fence[1]=="horizontal":
+                        FC.remove(list(fence[0]))
+                        FH.remove(list(fence[0]))
+                    if fence[1]=="vertical":
+                        FC.remove(list(fence[0]))
+                        FV.remove(list(fence[0]))
+
+            for fence in neighbor_cand:
+                if list(fence[0]) not in FC:
+                    if fence[1]=="horizontal":
+                        FC.append(list(fence[0]))
+                        FH.append(list(fence[0]))
+                    if fence[1]=="vertical":
+                        FC.append(list(fence[0]))
+                        FV.append(list(fence[0]))
+
+            return neighbor_cand, FC, FH, FV
+        
+        self._logger.debug(F"Candidate : {candidate}")
+        self._logger.debug(f"FC : {fenceCenter}")
+        self._logger.debug(f"FH : {fenceHorizontal}")
+        self._logger.debug(f"FV: {fenceVertical}")
+        
+        count = 0
+        while True:
+            shuffle(candidate)
+            neighbor = generate_neighbor(candidate,board.get_applicable_fences(),fenceCenter,fenceHorizontal,fenceVertical) # FC,FH,FV가 update되어야 함. 여기 수정.
+            self._logger.debug(f"neighbor is {neighbor}")
+            current_obj = obj(current_state, candidate, opponent)
+            self._logger.debug(f"cur obj : {current_obj}")
+            neighbor_obj = obj(current_state, neighbor, opponent)
+            self._logger.debug(f"cur obj : {current_obj}, neighbor obj : {neighbor_obj}")
+            if neighbor_obj > current_obj: # 일단은 side walk 불가능 조건으로 둠. 이후 reached 만들어서 side walk 만들어도 될 듯
+                self._logger.debug(f"change to neighbor : {candidate} -> {neighbor}")
+                candidate, fenceCenter, fenceHorizontal, fenceVertical = change_to_neighbor(candidate,neighbor,fenceCenter, fenceHorizontal, fenceVertical)
+            elif count==10:
+                break
+            else :
+                count += 1
             
-
-
-
         return [BLOCK(self.player,fence[0],fence[1]) for fence in candidate]
                     
         # self._logger.debug("get applicable moves for childs")
