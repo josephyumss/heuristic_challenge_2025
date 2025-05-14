@@ -1,5 +1,5 @@
 from pathlib import Path
-from random import choice
+from random import choice,randint,sample,shuffle
 from time import time
 from traceback import print_exc, format_exc
 from typing import Tuple, List, Callable, Dict, Generator, Optional, Literal, Union
@@ -106,27 +106,20 @@ class Agent:  # Do not change the name of this class!
                             if pos[1] < fence[1]:
                                 if [pos[0],pos[1]-2] in FH:
                                     return False
-
                 for fence in FV:
                     if pos[1]==fence[1]+1 or pos[1]==fence[1]-1:
                         if pos[1]==0 or pos[1]==7:
                             return False
                         
                     if pos[1]==fence[1]+1 and abs(pos[0]-fence[0]) <= 1:
-                        self._logger.debug(f"{pos}는 {fence}와 조건 1에 해당함")
                         if [pos[0]+1,pos[1]+1] in FV or [pos[0],pos[1]+1] in FV or [pos[0]-1,pos[1]+1] in FV:
-                            self._logger.debug(f"{pos}는 {fence}와 조건 1-2에 해당함")
                             return False     
                     
                     if pos[1]==fence[1]-1 and abs(pos[0]-fence[0]) <= 1:
-                        self._logger.debug(f"{pos}는 {fence}와 조건 2에 해당함")
                         if [pos[0]+1,pos[1]-1] in FV or [pos[0],pos[1]-1] in FV or [pos[0]-1,pos[1]-1] in FV:
-                            self._logger.debug(f"{pos}는 {fence}와 조건 2-2에 해당함")
                             return False
-
             if ori == 'vertical':
                 return False
-            
             return True
 
         # occupied fences
@@ -135,7 +128,7 @@ class Agent:  # Do not change the name of this class!
         fenceVertical = current_state['board']['vertical_fences']
 
         #initial fence position
-        fence_position = deepcopy(board.get_applicable_fences(self.player))
+        fence_position = board.get_applicable_fences(self.player)
         candidate = []
         while left_fence > 0 :
             self._logger.debug(f"left_fence is {left_fence}")
@@ -152,6 +145,27 @@ class Agent:  # Do not change the name of this class!
             else :
                 fence_position.remove(fence)
         self._logger.debug(f"the result is {candidate}")
+
+        def generate_neighbor(candidate,applicable_fence,FC,FH,FV):
+            applicable_fence = [fence for fence in applicable_fence if (fence not in candidate) and (check_valid(fence[0],fence[1],FC,FH,FV))]
+            n = randint(1,5)
+            for i in range(n):
+                candidate.pop()
+            new_cand = sample(applicable_fence,n)
+            new_cand = candidate + new_cand
+            return new_cand
+
+        def obj(state, fence, opponent):
+            neighbor_state = board.simulate_action(state,fence)
+            return board.distance_to_goal(opponent,neighbor_state)
+        
+        change = True
+        while change:
+            neighbor = generate_neighbor(shuffle(candidate),board.get_applicable_fences(),FC,FH,FV) # FC,FH,FV가 update되어야 함. 여기 수정.
+            
+
+
+
         return [BLOCK(self.player,fence[0],fence[1]) for fence in candidate]
                     
         # self._logger.debug("get applicable moves for childs")
