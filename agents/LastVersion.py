@@ -9,7 +9,7 @@ from board import GameBoard
 from copy import deepcopy
 
 from queue import PriorityQueue
-
+import math
 import logging
 import copy
 class Agent:  # Do not change the name of this class!
@@ -70,11 +70,13 @@ class Agent:  # Do not change the name of this class!
         # return None
         current_state=board.get_state()
         current_position = tuple(current_state['player'][self.player]['pawn'])
-
+        
         self._logger.debug(f"current state : {current_state}")
 
         if self.player == 'black' : opponent = 'white'
         else : opponent = 'black'
+        self._logger.debug(f"board.distance_to_goal(opponent) : {board.distance_to_goal(opponent)}")
+        opponent_position = tuple(current_state['player'][opponent]['pawn'])
 
         #left fence
         left_fence = board.number_of_fences_left(self.player)
@@ -110,17 +112,18 @@ class Agent:  # Do not change the name of this class!
                                 if [pos[0],pos[1]-2] in FH:
                                     return False
                 for fence in FV:
-                    if pos[1]==fence[1]+1 or pos[1]==fence[1]-1:
-                        if pos[1]==0 or pos[1]==7:
-                            return False
+                    if abs(pos[0]-fence[0]) <= 1:
+                        if pos[1]==fence[1]+1 or pos[1]==fence[1]-1 or pos[1]==fence[1]:
+                            if pos[1]==0 or pos[1]==7:
+                                return False
                         
-                    if pos[1]==fence[1]+1 and abs(pos[0]-fence[0]) <= 1:
-                        if [pos[0]+1,pos[1]+1] in FV or [pos[0],pos[1]+1] in FV or [pos[0]-1,pos[1]+1] in FV or [pos[0]+1,pos[1]] in FV or [pos[0]-1,pos[1]] in FV:
-                            return False     
+                        if pos[1]==fence[1]+1:
+                            if [pos[0]+1,pos[1]+1] in FV or [pos[0],pos[1]+1] in FV or [pos[0]-1,pos[1]+1] in FV or [pos[0]+1,pos[1]] in FV or [pos[0]-1,pos[1]] in FV:
+                                return False     
 
-                    if pos[1]==fence[1]-1 and abs(pos[0]-fence[0]) <= 1:
-                        if [pos[0]+1,pos[1]-1] in FV or [pos[0],pos[1]-1] in FV or [pos[0]-1,pos[1]-1] in FV or [pos[0]+1,pos[1]] in FV or [pos[0]-1,pos[1]] in FV:
-                            return False
+                        if pos[1]==fence[1]-1:
+                            if [pos[0]+1,pos[1]-1] in FV or [pos[0],pos[1]-1] in FV or [pos[0]-1,pos[1]-1] in FV or [pos[0]+1,pos[1]] in FV or [pos[0]-1,pos[1]] in FV:
+                                return False
             if ori == 'vertical':
                 for fence in FV:
                     if fence[1] == pos[1] :
@@ -147,17 +150,18 @@ class Agent:  # Do not change the name of this class!
                                 if [pos[0]-2,pos[1]] in FV:
                                     return False
                 for fence in FH:
-                    if pos[0]==fence[0]+1 or pos[0]==fence[0]-1:
-                        if pos[0]==0 or pos[0]==7:
-                            return False
+                    if abs(pos[1]-fence[1]) <= 1:
+                        if pos[0]==fence[0]+1 or pos[0]==fence[0]-1 or pos[0]==fence[0]:
+                            if pos[0]==0 or pos[0]==7:
+                                return False
+                            
+                        if pos[0]==fence[0]+1:
+                            if [pos[0]+1,pos[1]+1] in FH or [pos[0]+1,pos[1]] in FH or [pos[0]+1,pos[1]-1] in FH:
+                                return False     
                         
-                    if pos[0]==fence[0]+1 and abs(pos[1]-fence[1]) <= 1:
-                        if [pos[0]+1,pos[1]+1] in FH or [pos[0]+1,pos[1]] in FH or [pos[0]+1,pos[1]-1] in FH:
-                            return False     
-                    
-                    if pos[0]==fence[0]-1 and abs(pos[1]-fence[1]) <= 1:
-                        if [pos[0]-1,pos[1]+1] in FH or [pos[0]-1,pos[1]] in FH or [pos[0]-1,pos[1]-1] in FH:
-                            return False
+                        if pos[0]==fence[0]-1:
+                            if [pos[0]-1,pos[1]+1] in FH or [pos[0]-1,pos[1]] in FH or [pos[0]-1,pos[1]-1] in FH:
+                                return False
             return True
 
         # occupied fences
@@ -234,11 +238,24 @@ class Agent:  # Do not change the name of this class!
                     applicable_fence.remove(new_cand)
             return copied_candidate + result
 
-        def obj(fence, opponent):
-            self._logger.debug("compute obj..")
-            state = board.simulate_action(None,*candidate_to_BLOCK(fence))
-            self._logger.debug("simulate done")
-            return board.distance_to_goal(opponent,state)
+        def obj(fences, opponent, opponent_pos):
+            # self._logger.debug("compute obj..")
+            # state = board.simulate_action(None,*candidate_to_BLOCK(fence))
+            # self._logger.debug("simulate done")
+            # return board.distance_to_goal(opponent,state)
+            obj_val = 0
+            for fence in fences:
+                if fence[1]=='horizontal':
+                    cur_pos = fence[0]
+                    nxt_pos = (cur_pos[0]+1,cur_pos[1])
+                    obj_val += 2*board.get_move_turns(cur_pos,nxt_pos)
+                if fence[1]=='vertical':
+                    cur_pos = fence[0]
+                    nxt_pos = (cur_pos[0],cur_pos[1]+1)
+                    obj_val += board.get_move_turns(cur_pos,nxt_pos)
+                distance_to_opponent = -int(math.sqrt((opponent_pos[1]-cur_pos[1])**2)) # <- only column distance / both -> int(math.sqrt((opponent_pos[0]-cur_pos[0])**2 + (opponent_pos[1]-cur_pos[1])**2))
+                obj_val += 6*distance_to_opponent
+            return obj_val 
         
         def change_to_neighbor(cur_cand, neighbor_cand, FC, FH, FV):
             for fence in cur_cand:
@@ -261,14 +278,13 @@ class Agent:  # Do not change the name of this class!
             return neighbor_cand, FC, FH, FV
         
         self._logger.debug(F"Candidate : {candidate}")
-        self._logger.debug(f"FC : {fenceCenter}")
-        self._logger.debug(f"FH : {fenceHorizontal}")
-        self._logger.debug(f"FV: {fenceVertical}")
         
+        total_count = 0
         count = 0
-        B4Search = 0
-        AF2Search = 0
+        reached = [candidate]
         while True:
+            if count == 10 or total_count == 400:
+                break
             shuffle(candidate)
             neighbor = generate_neighbor(candidate,board.get_applicable_fences(),fenceCenter,fenceHorizontal,fenceVertical) # FC,FH,FV가 update되어야 함. 여기 수정.
             self._logger.debug(f"neighbor is {neighbor}")
@@ -278,20 +294,23 @@ class Agent:  # Do not change the name of this class!
             setB = {fence for fence in neighbor}
             self._logger.debug(f"difference is {setA.difference(setB)}, len = {len(setA.difference(setB))}")
             #neighbor = [((4,3),'horizontal'),((6,7),'horizontal'),((2,7),'horizontal'),((3,7),'horizontal'),((6,4),'horizontal'),((5,1),'horizontal')]
-            current_obj = obj(candidate, opponent)
-            if B4Search == 0:
-                B4Search = current_obj
+            
+            current_obj = obj(candidate, opponent, opponent_position)
             self._logger.debug(f"cur obj : {current_obj}")
-            neighbor_obj = obj(neighbor, opponent)
+            neighbor_obj = obj(neighbor, opponent, opponent_position)
             self._logger.debug(f"cur obj : {current_obj}, neighbor obj : {neighbor_obj}")
-            if neighbor_obj > current_obj: # 일단은 side walk 불가능 조건으로 둠. 이후 reached 만들어서 side walk 만들어도 될 듯
+            if neighbor_obj >= current_obj: # 일단은 side walk 불가능 조건으로 둠. 이후 reached 만들어서 side walk 만들어도 될 듯
+                for prev in reached:
+                    if set(neighbor)==set(prev):
+                        count += 1
+                        total_count += 1
+                        continue
                 self._logger.debug(f"change to neighbor : {candidate} -> {neighbor}")
                 candidate, fenceCenter, fenceHorizontal, fenceVertical = change_to_neighbor(candidate,neighbor,fenceCenter, fenceHorizontal, fenceVertical)
-            elif count==10:
-                break
-            else :
-                count += 1
-        AF2Search = obj(candidate, opponent)
+                count = 0
+                reached.append(neighbor)
+            total_count += 1
+        self._logger.debug(f"board.distance_to_goal(opponent) : {board.distance_to_goal(opponent)}")
         return [BLOCK(self.player,fence[0],fence[1]) for fence in candidate]
                     
         # self._logger.debug("get applicable moves for childs")

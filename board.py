@@ -46,7 +46,7 @@ class HeuristicAgent:
     def heuristic_search(self, board: "GameBoard", player: str) -> int:
         # Initialize
         initial_state = board.get_state()
-        target_row = 8 if player else 0
+        target_row = 8 if player == 'white' else 0
         
         self._logger.debug("heuristic serch 가 왜 실행되냐?")
 
@@ -63,8 +63,9 @@ class HeuristicAgent:
         visited_positions = {initial_pos: 0}
 
         board.set_to_state(initial_state)
-
+        self._logger.debug(f"distance to goal / open_set : {open_set}")
         while open_set:
+            self._logger.debug(f"distance to goal / in while")
             _, current_id = heapq.heappop(open_set)
 
             current_state = states[current_id]
@@ -75,17 +76,21 @@ class HeuristicAgent:
             current_row, current_col = current_pos
 
             if current_row == target_row:
+                self._logger.debug("distance to goal 씨발 여기냐?")
                 return current_turns
 
+            self._logger.debug(f"distance to goal / get applicable moves : {board.get_applicable_moves(player)}")
             for next_pos in board.get_applicable_moves(player):
                 move_cost = board.get_move_turns(current_pos, next_pos)
                 new_turns = current_turns + move_cost
 
                 if (next_pos in visited_positions
                         and visited_positions[next_pos] <= new_turns):
+                    self._logger.debug("distance to goal / Got in if - continue")
                     continue
 
                 move = MOVE(player, next_pos)
+                self._logger.debug(f"distance_to_goal / Move to {next_pos}")
                 next_state = board.simulate_action(current_state, move, problem_type=1)
                 next_id = next_state['state_id']
 
