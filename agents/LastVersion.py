@@ -65,6 +65,9 @@ class Agent:  # Do not change the name of this class!
     
 
     def local_search(self, board: GameBoard, time_limit: float) -> List[BLOCK]:
+        # board.simulate_action(None,*[BLOCK(self.player,(4,3),'horizontal'),BLOCK(self.player,(6,7),'horizontal'),BLOCK(self.player,(2,7),'horizontal'),
+        #                              BLOCK(self.player,(3,7),'horizontal'),BLOCK(self.player,(6,4),'horizontal'),BLOCK(self.player,(5,1),'horizontal')])
+        # return None
         current_state=board.get_state()
         current_position = tuple(current_state['player'][self.player]['pawn'])
 
@@ -78,9 +81,9 @@ class Agent:  # Do not change the name of this class!
         self._logger.debug(f"left_fence is {left_fence}")
 
         def check_valid(pos,ori,FC,FH,FV):
-            if pos in FC: 
+            if list(pos) in FC: 
                 return False
-            
+                        
             if ori == "horizontal":
                 for fence in FH:
                     if fence[0] == pos[0] :
@@ -112,54 +115,126 @@ class Agent:  # Do not change the name of this class!
                             return False
                         
                     if pos[1]==fence[1]+1 and abs(pos[0]-fence[0]) <= 1:
-                        if [pos[0]+1,pos[1]+1] in FV or [pos[0],pos[1]+1] in FV or [pos[0]-1,pos[1]+1] in FV:
+                        if [pos[0]+1,pos[1]+1] in FV or [pos[0],pos[1]+1] in FV or [pos[0]-1,pos[1]+1] in FV or [pos[0]+1,pos[1]] in FV or [pos[0]-1,pos[1]] in FV:
                             return False     
-                    
+
                     if pos[1]==fence[1]-1 and abs(pos[0]-fence[0]) <= 1:
-                        if [pos[0]+1,pos[1]-1] in FV or [pos[0],pos[1]-1] in FV or [pos[0]-1,pos[1]-1] in FV:
+                        if [pos[0]+1,pos[1]-1] in FV or [pos[0],pos[1]-1] in FV or [pos[0]-1,pos[1]-1] in FV or [pos[0]+1,pos[1]] in FV or [pos[0]-1,pos[1]] in FV:
                             return False
             if ori == 'vertical':
-                return False
+                for fence in FV:
+                    if fence[1] == pos[1] :
+                        if abs(pos[0]-fence[0])==1:
+                            return False
+                    
+                        if abs(pos[0]-fence[0])==2:
+                            if pos[0]==0 or pos[0]==7:
+                                return False
+                            
+                            if [pos[0]+1,pos[1]] in FH or [pos[0]-1,pos[1]] in FH:
+                                return False
+                            if [pos[0]+1,pos[1]+1] in FH or [pos[0]+1,pos[1]-1] in FH:
+                                return False
+                            if [pos[0]-1,pos[1]+1] in FH or [pos[0]-1,pos[1]-1] in FH:
+                                return False
+                            if [pos[0],pos[1]+1] in FH or [pos[0],pos[1]-1] in FH:
+                                return False
+                            
+                            if pos[0] > fence[0]:
+                                if [pos[0]+2,pos[1]] in FV:
+                                    return False
+                            if pos[1] < fence[1]:
+                                if [pos[0]-2,pos[1]] in FV:
+                                    return False
+                for fence in FH:
+                    if pos[0]==fence[0]+1 or pos[0]==fence[0]-1:
+                        if pos[0]==0 or pos[0]==7:
+                            return False
+                        
+                    if pos[0]==fence[0]+1 and abs(pos[1]-fence[1]) <= 1:
+                        if [pos[0]+1,pos[1]+1] in FH or [pos[0]+1,pos[1]] in FH or [pos[0]+1,pos[1]-1] in FH:
+                            return False     
+                    
+                    if pos[0]==fence[0]-1 and abs(pos[1]-fence[1]) <= 1:
+                        if [pos[0]-1,pos[1]+1] in FH or [pos[0]-1,pos[1]] in FH or [pos[0]-1,pos[1]-1] in FH:
+                            return False
             return True
 
         # occupied fences
         fenceCenter = current_state['board']['fence_center']
         fenceHorizontal = current_state['board']['horizontal_fences']
         fenceVertical = current_state['board']['vertical_fences']
-
+        self._logger.debug(f"FC : {fenceCenter}")
+        self._logger.debug(f"FH : {fenceHorizontal}")
+        self._logger.debug(f"FV : {fenceVertical}")
+        
         #initial fence position
         fence_position = board.get_applicable_fences(self.player)
         candidate = []
         while left_fence > 0 :
             self._logger.debug(f"left_fence is {left_fence}")
-            fence = fence_position[0]
+            if opponent == 'white':
+                fence = fence_position[0]
+            if opponent == 'black':
+                fence = fence_position[-1]
             if check_valid(fence[0],fence[1],fenceCenter,fenceHorizontal,fenceVertical):
                 candidate.append(fence)
                 fence_position.remove(fence)
                 left_fence -= 1
-                fenceCenter.append(fence[0])
+                fenceCenter.append(list(fence[0]))
                 if fence[1]=='horizontal':
-                    fenceHorizontal.append(fence[0])
+                    fenceHorizontal.append(list(fence[0]))
                 else :
-                    fenceVertical.append(fence[0])
+                    fenceVertical.append(list(fence[0]))
             else :
                 fence_position.remove(fence)
         self._logger.debug(f"the result is {candidate}")
+        self._logger.debug(f"FC : {fenceCenter}")
+        self._logger.debug(f"FH : {fenceHorizontal}")
+        self._logger.debug(f"FV : {fenceVertical}")
+        
 
         def candidate_to_BLOCK(candidate : list):
             return [BLOCK(self.player,fence[0],fence[1]) for fence in candidate]
 
         def generate_neighbor(candidate,applicable_fence,FC,FH,FV):
             copied_candidate = deepcopy(candidate)
+            copied_FC = deepcopy(FC)
+            copied_FH = deepcopy(FH)
+            copied_FV = deepcopy(FV)
             applicable_fence = [fence for fence in applicable_fence if (fence not in copied_candidate) and (check_valid(fence[0],fence[1],FC,FH,FV))]
-            n = randint(1,5)
-            for i in range(n):
-                copied_candidate.pop()
-            new_cand = sample(applicable_fence,n)
-            new_cand = copied_candidate + new_cand
-            return new_cand
+            n = randint(1,min(5,len(applicable_fence)))
+            self._logger.debug(f"n : {n}")
+            for _ in range(n):
+                self._logger.debug(f"len copied candidate : {len(copied_candidate)}")
+                pop = copied_candidate.pop()
+                copied_FC.remove(list(pop[0]))
+                if pop[1]=='horizontal':
+                    copied_FH.remove(list(pop[0]))
+                if pop[1]=='vertical':
+                    copied_FV.remove(list(pop[0]))
 
-        def obj(state, fence, opponent):
+            count = 0
+            result = []
+            while count < n:
+                self._logger.debug(f"len applicable_fence : {len(applicable_fence)}")
+                new_cand = choice(applicable_fence)
+                if check_valid(new_cand[0],new_cand[1],copied_FC,copied_FH,copied_FV):
+                    result.append(new_cand)
+                    self._logger.debug(f"new_cand[0] : {new_cand[0]}")
+                    copied_FC.append(list(new_cand[0]))
+                    if new_cand[1]=='horizontal':
+                        copied_FH.append(list(new_cand[0]))
+                    if new_cand[1]=='vertical':
+                        copied_FV.append(list(new_cand[0]))
+                    count += 1
+                if len(applicable_fence)==1:
+                    break
+                else:
+                    applicable_fence.remove(new_cand)
+            return copied_candidate + result
+
+        def obj(fence, opponent):
             self._logger.debug("compute obj..")
             state = board.simulate_action(None,*candidate_to_BLOCK(fence))
             self._logger.debug("simulate done")
@@ -183,7 +258,6 @@ class Agent:  # Do not change the name of this class!
                     if fence[1]=="vertical":
                         FC.append(list(fence[0]))
                         FV.append(list(fence[0]))
-
             return neighbor_cand, FC, FH, FV
         
         self._logger.debug(F"Candidate : {candidate}")
@@ -192,13 +266,23 @@ class Agent:  # Do not change the name of this class!
         self._logger.debug(f"FV: {fenceVertical}")
         
         count = 0
+        B4Search = 0
+        AF2Search = 0
         while True:
             shuffle(candidate)
             neighbor = generate_neighbor(candidate,board.get_applicable_fences(),fenceCenter,fenceHorizontal,fenceVertical) # FC,FH,FV가 update되어야 함. 여기 수정.
             self._logger.debug(f"neighbor is {neighbor}")
-            current_obj = obj(current_state, candidate, opponent)
+            self._logger.debug(f"current is {candidate}")
+
+            setA = {fence for fence in candidate}
+            setB = {fence for fence in neighbor}
+            self._logger.debug(f"difference is {setA.difference(setB)}, len = {len(setA.difference(setB))}")
+            #neighbor = [((4,3),'horizontal'),((6,7),'horizontal'),((2,7),'horizontal'),((3,7),'horizontal'),((6,4),'horizontal'),((5,1),'horizontal')]
+            current_obj = obj(candidate, opponent)
+            if B4Search == 0:
+                B4Search = current_obj
             self._logger.debug(f"cur obj : {current_obj}")
-            neighbor_obj = obj(current_state, neighbor, opponent)
+            neighbor_obj = obj(neighbor, opponent)
             self._logger.debug(f"cur obj : {current_obj}, neighbor obj : {neighbor_obj}")
             if neighbor_obj > current_obj: # 일단은 side walk 불가능 조건으로 둠. 이후 reached 만들어서 side walk 만들어도 될 듯
                 self._logger.debug(f"change to neighbor : {candidate} -> {neighbor}")
@@ -207,7 +291,7 @@ class Agent:  # Do not change the name of this class!
                 break
             else :
                 count += 1
-            
+        AF2Search = obj(candidate, opponent)
         return [BLOCK(self.player,fence[0],fence[1]) for fence in candidate]
                     
         # self._logger.debug("get applicable moves for childs")

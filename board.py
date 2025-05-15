@@ -249,8 +249,8 @@ class GameBoard:
             self._rng.seed(hash(self._initial['state_id']))  # Use state_id as hash seed.
         else:
             if self._current['player'][self._player_side]['fences_left'] == 0:
-                self.check_state_difference(self._current, specific_state)
-
+                #self.check_state_difference(self._current, specific_state)S
+                pass
         # Restore the board to the given state.
         self._restore_state(specific_state)
 
@@ -358,10 +358,10 @@ class GameBoard:
 
         # Read all applicable positions
         player = self._board.current_player() if player is None else player
-        if self._board.fences_left[player] == 0:
-            if IS_DEBUG:  # Logging for debug
-                self._logger.debug(f'{player} used all fences.')
-            return []
+        # if self._board.fences_left[player] == 0:
+        #     if IS_DEBUG:  # Logging for debug
+        #         self._logger.debug(f'{player} used all fences.')
+        #     return []  
 
         applicable_fences = []
         for r in range(MAX_ROW - 1):
@@ -434,7 +434,9 @@ class GameBoard:
         prev_fences = {tuple(r) for r in state_from['board']['fence_center']}
         next_fences = {tuple(r) for r in state_to['board']['fence_center']}
         fences_removed = len(prev_fences.difference(next_fences))
-
+        self._logger.debug(f"in board.py, prev is {prev_fences}")
+        self._logger.debug(f"in board.py, next is {next_fences}")
+        self._logger.debug(f"in board.py, len is {fences_removed}")
         assert fences_removed <= 5, f'More than 5 fences were removed: {fences_removed} fences'
 
     def distance_to_goal(self, player: Literal['black', 'white'], state=None):
@@ -484,6 +486,8 @@ class GameBoard:
                     self._board.turn = 0 if self._player_side == 'white' else 1
 
                 act(self, avoid_check=problem_type == 2)
+                # tmp_state = self.get_state()
+                # self._logger.debug(f"tmp fence position : {tmp_state['board']}")
             except GameOver:
                 break
 
@@ -561,6 +565,12 @@ class GameBoard:
         """
         Helper function to restore board state to given state representation.
         """
+        
+        # github issue
+        for r,c in self._board.fence_center_grid.argwhere():
+            self._board._place_or_remove_fence(r,c,'h',place=False)            
+            self._board._place_or_remove_fence(r,c,'v',place=False)
+
         # Clear everything
         self._board.fence_center_grid[:, :] = False
         self._board.horizontal_fence_grid[:, :] = False
