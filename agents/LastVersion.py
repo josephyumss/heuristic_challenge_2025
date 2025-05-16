@@ -75,7 +75,7 @@ class Agent:  # Do not change the name of this class!
 
         if self.player == 'black' : opponent = 'white'
         else : opponent = 'black'
-        self._logger.debug(f"board.distance_to_goal(opponent) : {board.distance_to_goal(opponent)}")
+
         opponent_position = tuple(current_state['player'][opponent]['pawn'])
 
         #left fence
@@ -238,24 +238,24 @@ class Agent:  # Do not change the name of this class!
                     applicable_fence.remove(new_cand)
             return copied_candidate + result
 
-        def obj(fences, opponent, opponent_pos):
-            # self._logger.debug("compute obj..")
-            # state = board.simulate_action(None,*candidate_to_BLOCK(fence))
-            # self._logger.debug("simulate done")
-            # return board.distance_to_goal(opponent,state)
-            obj_val = 0
-            for fence in fences:
-                if fence[1]=='horizontal':
-                    cur_pos = fence[0]
-                    nxt_pos = (cur_pos[0]+1,cur_pos[1])
-                    obj_val += 2*board.get_move_turns(cur_pos,nxt_pos)
-                if fence[1]=='vertical':
-                    cur_pos = fence[0]
-                    nxt_pos = (cur_pos[0],cur_pos[1]+1)
-                    obj_val += board.get_move_turns(cur_pos,nxt_pos)
-                distance_to_opponent = -int(math.sqrt((opponent_pos[1]-cur_pos[1])**2)) # <- only column distance / both -> int(math.sqrt((opponent_pos[0]-cur_pos[0])**2 + (opponent_pos[1]-cur_pos[1])**2))
-                obj_val += 6*distance_to_opponent
-            return obj_val 
+        def obj(fences, opponent):#, opponent_pos):
+            self._logger.debug("compute obj..")
+            state = board.simulate_action(None,*candidate_to_BLOCK(fences))
+            self._logger.debug("simulate done")
+            return board.distance_to_goal(opponent,state)
+            # obj_val = 0
+            # for fence in fences:
+            #     if fence[1]=='horizontal':
+            #         cur_pos = fence[0]
+            #         nxt_pos = (cur_pos[0]+1,cur_pos[1])
+            #         obj_val += 2*board.get_move_turns(cur_pos,nxt_pos)
+            #     if fence[1]=='vertical':
+            #         cur_pos = fence[0]
+            #         nxt_pos = (cur_pos[0],cur_pos[1]+1)
+            #         obj_val += board.get_move_turns(cur_pos,nxt_pos)
+            #     distance_to_opponent = -int(math.sqrt((opponent_pos[1]-cur_pos[1])**2)) # <- only column distance / both -> int(math.sqrt((opponent_pos[0]-cur_pos[0])**2 + (opponent_pos[1]-cur_pos[1])**2))
+            #     obj_val += 3*distance_to_opponent
+            # return obj_val 
         
         def change_to_neighbor(cur_cand, neighbor_cand, FC, FH, FV):
             for fence in cur_cand:
@@ -283,7 +283,7 @@ class Agent:  # Do not change the name of this class!
         count = 0
         reached = [candidate]
         while True:
-            if count == 10 or total_count == 400:
+            if count == 30 or total_count == 40:
                 break
             shuffle(candidate)
             neighbor = generate_neighbor(candidate,board.get_applicable_fences(),fenceCenter,fenceHorizontal,fenceVertical) # FC,FH,FV가 update되어야 함. 여기 수정.
@@ -295,22 +295,23 @@ class Agent:  # Do not change the name of this class!
             self._logger.debug(f"difference is {setA.difference(setB)}, len = {len(setA.difference(setB))}")
             #neighbor = [((4,3),'horizontal'),((6,7),'horizontal'),((2,7),'horizontal'),((3,7),'horizontal'),((6,4),'horizontal'),((5,1),'horizontal')]
             
-            current_obj = obj(candidate, opponent, opponent_position)
+            current_obj = obj(candidate, opponent)#, opponent_position)
             self._logger.debug(f"cur obj : {current_obj}")
-            neighbor_obj = obj(neighbor, opponent, opponent_position)
+            neighbor_obj = obj(neighbor, opponent)#, opponent_position)
             self._logger.debug(f"cur obj : {current_obj}, neighbor obj : {neighbor_obj}")
-            if neighbor_obj >= current_obj: # 일단은 side walk 불가능 조건으로 둠. 이후 reached 만들어서 side walk 만들어도 될 듯
-                for prev in reached:
-                    if set(neighbor)==set(prev):
-                        count += 1
-                        total_count += 1
-                        continue
+            if neighbor_obj > current_obj: # 일단은 side walk 불가능 조건으로 둠. 이후 reached 만들어서 side walk 만들어도 될 듯
+                # for prev in reached:
+                #     if set(neighbor)==set(prev):
+                #         count += 1
+                #         total_count += 1
+                #         continue
                 self._logger.debug(f"change to neighbor : {candidate} -> {neighbor}")
                 candidate, fenceCenter, fenceHorizontal, fenceVertical = change_to_neighbor(candidate,neighbor,fenceCenter, fenceHorizontal, fenceVertical)
                 count = 0
-                reached.append(neighbor)
+                #reached.append(neighbor)
             total_count += 1
-        self._logger.debug(f"board.distance_to_goal(opponent) : {board.distance_to_goal(opponent)}")
+            count += 1
+        
         return [BLOCK(self.player,fence[0],fence[1]) for fence in candidate]
                     
         # self._logger.debug("get applicable moves for childs")
