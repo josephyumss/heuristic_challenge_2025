@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-def get_all_agents():
+def get_all_agents(agent_names):
     """
     Load all agents in the current directory
 
@@ -10,9 +10,7 @@ def get_all_agents():
 
     agents = []
     for code in Path(__file__).parent.glob('*.py'):  # Query for all python files in this directory
-        if code.stem != 'load' and not code.stem.startswith('_'):  # If the file name doesn't match with special file names,
-            if 't_' in code.stem:
-                continue
+        if code.stem in agent_names:  # If the file name doesn't match with special file names,
             agents.append(code.stem)  # Include them
 
     return sorted(agents)

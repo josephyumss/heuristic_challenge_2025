@@ -28,74 +28,6 @@ from util import print_board
 IS_DEBUG = '--debug' in sys.argv
 IS_RUN = 'fixed_evaluation' in sys.argv[0]
 
-class HeuristicAgent:
-    def heuristic(self, current_row: int, target_row: int, current_col: int, board_width=5) -> float:
-        rowDist = abs(current_row - target_row)
-
-        # How far from the center column
-        colCenter = board_width // 2
-        colDist = abs(current_col - colCenter)
-
-        # Mainly considering row distance, including the column distance slightly.
-        return rowDist + 0.1 * colDist
-
-    def heuristic_search(self, board: "GameBoard", player: str) -> int:
-        # Initialize
-        initial_state = board.get_state()
-        target_row = 8 if player else 0
-
-        initial_pos = tuple(initial_state['player'][player]['pawn'])
-        initial_id = initial_state['state_id']
-
-        came_from = {}
-        g_score = {initial_id: 0}
-        states = {initial_id: initial_state}
-
-        h_init = self.heuristic(initial_pos[0], target_row, initial_pos[1])
-        open_set = [(h_init, initial_id)]
-
-        visited_positions = {initial_pos: 0}
-
-        board.set_to_state(initial_state)
-
-        while open_set:
-            _, current_id = heapq.heappop(open_set)
-
-            current_state = states[current_id]
-            board.set_to_state(current_state)
-
-            current_pos = tuple(current_state['player'][player]['pawn'])
-            current_turns = g_score[current_id]
-            current_row, current_col = current_pos
-
-            if current_row == target_row:
-                return current_turns
-
-            for next_pos in board.get_applicable_moves(player):
-                move_cost = board.get_move_turns(current_pos, next_pos)
-                new_turns = current_turns + move_cost
-
-                if (next_pos in visited_positions
-                        and visited_positions[next_pos] <= new_turns):
-                    continue
-
-                move = MOVE(player, next_pos)
-                next_state = board.simulate_action(current_state, move, problem_type=1)
-                next_id = next_state['state_id']
-
-                came_from[next_id] = (current_id, move)
-                g_score[next_id] = new_turns
-                visited_positions[next_pos] = new_turns
-                states[next_id] = next_state
-
-                # New heuristic
-                h_val = self.heuristic(next_pos[0], target_row, next_pos[1])
-                f_val = new_turns + h_val
-                heapq.heappush(open_set, (f_val, next_id))
-
-        board.set_to_state(initial_state)
-        return 0
-
 class GameBoard:
     """
     The game board object.
@@ -103,14 +35,13 @@ class GameBoard:
     """
     #: [PRIVATE] The game instance running currently. Don't access this directly in your agent code!
     _board: Board = None
-    #: [PRIVATE] Your side (black/white). Don't access this directly in your agent code!
-    _player_side = 'black'
     #: [PRIVATE] The current player's index.
     _current_player = 'white'
     #: [PRIVATE] The initial state of the board. Don't access this directly in your agent code!
     _initial = None
     #: [PRIVATE] The current state of the board. Don't access this directly in your agent code!
     _current = None
+    _fences = []
     #: [PRIVATE] Logger instance for Board's function calls
     _logger = logging.getLogger('GameBoard')
     #: [PRIVATE] Memory usage tracker
@@ -118,10 +49,8 @@ class GameBoard:
     #: [PRIVATE] Fields for computing maximum memory usage. Don't access this directly in your agent code!
     _init_memory = 0
     _max_memory = 0
-    _heuristic_calls = 0
-    _initial_fences_dict = {}
     #: [PRIVATE] Random seed generator
-    _rng = random.Random(2938)
+    _rng = random.Random(2329)
 
     def _initialize(self, start_with_random_fence: int = 0):
         """
@@ -137,94 +66,25 @@ class GameBoard:
         # Initialize a new game board
         self._board = Board()
 
-        self._vertical_turns = [[self._rng.randint(1, 5) for _ in range(9)] for _ in range(8)]
-        self._horizontal_turns = [[self._rng.randint(1, 5) for _ in range(8)] for _ in range(9)]
-
         # Initialize board renderer for debugging purposes
         if IS_DEBUG:  # Logging for debug
             self._logger.debug('Rendered board: \n' + self._unique_game_state_identifier())
             self._logger.debug('\n' + print_board(self._board))
 
-        # Pick a starting point randomly.
-        self._player_side = random.choice(['black', 'white'])
-        if IS_DEBUG:  # Logging for debug
-            self._logger.debug(f'You\'re player {self._player_side}')
-
-        for p in ['black', 'white']:
-            row = self._board.pawns[p].square.row
-            col = random_integer(0, MAX_COL - 1)
-            self._board.pawns[p].move(self._board.get_square_or_none(row, col))
-
-        self._board.turn = 0 if self._player_side == 'white' else 1
-        # Update position information with a new starting point
-        for pawn in self._board.pawns.values():
-            pawn.square.reset_neighbours()
-
-        for pawn in self._board.pawns.values():
-            self._board.update_neighbours(pawn.square)
-
-        # Set random fences
-        assert start_with_random_fence < 5, 'Do not use start_with_random_fence >= 5'
-        for _ in range(start_with_random_fence):
-            for p in self._board.pawns.keys():
-                fences = self.get_applicable_fences(p)
-                while fences:
-                    fence, orientation = self._rng.choice(fences)
-                    try:
-                        BLOCK(p, fence, orientation)(self)
-                        break
-                    except InvalidFence:
-                        fences.remove((fence, orientation))
-                        continue
-                    except:
-                        raise
-
-        if IS_DEBUG:  # Logging for debug
-            self._logger.debug('After moving initial position: \n' + self._unique_game_state_identifier())
-            self._logger.debug('\n' + print_board(self._board))
-
         # Store initial state representation
         self._initial = self._save_state()
         self._current = deepcopy(self._initial)
+        self._fences = []
 
         # Update memory usage
         self._update_memory_usage()
 
-    def get_move_turns(self, current_pos: tuple, next_pos: tuple) -> int:
-        """Return the number of turns required to move between adjacent positions"""
-        row1, col1 = current_pos
-        row2, col2 = next_pos
-        min_row = min(row1, row2)
-        min_col = min(col1, col2)
-        if col1 == col2:
-            return self._vertical_turns[min_row][col1]
-        elif row1 == row2:
-            return self._horizontal_turns[row1][min_col]
-        else:
-            return max(self._horizontal_turns[min_row][min_col], self._vertical_turns[min_row][min_col])
-    
-    def print_turns(self):
-        """Print the required turns for each edge in a visual format"""
-        for i in range(9):
-            row = ""
-            for j in range(8):
-                row += f"O-{self._horizontal_turns[i][j]}-"
-            row += "O"
-            print(row)
-            
-            if i < 8:
-                row = ""
-                for j in range(9):
-                    row += f"{self._vertical_turns[i][j]}    "
-                print(row)
-        
     def reset_memory_usage(self):
         """
         Reset memory usage
         """
         self._init_memory = 0
         self._max_memory = 0
-        self._heuristic_calls = 0
         self._update_memory_usage()
 
     def set_to_state(self, specific_state=None, is_initial: bool = False):
@@ -240,9 +100,6 @@ class GameBoard:
             self._initial = specific_state
             self._current = deepcopy(self._initial)
             self._rng.seed(hash(self._initial['state_id']))  # Use state_id as hash seed.
-        else:
-            if self._current['player'][self._player_side]['fences_left'] == 0:
-                self.check_state_difference(self._current, specific_state)
 
         # Restore the board to the given state.
         self._restore_state(specific_state)
@@ -253,12 +110,6 @@ class GameBoard:
         if IS_DEBUG:  # Logging for debug
             self._logger.debug('State has been set as follows: \n' + self._unique_game_state_identifier())
             self._logger.debug('\n' + print_board(self._board))
-
-    def _set_initial_fences(self, fences):
-        """
-        Store the initial state of the fences
-        """
-        self._initial_fences_dict = fences
 
     def is_game_end(self):
         """
@@ -271,10 +122,15 @@ class GameBoard:
             self._logger.debug(f'Querying whether the game ends in this state... Answer = {is_game_end}')
         return is_game_end
 
+    def current_player(self):
+        """
+        Return the current player
+        """
+        return self._board.current_player()
+
     def get_state(self) -> dict:
         """
         Get the current board state
-        현재 state 반환
 
         :return: A copy of the current board state dictionary
         """
@@ -285,6 +141,15 @@ class GameBoard:
         assert self._current is not None, 'The board should be initialized. Did you run the evaluation code properly?'
         # Return the initial state representation as a copy.
         return deepcopy(self._current)
+
+    def get_position(self, player: Literal['white', 'black']) -> Tuple[int, int]:
+        """
+        Get the current position of the given player
+        :param player: The player
+        :return: The current position
+        """
+        square = self._board.pawns[player].square
+        return (square.row, square.col)
 
     def get_initial_state(self) -> dict:
         """
@@ -298,18 +163,6 @@ class GameBoard:
         assert self._initial is not None, 'The board should be initialized. Did you run the evaluation code properly?'
         # Return the initial state representation as a copy.
         return deepcopy(self._initial)
-
-    def get_player_id(self) -> Literal['black', 'white']:
-        """
-        Return the player name.
-        """
-        return self._player_side
-
-    def get_opponent_id(self) -> Literal['black', 'white']:
-        """
-        Return the opponent name.
-        """
-        return 'black' if self._player_side == 'white' else 'white'
 
     def get_applicable_moves(self, player: Literal['black', 'white'] = None) -> List[Tuple[int, int]]:
         """
@@ -416,36 +269,7 @@ class GameBoard:
         """
         return self._board.fences_left[player]
 
-    def check_state_difference(self, state_from, state_to):
-        """
-        Check whether the state transition is allowed within the current problem setting (Challenge II)
-        If not, the function will raise an Exception.
-        :param state_from: The previous state moving from
-        :param state_to: The next state moving to
-        """
-
-        prev_fences = {tuple(r) for r in state_from['board']['fence_center']}
-        next_fences = {tuple(r) for r in state_to['board']['fence_center']}
-        fences_removed = len(prev_fences.difference(next_fences))
-
-        assert fences_removed <= 5, f'More than 5 fences were removed: {fences_removed} fences'
-
-    def distance_to_goal(self, player: Literal['black', 'white'], state=None):
-        """
-        Compute distance toward the goal line.
-        :param player: Player name to compute the distance toward the goal line.
-        :param state: New state to check
-        :return: (int) Total distance (counting turns of movement)
-        """
-        self._heuristic_calls += 1
-        agent = HeuristicAgent()
-
-        if state != None:
-            self.set_to_state(state)
-
-        return agent.heuristic_search(self, player)
-    
-    def simulate_action(self, state: dict = None, *actions: Action, problem_type: int = 2) -> dict:
+    def simulate_action(self, state: dict = None, *actions: Action) -> dict:
         """
         Simulate given actions.
 
@@ -470,13 +294,7 @@ class GameBoard:
         for act in actions:  # For each actions in the variable arguments,
             # Run actions through calling each action object. If error occurs, raise as it is (except for GameOver)
             try:
-                # For challenge I and II, force the current player to agents
-                if problem_type == 1:
-                    self._board.turn = 0 if act.player == 'white' else 1
-                if problem_type == 2:
-                    self._board.turn = 0 if self._player_side == 'white' else 1
-
-                act(self, avoid_check=problem_type == 2)
+                act(self)
             except GameOver:
                 break
 
@@ -484,25 +302,7 @@ class GameBoard:
             if self.is_game_end():
                 break
 
-        # Copy the current state to return
-        if problem_type < 3:
-            self._board.turn = 0 if self._player_side == 'white' else 1
-            assert self._board.turn == (0 if self._player_side == 'white' else 1)
-
         self._current = self._save_state()
-
-        # Check whether the students installed all fences or not.
-        if problem_type == 2:
-            if _prev_current['player'][self._player_side]['fences_left'] == 0:
-                self.check_state_difference(_prev_current, self._current)
-
-            fences_left_player = self.number_of_fences_left(self.get_player_id())
-            fences_left_other = self.number_of_fences_left(self.get_opponent_id())
-
-            assert fences_left_player == 0, f'{fences_left_player} fences left as unused after the simulation!'
-            assert (FENCES_MAX * 2 - (fences_left_other + fences_left_player)
-                    == len(self._board.fence_center_grid.argwhere().tolist())), \
-                'Number mismatch! The number of recorded fence usage != The number of installed fences'
 
         if IS_DEBUG:  # Logging for debug
             self._logger.debug('State has been changed to: \n' + self._unique_game_state_identifier())
@@ -534,12 +334,9 @@ class GameBoard:
         return {
             'state_id': self._unique_game_state_identifier(),
             # Unique identifier for the game state. If this is the same, then the state will be equivalent.
-            'player_id': self._player_side,  # The agent's Player ID
             'turn': self._board.turn,  # Currently playing Player's ID
             'board': {  # Information about the current board
-                'fence_center': self._board.fence_center_grid.argwhere().tolist(),
-                'horizontal_fences': self._board.horizontal_fence_grid.argwhere().tolist(),
-                'vertical_fences': self._board.vertical_fence_grid.argwhere().tolist(),
+                'fence_center': self._fences.copy()
             },
             'player': {
                 p: {  # Information about the current player
@@ -558,6 +355,7 @@ class GameBoard:
         self._board.fence_center_grid[:, :] = False
         self._board.horizontal_fence_grid[:, :] = False
         self._board.vertical_fence_grid[:, :] = False
+        self._fences = []
 
         # Set players' current position
         for p in ['black', 'white']:
@@ -575,13 +373,11 @@ class GameBoard:
         self._board.fences_left['white'] = FENCES_MAX * 2
 
         # Re-simulate fencing:
-        horizontals = [tuple(place) for place in state['board']['horizontal_fences']]
-        verticals = [tuple(place) for place in state['board']['vertical_fences']]
-        for r, c in state['board']['fence_center']:
+        for (r, c), o in state['board']['fence_center']:
             current_player = self._board.current_player()
-            if (r, c) in horizontals and (r, c + 1) in horizontals:
+            if o == 'h':
                 act = BLOCK(player=current_player, orientation='horizontal', edge=(r, c))
-            elif (r, c) in verticals and (r + 1, c) in verticals:
+            elif o == 'v':
                 act = BLOCK(player=current_player, orientation='vertical', edge=(r, c))
             else:
                 raise ValueError(f'Fence center {r}, {c} is not in both horizontal and vertical fences')
@@ -594,7 +390,6 @@ class GameBoard:
         for p in ['black', 'white']:
             self._board.fences_left[p] = state['player'][p]['fences_left']
 
-        self._player_side = state['player_id']
         self._board.turn = state['turn']
 
 
