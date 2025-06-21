@@ -21,13 +21,12 @@ import psutil as pu
 # Function for loading your agents
 from agents.load import get_all_agents
 from board import GameBoard, InvalidFence, InvalidMove
-# Package for problem definitions
-from evaluator.util import MEGABYTES
 
 #: The number of games to run the evaluation
 GAMES = 10
 #: Limit of execution. (1 minute, 1GB per move)
 TIME_LIMIT = 60
+MEGABYTES = 1024 * 1024
 MEMORY_LIMIT = 1024
 #: Signals
 QUIT_SIGNAL = 'QUIT'
