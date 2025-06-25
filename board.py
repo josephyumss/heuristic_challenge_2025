@@ -63,6 +63,7 @@ class GameBoard:
         if IS_DEBUG:  # Logging for debug
             self._logger.debug('Initializing a new game board...')
         
+        self._logger.debug("씨발")
         # Initialize a new game board
         self._board = Board()
 

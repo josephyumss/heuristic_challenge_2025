@@ -1,0 +1,1164 @@
+2025-06-25 17:18:20,878 [root        ] INFO     Competing players: ['alpha_beta_agent', 'alpha_beta_agent']
+2025-06-25 17:18:20,878 [root        ] INFO     Player alpha_beta_agent (white) vs alpha_beta_agent (black) in trial #1
+2025-06-25 17:18:20,882 [GameBoard   ] DEBUG    Initializing a new game board...
+2025-06-25 17:18:20,882 [GameBoard   ] DEBUG    씨발
+2025-06-25 17:18:20,882 [GameBoard   ] DEBUG    Rendered board: 
+//E1E9
+2025-06-25 17:18:20,882 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:20,883 [GameBoard   ] DEBUG    Querying initial state...
+2025-06-25 17:18:20,892 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:20,892 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:22,997 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(0, 3) of white,) -------
+2025-06-25 17:18:22,998 [GameBoard   ] DEBUG    State has been set as follows: 
+//E1E9
+2025-06-25 17:18:22,998 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   ·   · W ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:22,998 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:22,998 [Action      ] DEBUG    Calling MOVE(0, 3) of white action
+2025-06-25 17:18:22,998 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:22,998 [GameBoard   ] DEBUG    State has been changed to: 
+//D1E9
+2025-06-25 17:18:22,998 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:22,998 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:22,999 [root        ] INFO     Player white [alpha_beta_agent] do action MOVE(0, 3) of white.
+2025-06-25 17:18:22,999 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:22,999 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:23,955 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(7, 4) of black,) -------
+2025-06-25 17:18:23,956 [GameBoard   ] DEBUG    State has been set as follows: 
+//D1E9
+2025-06-25 17:18:23,956 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:23,956 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:23,956 [Action      ] DEBUG    Calling MOVE(7, 4) of black action
+2025-06-25 17:18:23,956 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:23,956 [GameBoard   ] DEBUG    State has been changed to: 
+//D1E8
+2025-06-25 17:18:23,957 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:23,957 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:23,957 [root        ] INFO     Player black [alpha_beta_agent] do action MOVE(7, 4) of black.
+2025-06-25 17:18:23,957 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:23,957 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:24,994 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(0, 2) of white,) -------
+2025-06-25 17:18:24,995 [GameBoard   ] DEBUG    State has been set as follows: 
+//D1E8
+2025-06-25 17:18:24,995 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:24,995 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:24,995 [Action      ] DEBUG    Calling MOVE(0, 2) of white action
+2025-06-25 17:18:24,995 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:24,995 [GameBoard   ] DEBUG    State has been changed to: 
+//C1E8
+2025-06-25 17:18:24,995 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:24,995 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:24,996 [root        ] INFO     Player white [alpha_beta_agent] do action MOVE(0, 2) of white.
+2025-06-25 17:18:24,996 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:24,996 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:25,985 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(6, 4) of black,) -------
+2025-06-25 17:18:25,986 [GameBoard   ] DEBUG    State has been set as follows: 
+//C1E8
+2025-06-25 17:18:25,986 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:25,986 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:25,986 [Action      ] DEBUG    Calling MOVE(6, 4) of black action
+2025-06-25 17:18:25,986 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:25,986 [GameBoard   ] DEBUG    State has been changed to: 
+//C1E7
+2025-06-25 17:18:25,986 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:25,986 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:25,987 [root        ] INFO     Player black [alpha_beta_agent] do action MOVE(6, 4) of black.
+2025-06-25 17:18:25,987 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:25,987 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:26,963 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(0, 3) of white,) -------
+2025-06-25 17:18:26,964 [GameBoard   ] DEBUG    State has been set as follows: 
+//C1E7
+2025-06-25 17:18:26,964 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:26,964 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:26,964 [Action      ] DEBUG    Calling MOVE(0, 3) of white action
+2025-06-25 17:18:26,964 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:26,964 [GameBoard   ] DEBUG    State has been changed to: 
+//D1E7
+2025-06-25 17:18:26,964 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:26,965 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:26,965 [root        ] INFO     Player white [alpha_beta_agent] do action MOVE(0, 3) of white.
+2025-06-25 17:18:26,965 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:26,965 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:28,008 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(5, 4) of black,) -------
+2025-06-25 17:18:28,008 [GameBoard   ] DEBUG    State has been set as follows: 
+//D1E7
+2025-06-25 17:18:28,009 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:28,009 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:28,009 [Action      ] DEBUG    Calling MOVE(5, 4) of black action
+2025-06-25 17:18:28,009 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:28,009 [GameBoard   ] DEBUG    State has been changed to: 
+//D1E6
+2025-06-25 17:18:28,009 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:28,009 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:28,010 [root        ] INFO     Player black [alpha_beta_agent] do action MOVE(5, 4) of black.
+2025-06-25 17:18:28,010 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:28,010 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:28,969 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(0, 2) of white,) -------
+2025-06-25 17:18:28,970 [GameBoard   ] DEBUG    State has been set as follows: 
+//D1E6
+2025-06-25 17:18:28,970 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:28,970 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:28,970 [Action      ] DEBUG    Calling MOVE(0, 2) of white action
+2025-06-25 17:18:28,970 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:28,970 [GameBoard   ] DEBUG    State has been changed to: 
+//C1E6
+2025-06-25 17:18:28,971 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:28,971 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:28,971 [root        ] INFO     Player white [alpha_beta_agent] do action MOVE(0, 2) of white.
+2025-06-25 17:18:28,971 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:28,971 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:29,903 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(4, 4) of black,) -------
+2025-06-25 17:18:29,904 [GameBoard   ] DEBUG    State has been set as follows: 
+//C1E6
+2025-06-25 17:18:29,904 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:29,904 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:29,904 [Action      ] DEBUG    Calling MOVE(4, 4) of black action
+2025-06-25 17:18:29,904 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:29,904 [GameBoard   ] DEBUG    State has been changed to: 
+//C1E5
+2025-06-25 17:18:29,904 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:29,904 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:29,905 [root        ] INFO     Player black [alpha_beta_agent] do action MOVE(4, 4) of black.
+2025-06-25 17:18:29,905 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:29,905 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:30,820 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(0, 3) of white,) -------
+2025-06-25 17:18:30,820 [GameBoard   ] DEBUG    State has been set as follows: 
+//C1E5
+2025-06-25 17:18:30,821 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:30,821 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:30,821 [Action      ] DEBUG    Calling MOVE(0, 3) of white action
+2025-06-25 17:18:30,821 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:30,821 [GameBoard   ] DEBUG    State has been changed to: 
+//D1E5
+2025-06-25 17:18:30,821 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:30,821 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:30,822 [root        ] INFO     Player white [alpha_beta_agent] do action MOVE(0, 3) of white.
+2025-06-25 17:18:30,822 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:30,822 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:31,790 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(3, 4) of black,) -------
+2025-06-25 17:18:31,791 [GameBoard   ] DEBUG    State has been set as follows: 
+//D1E5
+2025-06-25 17:18:31,792 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:31,792 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:31,792 [Action      ] DEBUG    Calling MOVE(3, 4) of black action
+2025-06-25 17:18:31,792 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:31,792 [GameBoard   ] DEBUG    State has been changed to: 
+//D1E4
+2025-06-25 17:18:31,792 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:31,792 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:31,792 [root        ] INFO     Player black [alpha_beta_agent] do action MOVE(3, 4) of black.
+2025-06-25 17:18:31,792 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:31,793 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:32,638 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(0, 2) of white,) -------
+2025-06-25 17:18:32,639 [GameBoard   ] DEBUG    State has been set as follows: 
+//D1E4
+2025-06-25 17:18:32,639 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:32,639 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:32,639 [Action      ] DEBUG    Calling MOVE(0, 2) of white action
+2025-06-25 17:18:32,639 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:32,639 [GameBoard   ] DEBUG    State has been changed to: 
+//C1E4
+2025-06-25 17:18:32,639 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:32,639 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:32,640 [root        ] INFO     Player white [alpha_beta_agent] do action MOVE(0, 2) of white.
+2025-06-25 17:18:32,640 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:32,640 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:33,628 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(3, 5) of black,) -------
+2025-06-25 17:18:33,629 [GameBoard   ] DEBUG    State has been set as follows: 
+//C1E4
+2025-06-25 17:18:33,629 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:33,629 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:33,629 [Action      ] DEBUG    Calling MOVE(3, 5) of black action
+2025-06-25 17:18:33,629 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:33,629 [GameBoard   ] DEBUG    State has been changed to: 
+//C1F4
+2025-06-25 17:18:33,629 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   · B ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:33,629 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:33,630 [root        ] INFO     Player black [alpha_beta_agent] do action MOVE(3, 5) of black.
+2025-06-25 17:18:33,630 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:33,630 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:34,515 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(0, 3) of white,) -------
+2025-06-25 17:18:34,516 [GameBoard   ] DEBUG    State has been set as follows: 
+//C1F4
+2025-06-25 17:18:34,516 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   · B ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:34,516 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:34,516 [Action      ] DEBUG    Calling MOVE(0, 3) of white action
+2025-06-25 17:18:34,516 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:34,516 [GameBoard   ] DEBUG    State has been changed to: 
+//D1F4
+2025-06-25 17:18:34,516 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   · B ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:34,516 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:34,517 [root        ] INFO     Player white [alpha_beta_agent] do action MOVE(0, 3) of white.
+2025-06-25 17:18:34,517 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:34,517 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:35,515 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(3, 4) of black,) -------
+2025-06-25 17:18:35,516 [GameBoard   ] DEBUG    State has been set as follows: 
+//D1F4
+2025-06-25 17:18:35,516 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   · B ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:35,516 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:35,516 [Action      ] DEBUG    Calling MOVE(3, 4) of black action
+2025-06-25 17:18:35,516 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:35,516 [GameBoard   ] DEBUG    State has been changed to: 
+//D1E4
+2025-06-25 17:18:35,516 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:35,516 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:35,517 [root        ] INFO     Player black [alpha_beta_agent] do action MOVE(3, 4) of black.
+2025-06-25 17:18:35,517 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:35,517 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:36,348 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(0, 2) of white,) -------
+2025-06-25 17:18:36,349 [GameBoard   ] DEBUG    State has been set as follows: 
+//D1E4
+2025-06-25 17:18:36,349 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:36,349 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:36,349 [Action      ] DEBUG    Calling MOVE(0, 2) of white action
+2025-06-25 17:18:36,349 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:36,349 [GameBoard   ] DEBUG    State has been changed to: 
+//C1E4
+2025-06-25 17:18:36,349 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:36,349 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:36,350 [root        ] INFO     Player white [alpha_beta_agent] do action MOVE(0, 2) of white.
+2025-06-25 17:18:36,350 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:36,350 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:37,380 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(3, 5) of black,) -------
+2025-06-25 17:18:37,381 [GameBoard   ] DEBUG    State has been set as follows: 
+//C1E4
+2025-06-25 17:18:37,381 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:37,381 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:37,381 [Action      ] DEBUG    Calling MOVE(3, 5) of black action
+2025-06-25 17:18:37,381 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:37,381 [GameBoard   ] DEBUG    State has been changed to: 
+//C1F4
+2025-06-25 17:18:37,381 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   · B ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:37,381 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:37,382 [root        ] INFO     Player black [alpha_beta_agent] do action MOVE(3, 5) of black.
+2025-06-25 17:18:37,382 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:37,382 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:38,252 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(0, 3) of white,) -------
+2025-06-25 17:18:38,253 [GameBoard   ] DEBUG    State has been set as follows: 
+//C1F4
+2025-06-25 17:18:38,253 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   · B ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:38,253 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:38,253 [Action      ] DEBUG    Calling MOVE(0, 3) of white action
+2025-06-25 17:18:38,253 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:38,253 [GameBoard   ] DEBUG    State has been changed to: 
+//D1F4
+2025-06-25 17:18:38,253 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   · B ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:38,253 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:38,254 [root        ] INFO     Player white [alpha_beta_agent] do action MOVE(0, 3) of white.
+2025-06-25 17:18:38,254 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:38,254 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:39,237 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(3, 4) of black,) -------
+2025-06-25 17:18:39,237 [GameBoard   ] DEBUG    State has been set as follows: 
+//D1F4
+2025-06-25 17:18:39,237 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   · B ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:39,237 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:39,237 [Action      ] DEBUG    Calling MOVE(3, 4) of black action
+2025-06-25 17:18:39,237 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:39,238 [GameBoard   ] DEBUG    State has been changed to: 
+//D1E4
+2025-06-25 17:18:39,238 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:39,238 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:39,238 [root        ] INFO     Player black [alpha_beta_agent] do action MOVE(3, 4) of black.
+2025-06-25 17:18:39,238 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:39,238 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:40,131 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(0, 2) of white,) -------
+2025-06-25 17:18:40,132 [GameBoard   ] DEBUG    State has been set as follows: 
+//D1E4
+2025-06-25 17:18:40,132 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:40,132 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:40,132 [Action      ] DEBUG    Calling MOVE(0, 2) of white action
+2025-06-25 17:18:40,132 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:40,132 [GameBoard   ] DEBUG    State has been changed to: 
+//C1E4
+2025-06-25 17:18:40,132 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:40,132 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:40,133 [root        ] INFO     Player white [alpha_beta_agent] do action MOVE(0, 2) of white.
+2025-06-25 17:18:40,133 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:40,133 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:41,109 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(3, 5) of black,) -------
+2025-06-25 17:18:41,111 [GameBoard   ] DEBUG    State has been set as follows: 
+//C1E4
+2025-06-25 17:18:41,111 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   · B ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:41,111 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:41,111 [Action      ] DEBUG    Calling MOVE(3, 5) of black action
+2025-06-25 17:18:41,111 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:41,111 [GameBoard   ] DEBUG    State has been changed to: 
+//C1F4
+2025-06-25 17:18:41,111 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   · B ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:41,111 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:41,112 [root        ] INFO     Player black [alpha_beta_agent] do action MOVE(3, 5) of black.
+2025-06-25 17:18:41,112 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:41,112 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:42,078 [GameBoard   ] DEBUG    ------- SIMULATION START: (MOVE(0, 3) of white,) -------
+2025-06-25 17:18:42,079 [GameBoard   ] DEBUG    State has been set as follows: 
+//C1F4
+2025-06-25 17:18:42,080 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   · B ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   · W ·   ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:42,080 [GameBoard   ] DEBUG    Querying current state...
+2025-06-25 17:18:42,080 [Action      ] DEBUG    Calling MOVE(0, 3) of white action
+2025-06-25 17:18:42,080 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:42,080 [GameBoard   ] DEBUG    State has been changed to: 
+//D1F4
+2025-06-25 17:18:42,080 [GameBoard   ] DEBUG    
+   . . . . . . . . . . . . . . . . . .
+8 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+7 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+6 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+5 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+4 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+3 :   ·   ·   ·   ·   · B ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+2 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+1 :   ·   ·   ·   ·   ·   ·   ·   ·   ·
+   . . . . . . . . . . . . . . . . . .
+0 :   ·   ·   · W ·   ·   ·   ·   ·   ·
+   ··· ··· ··· ··· ··· ··· ··· ··· ···
+    0   1   2   3   4   5   6   7   8 
+2025-06-25 17:18:42,080 [GameBoard   ] DEBUG    ------- SIMULATION ENDS -------
+2025-06-25 17:18:42,081 [root        ] INFO     Player white [alpha_beta_agent] do action MOVE(0, 3) of white.
+2025-06-25 17:18:42,081 [GameBoard   ] DEBUG    Querying whether the game ends in this state... Answer = False
+2025-06-25 17:18:42,081 [GameBoard   ] DEBUG    Querying current state...
