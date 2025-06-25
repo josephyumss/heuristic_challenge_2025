@@ -221,8 +221,13 @@ class Agent:  # Do not change the name of this class!
         
         def get_all_actions(board, player):
             # pawn moves
+            self._logger.debug(f"\nturn : {board.current_player()}")
+            self._logger.debug(f"position : {board.get_position(player)}")
+            self._logger.debug(f"current_state : {board.get_state()}")
             move_positions = board.get_applicable_moves(player)
             move_actions = [MOVE(player=player, position=pos) for pos in move_positions]
+            self._logger.debug(move_positions)
+            self._logger.debug(move_actions)
             current_state=board.get_state()
 
             fc = current_state['board']['fence_center']
@@ -261,10 +266,20 @@ class Agent:  # Do not change the name of this class!
             my_dist = abs(my_goal_row - my_pos[0])
             opp_dist = abs(opp_goal_row - opp_pos[0])
 
+            fences = current_state['board']['fence_center']
+            fence_behind_me_count = 0
+            for fence in fences:
+                if self.player=='black':
+                    if fence[0]>my_pos[0]:
+                        fence_behind_me_count += 1
+                else :
+                    if fence[0]<my_pos[0]:
+                        fence_behind_me_count += 1
+
             # my_fences = board.number_of_fences_left(player)
             # opp_fences = board.number_of_fences_left(opponent)
-
-            return (opp_dist - my_dist) #+ 0.1 * (my_fences - opp_fences)
+            #self._logger.debug(f"fence_behind me : {fence_behind_me_count}")
+            return fence_behind_me_count - my_dist #+ 0.1 * (my_fences - opp_fences)
 
         def maxValue(board, state, player, alpha, beta, depth):
             DEPTH_LIMIT = 2
@@ -281,7 +296,7 @@ class Agent:  # Do not change the name of this class!
                 return eval(board), None
             
             v, move = -float('inf'), None
-
+            #self._logger.debug(get_all_actions(board, player))
             for act in get_all_actions(board, player):           
                 try:
                     board.set_to_state(state)
@@ -292,9 +307,10 @@ class Agent:  # Do not change the name of this class!
 
                 v2, a2 = minValue(board, simulate_state, opponent, alpha, beta, depth+1)
                 if v2 > v :
+                    self._logger.debug(f"v : {v}, v2 : {v2}")
                     v, move = v2, act
                     alpha = max(alpha, v)
-                if v >= beta :
+                if v > beta :
                     return v, move
 
             return v, move
@@ -328,14 +344,15 @@ class Agent:  # Do not change the name of this class!
                     v, move = v2, a2
                     beta = min(beta, v)
 
-                if v <= alpha :
+                if v < alpha :
                     return v, move
             return v, move
 
         current_state = board.get_state()
+        self._logger.debug(f"from main , applicable moves : {board.get_applicable_moves(self.player)}")
         value, move = maxValue(board, current_state, self.player, -float('inf'), float('inf'), 0)
-        if move == None :
-            move = choice(board.get_applicable_moves(self.player))
-            move = MOVE(self.player,move)
+        # if move == None :
+        #     move = choice(board.get_applicable_moves(self.player))
+        #     move = MOVE(self.player,move)
         return move
     
