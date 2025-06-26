@@ -415,6 +415,260 @@ class Agent:  # Do not change the name of this class!
         :param time_limit: The time limit for the search. Datetime.now() should have lower timestamp value than this.
         :return: The next move.
         """
-        raise NotImplementedError()
+        from collections import deque
+        from heapq import heappop, heappush
+        import time
+
+        start_time = time.time()
+        TIME_BUFFER = 1.0  # 1초 남기고 종료
+
+        player = board.current_player()
+        opponent = 'white' if player == 'black' else 'black'
+        max_depth = 4
+        
+        def get_all_actions(board,state, player):
+            board.set_to_state(state)
+            move_positions = board.get_applicable_moves(player)
+            move_actions = [MOVE(player=player, position=pos) for pos in move_positions]
+            return move_actions
+
+        def shortest_route_bfs(state, player):
+            start = state['player'][player]['pawn']
+            goal_row = 0 if player == 'black' else 8
+
+            fence = state['board']['fence_center']
+            fh = set()
+            fv = set()
+            for f in fence:
+                if f[1] == 'h':
+                    fh.add(f[0]) 
+                else:
+                    fv.add(f[0])
+
+            visited = set()
+            queue = deque([(start, 0)])  # (position, turn count)
+
+            while queue:
+                (r, c), turn = queue.popleft()
+
+                if (r, c) in visited:
+                    continue
+                visited.add((r, c))
+
+                if r == goal_row:
+                    return turn
+
+                for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                    nr, nc = r + dr, c + dc
+                    if not (0 <= nr <= 8 and 0 <= nc <= 8):
+                        continue
+
+                    blocked = False
+                    if dr == 1 and (((r, c) in fh) or ((r + 1, c-1) in fh)):
+                        blocked = True
+                    elif dr == -1 and (((r-1, c) in fh) or ((r-1, c-1) in fh)):
+                        blocked = True
+                    elif dc == 1 and (((r, c) in fv) or ((r-1, c) in fv)):
+                        blocked = True
+                    elif dc == -1 and (((r, c-1) in fv) or ((r-1, c-1) in fv)):
+                        blocked = True
+
+                    if not blocked and (nr, nc) not in visited:
+                        queue.append(((nr, nc), turn + 1))
+            return float('inf')
+        
+        def evaluate(state):
+            opponent = 'white' if self.player == 'black' else 'black'
+            my_turn = shortest_route_bfs(state,self.player)
+            opp_turn = shortest_route_bfs(state, opponent)
+            if self.player == 'white':
+                my_turn += 1
+            return opp_turn - 2*my_turn
+
+        def fence_expanshion_operator(state):
+            phase = 10 - state['player'][self.player]['fences_left']
+            opponent = 'white' if self.player == 'black' else 'black'
+            opp_pos = state['player'][opponent]['pawn']
+            my_pos = state['player'][self.player]['pawn']
+            FC = state['board']['fence_center']
+
+            if self.player == 'black':
+                if phase == 0:
+                    return ((7,3),'horizontal')
+                if phase == 1:
+                    if opp_pos[1] >= 4:
+                        if ((7,5), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((7,5), 'horizontal')
+                        if ((4,6), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((4,6), 'vertical')
+                        return ((6,2),'vertical')
+                    else :
+                        return ((6,2),'vertical')
+                if phase == 2:
+                    if opp_pos[1] >= 4:
+                        if ((7,5), 'h') in FC:
+                            return ((6,2),'vertical')
+                        if ((5,5), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((5,5), 'horizontal')
+                        if ((7,7), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((7,7), 'horizontal')
+                        return (my_pos,'horizontal')
+                    else:
+                        if ((5,2), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((5,2), 'horizontal')
+                        else :
+                            return ((7,1), 'horizontal')
+                if phase == 3:
+                    if opp_pos[1] >= 4:
+                        if ((7,7), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((7,7), 'horizontal')
+                        if ((6,2), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((6,2), 'vertical')
+                        if ((4,2), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((4,2),'vertical')
+                        if ((2,2), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((2,2),'vertical')
+                        return (my_pos,'horizontal')
+                    else :
+                        if ((5,2), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((5,2), 'horizontal')
+                        if ((5,0), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((5,0), 'horizontal')
+                        if ((6,1), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((6,1), 'horizontal')
+                        return ((7,1), 'horizontal')
+                return ((7,5), 'horizontal')
+            else :
+                if phase == 0:
+                    return ((0, 4), 'horizontal')
+
+                if phase == 1:
+                    if opp_pos[1] <= 4:
+                        if ((0, 2), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((0, 2), 'horizontal')
+                        elif ((3, 1), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((3, 1), 'vertical')
+                        else:
+                            return ((1, 5), 'vertical')
+                    else:
+                        return ((1, 5), 'vertical')
+
+                if phase == 2:
+                    if opp_pos[1] <= 4:
+                        if ((0, 2), 'h') in FC:
+                            return ((1, 5), 'vertical')
+                        if ((2, 2), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((2, 2), 'horizontal')
+                        if ((0, 0), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((0, 0), 'horizontal')
+                        return ((7 - my_pos[0], 7 - my_pos[1]), 'horizontal')
+                    else:
+                        if ((2, 5), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((2, 5), 'horizontal')
+                        else:
+                            return ((0, 6), 'horizontal')
+
+                if phase == 3: 
+                    if opp_pos[1] <= 4:
+                        if ((3, 5), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((3, 5), 'vertical')
+                        if ((0, 0), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((0, 0), 'horizontal')
+                        if ((1, 5), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((1, 5), 'vertical')
+                        return ((7 - my_pos[0], 7 - my_pos[1]), 'horizontal')
+                    else:
+                        if ((3, 5), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((3, 5), 'vertical')
+                        if ((2, 5), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((2, 5), 'horizontal')
+                        elif ((1, 6), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((1, 6), 'horizontal')
+                        return ((0, 6), 'horizontal')
+                if phase == 4:
+                    if opp_pos[1] <= 4:
+                        if ((0, 0), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((0, 0), 'horizontal')
+                    else:
+                        if opp_pos[1] == 5 and ((5, 5), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((5, 5), 'vertical')
+                return ((0, 0), 'horizontal')
+            
+             # 순서 바꿔야 함
+
+        def alpha_beta_search(state, depth, alpha, beta, maximizing):
+            if time.time() > time_limit - TIME_BUFFER:
+                raise TimeoutError()
+
+            current = player if maximizing else opponent
+            actions = [MOVE(current, m) for m in board.get_applicable_moves(current)]
+
+            if depth == 0 or board.is_game_end():
+                return evaluate(state), None
+
+            best_action = None
+            if maximizing:
+                max_eval = float('-inf')
+                for act in actions:
+                    try:
+                        new_state = board.simulate_action(state, act)
+                        score, _ = alpha_beta_search(new_state, depth - 1, alpha, beta, False)
+                        #self._logger.debug(f"max - act : {act} / eval : {score} / max_eval : {max_eval}")
+                        if score > max_eval:
+                            max_eval = score
+                            best_action = act
+                        alpha = max(alpha, score)
+                        # if beta <= alpha:
+                        #     break
+                    except Exception as e:
+                        continue
+                return max_eval, best_action
+            else:
+                min_eval = float('inf')
+                for act in actions:
+                    try:
+                        new_state = board.simulate_action(state, act)
+                        score, _ = alpha_beta_search(new_state, depth - 1, alpha, beta, True)
+                        #self._logger.debug(f"min - act : {act} / eval : {score} / min_eval : {min_eval}")
+                        if score < min_eval:
+                            min_eval = score
+                            best_action = act
+                        beta = min(beta, score)
+                        # if beta <= alpha:
+                        #     break
+                    except Exception as e:
+                        continue
+                return min_eval, best_action
+        
+        def valid_move(pos, fence):
+            if self.player == 'black':
+                if (((pos[0]-1,pos[1]-1),'h') in fence) or (((pos[0]-1,pos[1]),'h') in fence):
+                    return False
+                return True
+            else:
+                if ((pos,'h') in fence) or (((pos[0],pos[1]-1),'h') in fence):
+                    return False
+                return True
+        
+        current_state = board.get_state()
+        value, move = alpha_beta_search(board.get_state(), max_depth, float('-inf'), float('inf'), True)
+        cur_pos = current_state['player'][self.player]['pawn']
+        opponent = 'white' if self.player =='black' else 'black'
+        goal = 8 if self.player == 'white' else 0
+    
+        block = None
+        if shortest_route_bfs(current_state, opponent) <= 6:
+            block = fence_expanshion_operator(current_state)
+        #self._logger.debug(board.get_applicable_fences(self.player))
+        current_fence = board.get_state()['board']['fence_center']
+        valid_fence = board.get_applicable_fences(self.player)
+        if block not in valid_fence:
+            if self.player == 'black' and cur_pos[0]-1 == goal and valid_move(cur_pos,current_fence):
+                return MOVE(self.player,(cur_pos[0]-1, cur_pos[1]))
+            if self.player == 'white' and cur_pos[0]+1 == goal and valid_move(cur_pos,current_fence):
+                return MOVE(self.player,(cur_pos[0]+1, cur_pos[1]))
+            return move
+        else :
+            return BLOCK(self.player, block[0], block[1])
     
 
