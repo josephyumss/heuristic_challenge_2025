@@ -137,222 +137,263 @@ class Agent:  # Do not change the name of this class!
         :param time_limit: The time limit for the search. Datetime.now() should have lower timestamp value than this.
         :return: The next move.
         """
-        def check_valid(pos,ori,FC,FH,FV):
-            if list(pos) in FC: 
-                return False
-                        
-            if ori == "h":
-                for fence in FH:
-                    if fence[0] == pos[0] :
-                        if abs(pos[1]-fence[1])==1:
-                            return False
-                    
-                        if abs(pos[1]-fence[1])==2:
-                            if pos[1]==0 or pos[1]==7:
-                                return False
-                            
-                            if [pos[0],pos[1]+1] in FV or [pos[0],pos[1]-1] in FV:
-                                return False
-                            if [pos[0]+1,pos[1]+1] in FV or [pos[0]+1,pos[1]-1] in FV:
-                                return False
-                            if [pos[0]-1,pos[1]+1] in FV or [pos[0]-1,pos[1]-1] in FV:
-                                return False
-                            if [pos[0]-1,pos[1]] in FV or [pos[0]+1,pos[1]] in FV:
-                                return False
-                            
-                            if pos[1] > fence[1]:
-                                if [pos[0],pos[1]+2] in FH:
-                                    return False
-                            if pos[1] < fence[1]:
-                                if [pos[0],pos[1]-2] in FH:
-                                    return False
-                for fence in FV:
-                    if abs(pos[0]-fence[0]) <= 1:
-                        if pos[1]==fence[1]+1 or pos[1]==fence[1]-1 or pos[1]==fence[1]:
-                            if pos[1]==0 or pos[1]==7:
-                                return False
-                        
-                        if pos[1]==fence[1]+1:
-                            if [pos[0]+1,pos[1]+1] in FV or [pos[0],pos[1]+1] in FV or [pos[0]-1,pos[1]+1] in FV or [pos[0]+1,pos[1]] in FV or [pos[0]-1,pos[1]] in FV:
-                                return False     
+        from collections import deque
+        from heapq import heappop, heappush
+        import time
 
-                        if pos[1]==fence[1]-1:
-                            if [pos[0]+1,pos[1]-1] in FV or [pos[0],pos[1]-1] in FV or [pos[0]-1,pos[1]-1] in FV or [pos[0]+1,pos[1]] in FV or [pos[0]-1,pos[1]] in FV:
-                                return False
-            if ori == 'v':
-                for fence in FV:
-                    if fence[1] == pos[1] :
-                        if abs(pos[0]-fence[0])==1:
-                            return False
-                    
-                        if abs(pos[0]-fence[0])==2:
-                            if pos[0]==0 or pos[0]==7:
-                                return False
-                            
-                            if [pos[0]+1,pos[1]] in FH or [pos[0]-1,pos[1]] in FH:
-                                return False
-                            if [pos[0]+1,pos[1]+1] in FH or [pos[0]+1,pos[1]-1] in FH:
-                                return False
-                            if [pos[0]-1,pos[1]+1] in FH or [pos[0]-1,pos[1]-1] in FH:
-                                return False
-                            if [pos[0],pos[1]+1] in FH or [pos[0],pos[1]-1] in FH:
-                                return False
-                            
-                            if pos[0] > fence[0]:
-                                if [pos[0]+2,pos[1]] in FV:
-                                    return False
-                            if pos[1] < fence[1]:
-                                if [pos[0]-2,pos[1]] in FV:
-                                    return False
-                for fence in FH:
-                    if abs(pos[1]-fence[1]) <= 1:
-                        if pos[0]==fence[0]+1 or pos[0]==fence[0]-1 or pos[0]==fence[0]:
-                            if pos[0]==0 or pos[0]==7:
-                                return False
-                            
-                        if pos[0]==fence[0]+1:
-                            if [pos[0]+1,pos[1]+1] in FH or [pos[0]+1,pos[1]] in FH or [pos[0]+1,pos[1]-1] in FH:
-                                return False     
-                        
-                        if pos[0]==fence[0]-1:
-                            if [pos[0]-1,pos[1]+1] in FH or [pos[0]-1,pos[1]] in FH or [pos[0]-1,pos[1]-1] in FH:
-                                return False
-            return True
+        start_time = time.time()
+        TIME_BUFFER = 1.0  # 1초 남기고 종료
+
+        player = board.current_player()
+        opponent = 'white' if player == 'black' else 'black'
+        max_depth = 4
         
-        def get_all_actions(board, player):
-            # pawn moves
-            self._logger.debug(f"\nturn : {board.current_player()}")
-            self._logger.debug(f"position : {board.get_position(player)}")
-            self._logger.debug(f"current_state : {board.get_state()}")
+        def get_all_actions(board,state, player):
+            board.set_to_state(state)
             move_positions = board.get_applicable_moves(player)
             move_actions = [MOVE(player=player, position=pos) for pos in move_positions]
-            self._logger.debug(move_positions)
-            self._logger.debug(move_actions)
-            current_state=board.get_state()
+            return move_actions
 
-            fc = current_state['board']['fence_center']
-            fh = []
-            fv = []
-            for fence_center in fc:
-                if fence_center[1]=='h':
-                    fh.append(fence_center)
+        def shortest_route_bfs(state, player):
+            start = state['player'][player]['pawn']
+            goal_row = 0 if player == 'black' else 8
 
-                if fence_center[1]=='v':
-                    fv.append(fence_center)
-            # fence placements
-            fence_actions = []
-            if board.number_of_fences_left(player) > 0:
-                fence_positions = board.get_applicable_fences(player)
-                for (r, c), o in fence_positions:
-                    if check_valid((r,c),o,fc,fh,fv):
-                        fence_actions.append(BLOCK(player=player, orientation=o, edge=(r, c)))
-            return move_actions + fence_actions
+            fence = state['board']['fence_center']
+            fh = set()
+            fv = set()
+            for f in fence:
+                if f[1] == 'h':
+                    fh.add(f[0])  # (r, c)
+                else:
+                    fv.add(f[0])
 
-        def eval(board):
+            visited = set()
+            queue = deque([(start, 0)])  # (position, turn count)
+
+            while queue:
+                (r, c), turn = queue.popleft()
+
+                if (r, c) in visited:
+                    continue
+                visited.add((r, c))
+
+                if r == goal_row:
+                    return turn
+
+                for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                    nr, nc = r + dr, c + dc
+                    if not (0 <= nr <= 8 and 0 <= nc <= 8):
+                        continue
+
+                    blocked = False
+                    if dr == 1 and (r, c) in fh: 
+                        blocked = True
+                    elif dr == -1 and (r - 1, c) in fh:  
+                        blocked = True
+                    elif dc == 1 and (r, c) in fv: 
+                        blocked = True
+                    elif dc == -1 and (r, c - 1) in fv:  
+                        blocked = True
+
+                    if not blocked and (nr, nc) not in visited:
+                        queue.append(((nr, nc), turn + 1))
+
+            
+            return float('inf')
+        
+        def evaluate(state):
             opponent = 'white' if self.player == 'black' else 'black'
+            my_turn = shortest_route_bfs(state,self.player)
+            opp_turn = shortest_route_bfs(state, opponent)
+            if self.player == 'white':
+                my_turn += 1
+            return opp_turn - 2*my_turn
 
-            my_pos = board.get_position(self.player)
-            opp_pos = board.get_position(opponent)
+        def fence_expanshion_operator(state):
+            phase = 10 - state['player'][self.player]['fences_left']
+            opponent = 'white' if self.player == 'black' else 'black'
+            opp_pos = state['player'][opponent]['pawn']
+            my_pos = state['player'][self.player]['pawn']
+            FC = state['board']['fence_center']
 
-            my_goal_row = 8 if self.player == 'white' else 0
-            opp_goal_row = 0 if self.player == 'white' else 8
+            if self.player == 'black':
+                if phase == 0:
+                    return ((7,3),'horizontal')
+                if phase == 1:
+                    if opp_pos[1] >= 4:
+                        if ((7,5), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((7,5), 'horizontal')
+                        if ((4,6), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((4,6), 'vertical')
+                        return ((6,2),'vertical')
+                    else :
+                        return ((6,2),'vertical')
+                if phase == 2:
+                    if opp_pos[1] >= 4:
+                        if ((7,5), 'h') in FC:
+                            return ((6,2),'vertical')
+                        if ((5,5), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((5,5), 'horizontal')
+                        if ((7,7), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((7,7), 'horizontal')
+                        return (my_pos,'horizontal')
+                    else:
+                        if ((5,2), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((5,2), 'horizontal')
+                        else :
+                            return ((7,1), 'horizontal')
+                if phase == 3:
+                    if opp_pos[1] >= 4:
+                        if ((7,7), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((7,7), 'horizontal')
+                        if ((6,2), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((6,2), 'vertical')
+                        if ((4,2), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((4,2),'vertical')
+                        if ((2,2), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((2,2),'vertical')
+                        return (my_pos,'horizontal')
+                    else :
+                        if ((5,2), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((5,2), 'horizontal')
+                        if ((5,0), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((5,0), 'horizontal')
+                        if ((6,1), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((6,1), 'horizontal')
+                        return ((7,1), 'horizontal')
+                return ((7,5), 'horizontal')
+            else :
+                if phase == 0:
+                    return ((0, 4), 'horizontal')
 
-            if board.is_game_end():
-                if my_goal_row == my_pos[0]:
-                    return 999
-                else :
-                    return -999
+                if phase == 1:
+                    if opp_pos[1] <= 4:
+                        if ((0, 2), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((0, 2), 'horizontal')
+                        elif ((3, 1), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((3, 1), 'vertical')
+                        else:
+                            return ((1, 5), 'vertical')
+                    else:
+                        return ((1, 5), 'vertical')
 
-            my_dist = abs(my_goal_row - my_pos[0])
-            opp_dist = abs(opp_goal_row - opp_pos[0])
+                if phase == 2:
+                    if opp_pos[1] <= 4:
+                        if ((0, 2), 'h') in FC:
+                            return ((1, 5), 'vertical')
+                        if ((2, 2), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((2, 2), 'horizontal')
+                        if ((0, 0), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((0, 0), 'horizontal')
+                        return ((7 - my_pos[0], 7 - my_pos[1]), 'horizontal')
+                    else:
+                        if ((2, 5), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((2, 5), 'horizontal')
+                        else:
+                            return ((0, 6), 'horizontal')
 
-            fences = current_state['board']['fence_center']
-            fence_behind_me_count = 0
-            for fence in fences:
-                if self.player=='black':
-                    if fence[0]>my_pos[0]:
-                        fence_behind_me_count += 1
-                else :
-                    if fence[0]<my_pos[0]:
-                        fence_behind_me_count += 1
-
-            # my_fences = board.number_of_fences_left(player)
-            # opp_fences = board.number_of_fences_left(opponent)
-            #self._logger.debug(f"fence_behind me : {fence_behind_me_count}")
-            return fence_behind_me_count - my_dist #+ 0.1 * (my_fences - opp_fences)
-
-        def maxValue(board, state, player, alpha, beta, depth):
-            DEPTH_LIMIT = 2
-            #self._logger.debug("working...")
-            if player == 'black' : opponent = 'white'
-            else : opponent = 'black'
-
-            try:
-                board.set_to_state(state)
-            except:
-                return eval(board), None
-
-            if board.is_game_end() or depth == DEPTH_LIMIT:
-                return eval(board), None
+                if phase == 3: 
+                    if opp_pos[1] <= 4:
+                        if ((3, 5), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((3, 5), 'vertical')
+                        if ((0, 0), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((0, 0), 'horizontal')
+                        if ((1, 5), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((1, 5), 'vertical')
+                        return ((7 - my_pos[0], 7 - my_pos[1]), 'horizontal')
+                    else:
+                        if ((3, 5), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((3, 5), 'vertical')
+                        if ((2, 5), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((2, 5), 'horizontal')
+                        elif ((1, 6), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((1, 6), 'horizontal')
+                        return ((0, 6), 'horizontal')
+                if phase == 4:
+                    if opp_pos[1] <= 4:
+                        if ((0, 0), 'horizontal') in board.get_applicable_fences(self.player):
+                            return ((0, 0), 'horizontal')
+                    else:
+                        if opp_pos[1] == 5 and ((5, 5), 'vertical') in board.get_applicable_fences(self.player):
+                            return ((5, 5), 'vertical')
+                return ((0, 0), 'horizontal')
             
-            v, move = -float('inf'), None
-            #self._logger.debug(get_all_actions(board, player))
-            for act in get_all_actions(board, player):           
-                try:
-                    board.set_to_state(state)
-                    cur_state = board.get_state()
-                    simulate_state = board.simulate_action(cur_state, act)
-                except :
-                    continue
+             # 순서 바꿔야 함
 
-                v2, a2 = minValue(board, simulate_state, opponent, alpha, beta, depth+1)
-                if v2 > v :
-                    self._logger.debug(f"v : {v}, v2 : {v2}")
-                    v, move = v2, act
-                    alpha = max(alpha, v)
-                if v > beta :
-                    return v, move
+        def alpha_beta_search(state, depth, alpha, beta, maximizing):
+            if time.time() > time_limit - TIME_BUFFER:
+                raise TimeoutError()
 
-            return v, move
+            current = player if maximizing else opponent
+            actions = [MOVE(current, m) for m in board.get_applicable_moves(current)]
 
-        def minValue(board, state, player, alpha, beta, depth):
-            DEPTH_LIMIT = 4
-            if player == 'black' : opponent = 'white'
-            else : opponent = 'black'
+            if depth == 0 or board.is_game_end():
+                return evaluate(state), None
 
-            try:
-                board.set_to_state(state)
-            except :
-                return eval(board), None
-            
-            if board.is_game_end() or depth == DEPTH_LIMIT:
-                return eval(board), None
-            
-            v, move = float('inf'), None
-
-            for act in get_all_actions(board, player):
-                try:
-                    board.set_to_state(state)
-                    cur_state = board.get_state()
-                    simulate_state = board.simulate_action(cur_state, act)
-                except :
-                    continue
-
-                v2, a2 = maxValue(board, simulate_state, opponent, alpha, beta, depth+1)
-                
-                if v2 < v :
-                    v, move = v2, a2
-                    beta = min(beta, v)
-
-                if v < alpha :
-                    return v, move
-            return v, move
-
+            best_action = None
+            if maximizing:
+                max_eval = float('-inf')
+                for act in actions:
+                    try:
+                        new_state = board.simulate_action(state, act)
+                        score, _ = alpha_beta_search(new_state, depth - 1, alpha, beta, False)
+                        #self._logger.debug(f"max - act : {act} / eval : {score} / max_eval : {max_eval}")
+                        if score > max_eval:
+                            max_eval = score
+                            best_action = act
+                        alpha = max(alpha, score)
+                        # if beta <= alpha:
+                        #     break
+                    except Exception as e:
+                        continue
+                return max_eval, best_action
+            else:
+                min_eval = float('inf')
+                for act in actions:
+                    try:
+                        new_state = board.simulate_action(state, act)
+                        score, _ = alpha_beta_search(new_state, depth - 1, alpha, beta, True)
+                        #self._logger.debug(f"min - act : {act} / eval : {score} / min_eval : {min_eval}")
+                        if score < min_eval:
+                            min_eval = score
+                            best_action = act
+                        beta = min(beta, score)
+                        # if beta <= alpha:
+                        #     break
+                    except Exception as e:
+                        continue
+                return min_eval, best_action
+        
+        def valid_move(pos, fence):
+            if self.player == 'black':
+                if (((pos[0]-1,pos[1]-1),'h') in fence) or (((pos[0]-1,pos[1]),'h') in fence):
+                    return False
+                return True
+            else:
+                if ((pos,'h') in fence) or (((pos[0],pos[1]-1),'h') in fence):
+                    return False
+                return True
+        
         current_state = board.get_state()
-        self._logger.debug(f"from main , applicable moves : {board.get_applicable_moves(self.player)}")
-        value, move = maxValue(board, current_state, self.player, -float('inf'), float('inf'), 0)
-        # if move == None :
-        #     move = choice(board.get_applicable_moves(self.player))
-        #     move = MOVE(self.player,move)
-        return move
+        value, move = alpha_beta_search(board.get_state(), max_depth, float('-inf'), float('inf'), True)
+        cur_pos = current_state['player'][self.player]['pawn']
+        opponent = 'white' if self.player =='black' else 'black'
+        goal = 8 if self.player == 'white' else 0
+    
+        block = None
+        if shortest_route_bfs(current_state, opponent) <= 6:
+            block = fence_expanshion_operator(current_state)
+        #self._logger.debug(board.get_applicable_fences(self.player))
+        current_fence = board.get_state()['board']['fence_center']
+        valid_fence = board.get_applicable_fences(self.player)
+        if block not in valid_fence:
+            if self.player == 'black' and cur_pos[0]-1 == goal and valid_move((cur_pos[0]-1,cur_pos[1]),current_fence):
+                return MOVE(self.player,(cur_pos[0]-1, cur_pos[1]))
+            if self.player == 'white' and cur_pos[0]+1 == goal and valid_move((cur_pos[0]+1,cur_pos[1]),current_fence):
+                return MOVE(self.player,(cur_pos[0]+1, cur_pos[1]))
+            return move
+        else :
+            return BLOCK(self.player, block[0], block[1])
+        
+        
     
